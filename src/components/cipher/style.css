@@ -1,0 +1,42 @@
+.ciphercontainer textarea {
+    background-color: var(--w);
+    color: var(--b);
+    border-radius: 40px;
+    box-shadow:  5px 5px 10px #1a1a1a,
+                -5px -5px 10px #242424;
+    border: none;
+    padding: 15px 32px;
+    resize: none;
+    outline: none;
+}
+.ciphercontainer .arrow {
+    font-size: 2.0em;
+    color: var(--ht);
+    font-weight: bold;
+    margin: 0;
+}
+.ciphercontainer button {
+    background-color: var(--t);
+    border-radius: 40px;
+    box-shadow:  5px 5px 10px #1a1a1a,
+                 -5px -5px 10px #242424;
+    border: none;
+    color: var(--b);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    font-size: 16px;
+    transition: 0.15s;
+}
+.ciphercontainer button:active {
+    transition: 0.15s;
+    background-color: var(--ht);
+    box-shadow:  2px 2px 4px #1a1a1a,
+                 -2px -2px 4px #242424;
+}
+.keybutton {
+    margin-left: 2% !important;
+}

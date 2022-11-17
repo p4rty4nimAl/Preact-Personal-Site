@@ -1,0 +1,15 @@
+fieldset {
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 50%;
+}
+legend {
+    margin: 0 auto;
+}
+.poemcontainer fieldset span {
+    margin: 0 auto;
+    display: table;
+}
+.poemcontainer {
+    font-size: 25px;
+}

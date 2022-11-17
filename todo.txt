@@ -1,0 +1,22 @@
+files done: {
+    assets/* //add more as necessary
+    manifest.json
+    packag*.json
+    tests/* // actually have tests?
+}
+done areas {
+    404 page!!
+    home page!!
+    projects page!!
+        ciphers!!
+        poems!!
+    README.md!!
+}
+todo: {
+    robots.txt
+    docs
+    portfolio
+    meta tags
+    sw.js // last - no use?
+    mcsp
+}

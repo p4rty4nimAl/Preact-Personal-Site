@@ -1,0 +1,22 @@
+.errorbody {
+    background-color: var(--b);
+    color: var(--w);
+    display: grid;
+    text-align: center;
+    padding: 10%;
+}
+.errorbody .title {
+    font-size: 50px;
+}
+.errorbody .text {
+    font-size: 20px !important;
+}
+.errorbody .link:link {
+    color: var(--w);
+}
+.link:visited {
+    color: var(--w);
+}
+.link:hover {
+    color: var(--w);
+}
