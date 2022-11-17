@@ -6,7 +6,7 @@
 	/*black*/
 	--b: #1f1f1f;
 	/*white*/
-	--w: #f1f1f1;
+	--w: #e8e8e8;
 
 }
 html, body {
@@ -72,6 +72,11 @@ p {
 	color: var(--b);
 }
 
+@media only screen and (max-width: 550px) {
+	.header__OVZyn nav {
+		display: none;
+	}
+}
 .header__OVZyn nav {
 	float: right;
 	font-size: 100%;
@@ -97,15 +102,7 @@ p {
 
 .home__uRcqa {
 	padding: 56px 20px;
-	min-height: 100%;
 	width: 100%;
-}
-.bg__ZzVV1 {
-	height: 0;
-}
-.bg__ZzVV1::after {
-	height: 100px;
-	background-color: #FFFFFF;
 }
 .showcase__R8tAi {
 	box-sizing: unset;
@@ -140,7 +137,7 @@ p {
 	margin-left: auto;
 }
 .showcase__R8tAi button:hover {
-	background: rgb(95, 174, 95);
+	background: var(--ht);
 	transition: 0.35s;
 }
 
@@ -169,6 +166,63 @@ p {
 .showcases__UhJnS p {
 	font-size: calc(30px + 1vmin);
 }
+.ciphercontainer__NSqUO textarea {
+    background-color: var(--w);
+    color: var(--b);
+    border-radius: 40px;
+    box-shadow:  5px 5px 10px #1a1a1a,
+                -5px -5px 10px #242424;
+    border: none;
+    padding: 15px 32px;
+    resize: none;
+    outline: none;
+}
+.ciphercontainer__NSqUO .arrow__tYCQh {
+    font-size: 2.0em;
+    color: var(--ht);
+    font-weight: bold;
+    margin: 0;
+}
+.ciphercontainer__NSqUO button {
+    background-color: var(--t);
+    border-radius: 40px;
+    box-shadow:  5px 5px 10px #1a1a1a,
+                 -5px -5px 10px #242424;
+    border: none;
+    color: var(--b);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    font-size: 16px;
+    transition: 0.15s;
+}
+.ciphercontainer__NSqUO button:active {
+    transition: 0.15s;
+    background-color: var(--ht);
+    box-shadow:  2px 2px 4px #1a1a1a,
+                 -2px -2px 4px #242424;
+}
+.keybutton__Wmt\+e {
+    margin-left: 2% !important;
+}
+fieldset {
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 50%;
+}
+legend {
+    margin: 0 auto;
+}
+.poemcontainer__gSEPI fieldset span {
+    margin: 0 auto;
+    display: table;
+}
+.poemcontainer__gSEPI {
+    font-size: 25px;
+}
 .portfolio__Cz5s5 {
 	
 }
@@ -184,5 +238,28 @@ p {
 	height: 100px;
 	background-color: #FFFFFF;
 }
+.errorbody__Cwt\+z {
+    background-color: var(--b);
+    color: var(--w);
+    display: grid;
+    text-align: center;
+    padding: 10%;
+}
+.errorbody__Cwt\+z .title__zaIng {
+    font-size: 50px;
+}
+.errorbody__Cwt\+z .text__hdvbm {
+    font-size: 20px !important;
+}
+.errorbody__Cwt\+z .link__XeQ17:link {
+    color: var(--w);
+}
+.link__XeQ17:visited {
+    color: var(--w);
+}
+.link__XeQ17:hover {
+    color: var(--w);
+}
 
-/*# sourceMappingURL=ssr-bundle.df1ac.css.map*/
+
+/*# sourceMappingURL=ssr-bundle.280f2.css.map*/
