@@ -10,6 +10,7 @@ done areas {
     projects page!!
         ciphers!!
         poems!!
+        mcsp!!
     README.md!!
 }
 todo: {
@@ -18,5 +19,8 @@ todo: {
     portfolio
     meta tags
     sw.js // last - no use?
-    mcsp
+    background creator 
+}
+potentials: {
+    hashkeycipher
 }
