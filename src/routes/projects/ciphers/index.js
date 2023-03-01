@@ -1,5 +1,5 @@
 import { Cipher, KeyedCipher, HashedCipher } from "../../../components/cipher";
-
+import { Link } from 'preact-router/match';
 
 class Weezd extends Cipher {
     bEF(string) {
@@ -239,7 +239,18 @@ class Keysmash extends Cipher {
         this.state = {title: "Keysmash Cipher"};
     };  
 };
+class HashKeyCipher extends Cipher {
+    render() {
+        return (
+            <>
+                <h1>This cipher has been removed due to design choices previously made that I have decided to drop support for.</h1>
+                <p>If this causes issues, open one on GitHub. The repository may be found in the <Link href="/docs/">documentation</Link> for the site.</p>
+            </>
+        )
+    }
+}
 
+//TODO: what happened to caps?? (noticed in weezd2)
 const Ciphers = {
     Weezd: Weezd,
     Bipher: Bipher,
@@ -248,6 +259,8 @@ const Ciphers = {
     KCRC: KCRC,
     HKCRCR: HKCRCR,
     Weezd2: Weezd2, //do
-    Keysmash: Keysmash
+    Keysmash: Keysmash,
+    HashKeyCipher: HashKeyCipher
+
 };
 export default Ciphers;
