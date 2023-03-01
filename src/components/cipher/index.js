@@ -7,7 +7,6 @@ export /* abstract */ class Cipher extends Component {
     bDF(string) {};
 
     handleInputBoxChange(event) {
-        console.log("called!")
         this.setState({value: event.target.value})
         this.encipher(false);
     }

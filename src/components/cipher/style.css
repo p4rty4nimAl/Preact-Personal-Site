@@ -32,7 +32,6 @@
     transition: 0.15s;
 }
 .ciphercontainer button:active {
-    transition: 0.15s;
     background-color: var(--ht);
     box-shadow:  2px 2px 4px #1a1a1a,
                  -2px -2px 4px #242424;
