@@ -81,7 +81,7 @@ export const showcases = [
       "keywords": "ignorance someone else's panopticon poems poetry"
     },
     {
-      "link": "/projects/serverstalker",
+      "link": "/projects/mcserverping",
       "name": "Minecraft Server Pinger",
       "desc": "A quick tool to check who is online on a specified Minecraft: Java Edition server, and a few more things.",
       "keywords": "minecraft server pinger serverstalker"
