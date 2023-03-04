@@ -7,6 +7,7 @@ import Header from './components/header';
 // Code-splitting is automated for `routes` directory
 import Home from './routes/home';
 import Projects from './routes/projects';
+    import Pinger from './routes/projects/pinger'
     import Ciphers from './routes/projects/ciphers';
     import Poems from './routes/projects/poems';
 import Portfolio from "./routes/portfolio";
@@ -21,10 +22,12 @@ class App extends Component {
                 <Router>
                     <Home path="/" />
                     <Projects path="/projects/" />
+                        <Pinger path="/projects/mcserverping" />
                         <Ciphers.Weezd path='/projects/0090C4/' />
                         <Ciphers.Bipher path='/projects/bipher/' />                    
                         <Ciphers.CaesarVariation path='/projects/caesarVariation/' />
                         <Ciphers.CRC path='/projects/continuousRegisterCipher/' />
+                        <Ciphers.HashKeyCipher path='/projects/hashKeyCipher/' />
                         <Ciphers.KCRC path='/projects/keyedCRC/' />
                         <Ciphers.HKCRCR path='/projects/hCRCRework/' />
                         <Ciphers.Weezd2 path='/projects/K0090C4/' />
