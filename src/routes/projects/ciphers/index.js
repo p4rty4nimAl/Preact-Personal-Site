@@ -8,19 +8,19 @@ class Weezd extends Cipher {
             output += String.fromCharCode(string[i].charCodeAt() + string[i - 1].charCodeAt() + 0x0090C4);
         }
         return output;
-    };
+    }
     bDF(string) {
         let output = string[0];
         for (let i = 1; i < string.length; i++) {
             output += String.fromCharCode(string[i].charCodeAt() - output[i - 1].charCodeAt() - 0x0090C4);
         }
         return output.toString();
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Weez'd"};
-    };  
-};
+    }
+}
 
 class Bipher extends Cipher {
     bEF(string) {
@@ -29,19 +29,19 @@ class Bipher extends Cipher {
             retVal += this.getChar((this.getVal(string[i]) + this.getVal(string[i - 1])) % 32);
         }
         return retVal;
-    };
+    }
     bDF(string) {
-        var retVal = string[0];
+        let retVal = string[0];
         for (let i = 1; i < string.length; i++) {
             retVal += this.getChar((this.getVal(string[i]) - this.getVal(retVal[i - 1])) % 32);
         }
         return retVal;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Bipher"};
-    };  
-};
+    }
+}
 
 class CaesarVariation extends Cipher {
     bEF(string) {
@@ -51,7 +51,7 @@ class CaesarVariation extends Cipher {
             output += this.getChar(this.getVal(string[i]) + (constant) % 32);
         }
         return output;
-    };
+    }
     bDF(string) {
         let output = "";
         const constant = ((string.length % 32 == 0) ? 1 : string.length);
@@ -59,35 +59,38 @@ class CaesarVariation extends Cipher {
             output += this.getChar(this.getVal(string[i]) - (constant) % 32);
         }
         return output;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Caesar Variation Cipher"};
-    };  
-};
+    }
+}
 
 class CRC extends Cipher {
     bEF(string) {
         let register = 0;
         let output = "";
         for (let i = 0; i < string.length; i++) {
+            // eslint-disable-next-line no-undef
             register = (register + getVal(string[i])) % 32;
+            // eslint-disable-next-line no-undef
             output += getChar(register);
         }
         return output;
-    };
+    }
     bDF(string) {
         let output = string[0];
         for (let i = 1; i < string.length; i++) {
+            // eslint-disable-next-line no-undef
             output += getChar(getVal(string[i]) - getVal(string[i - 1]));
         }
         return output;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Continuous Register Cipher"};
-    };  
-};
+    }
+}
 
 class KCRC extends KeyedCipher {
     bEF(string) {
@@ -104,7 +107,7 @@ class KCRC extends KeyedCipher {
             output += this.getChar(this.getVal(string[i]) + this.getVal(key[i % key.length]));
         }
         return output;
-    };
+    }
     bDF(string) {
         let output = "";
         let key = this.getKey();
@@ -117,14 +120,14 @@ class KCRC extends KeyedCipher {
             output += this.getChar(this.getVal(string[i]) - this.getVal(string[i - 1]));
         }
         return output;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Keyed CRC"};
-    };  
-};
+    }
+}
 
-class FHKCRC extends HashedCipher {
+/*class FHKCRC extends HashedCipher {
     bEF(string) {
         let register = 0;
         let output = "";
@@ -139,7 +142,7 @@ class FHKCRC extends HashedCipher {
             output += this.getChar(this.getVal(string[i]) + this.getVal(key[i % key.length]));
         }
         return output;
-    };
+    }
     bDF(string) {
         let output = "";
         const key = this.hash(this.getKey());
@@ -152,12 +155,12 @@ class FHKCRC extends HashedCipher {
             output += this.getChar(this.getVal(string[i]) - this.getVal(string[i - 1]));
         }
         return output;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Fast Hashed CRC"};
-    };  
-};
+    }
+}*/ // shits not real???
 
 class HKCRCR extends HashedCipher {
     bEF(string) {
@@ -174,7 +177,7 @@ class HKCRCR extends HashedCipher {
             output += this.getChar(this.getVal(string[i]) + this.getVal(key[i % key.length]));
         }
         return output;
-    };
+    }
     bDF(string) {
         let output = "";
         const key = this.hash(this.getKey());
@@ -187,12 +190,12 @@ class HKCRCR extends HashedCipher {
             output += this.getChar(this.getVal(string[i]) - this.getVal(string[i - 1]));
         }
         return output;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Hashed CRC: Reworked"};
-    };  
-};
+    }
+}
 
 class Weezd2 extends HashedCipher {
     bEF(string) {
@@ -202,7 +205,7 @@ class Weezd2 extends HashedCipher {
           output += String.fromCharCode(string[i].charCodeAt() + string[i - 1].charCodeAt() + 0x0090C4 - hashedK[i % hashedK.length].charCodeAt());
         }
         return output;
-    };
+    }
     bDF(string) {
         const hashedK = this.hash(this.getKey());
         let output = string[0];
@@ -210,12 +213,12 @@ class Weezd2 extends HashedCipher {
             output += String.fromCharCode(string[i].charCodeAt() - output[i - 1].charCodeAt() - 0x0090C4 + hashedK[i % hashedK.length].charCodeAt());
         }
         return output.toString();
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Weez'd 2"};
-    };  
-};
+    }
+}
 
 class Keysmash extends Cipher {
     encipher() {
@@ -225,7 +228,7 @@ class Keysmash extends Cipher {
             output += this.getChar((this.getVal(input[i]) + this.getVal(input[i - 1])) % 32);
         }
         this.outputTextBox.current.value = output;
-    };
+    }
     decipher() {
         const input = this.outputTextBox.current.value;
         let output = input[0];
@@ -233,12 +236,12 @@ class Keysmash extends Cipher {
             output += this.getChar((this.getVal(input[i]) - this.getVal(output[i - 1])) % 32);
         }
         this.inputTextBox.current.value = output;
-    };
+    }
     constructor(props) {
         super(props);
         this.state = {title: "Keysmash Cipher"};
-    };  
-};
+    }
+}
 class HashKeyCipher extends Cipher {
     render() {
         return (
@@ -252,15 +255,15 @@ class HashKeyCipher extends Cipher {
 
 //TODO: what happened to caps?? (noticed in weezd2)
 const Ciphers = {
-    Weezd: Weezd,
-    Bipher: Bipher,
-    CaesarVariation: CaesarVariation,
-    CRC: CRC,
-    KCRC: KCRC,
-    HKCRCR: HKCRCR,
-    Weezd2: Weezd2, //do
-    Keysmash: Keysmash,
-    HashKeyCipher: HashKeyCipher
+    Weezd,
+    Bipher,
+    CaesarVariation,
+    CRC,
+    KCRC,
+    HKCRCR,
+    Weezd2, //do
+    Keysmash,
+    HashKeyCipher
 
 };
 export default Ciphers;

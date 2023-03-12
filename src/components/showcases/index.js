@@ -7,16 +7,15 @@ import Searchbar from '../searchbar';
 class Showcases extends Component {
 	constructor(props) {
 		super(props);
-		let showcaseWidgets = [];
-		for (let showcase of props.items) {
-			showcaseWidgets.push(
-				<Showcase item={showcase} key={showcase.link} />
-			);
-		}
-		this.state = {showcaseWidgets: showcaseWidgets};
+		const showcaseWidgets = props.items.filter(item => !item.hidden)
+            .map(item => {
+                return <Showcase item={item} key={item.link} />
+            });
+		this.state = {showcaseWidgets};
 	}
 
 	render() {
+        // style written like that due to the '-' in the name
 		return (
 			<div class={style["showcase-container"]}>
 				<Searchbar parent={this} />
@@ -28,25 +27,21 @@ class Showcases extends Component {
 	}
 	search(query, items) {
 		query = query.toLowerCase();
-		let searchedShowcases = [];
-		for (let showcase of items) {
-			if (showcase.keywords.includes(query)) {
-				searchedShowcases.push(<Showcase item={showcase} key={showcase.link}/>);
-			}
-		}
-		this.setState({showcaseWidgets: searchedShowcases});
+		const showcaseWidgets = items.filter(item => item.keywords.includes(query))
+            .map(item => <Showcase item={item} key={item.link} />);
+		this.setState({showcaseWidgets});
 	}
 }
-export class Showcase extends Component {
-	render() {
-	    return (
-            <span class={style.showcase}>
-                <span class={style.header}>{this.props.item.name}</span>
-                <span class={style.desc}>{this.props.item.desc}</span>
-				<Link class={style.link} href={this.props.item.link}><button>Go!</button></Link>
-            </span>
-	    )
-	}
+export const Showcase = (props) => {
+	const {item} = props;
+	const {name, desc, link} = item;
+	return (
+		<span class={style.showcase}>
+			<span class={style.header}>{name}</span>
+			<span class={style.desc}>{desc}</span>
+			<Link class={style.link} href={link}><button>Go!</button></Link>
+		</span>
+	)
 }
 
 export default Showcases;

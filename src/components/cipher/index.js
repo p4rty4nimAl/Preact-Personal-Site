@@ -3,8 +3,8 @@ import style from './style.css';
 
 
 export /* abstract */ class Cipher extends Component {
-    bEF(string) {};
-    bDF(string) {};
+    bEF(string) {}
+    bDF(string) {}
 
     handleInputBoxChange(event) {
         this.setState({value: event.target.value})
@@ -19,7 +19,7 @@ export /* abstract */ class Cipher extends Component {
 
     reverseString(string) {
         return string.split("").reverse().join("");
-    };
+    }
     getVal(char) {
         if (char != undefined) return char.toLowerCase().charCodeAt(0) - 96;
     }
@@ -34,7 +34,7 @@ export /* abstract */ class Cipher extends Component {
         } else {
             this.inputTextBox.current.value = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ").toLowerCase();
         }
-    };
+    }
     encipher(keepCase) {
         const input = this.inputTextBox.current.value;
         if (keepCase) {
@@ -44,12 +44,12 @@ export /* abstract */ class Cipher extends Component {
         }
     }
 
-    render(props, state) {
+    render() {
         return (
             <span class={style.ciphercontainer}>
                 <h1>{this.state.title}</h1>
                 <p>
-                    <textarea ref={this.inputTextBox} cols="80" rows="12" autoFocus onKeyUp={() => this.encipher()} value={this.state.value}></textarea>
+                    <textarea ref={this.inputTextBox} cols="80" rows="12" autoFocus onKeyUp={() => this.encipher()} value={this.state.value} />
                 </p>
                 <p class={style.arrow}>↑</p>
                 <p>
@@ -57,41 +57,41 @@ export /* abstract */ class Cipher extends Component {
                 </p>
                 <p class={style.arrow}>↑</p>
                 <p>
-                    <textarea ref={this.outputTextBox} cols="80" rows="12"></textarea>
+                    <textarea ref={this.outputTextBox} cols="80" rows="12" />
                 </p>
             </span>
         )
-    };
-};
+    }
+}
 
 export /* abstract */ class KeyedCipher extends Cipher {
     constructor(props) {
         super(props);
         this.keyTextBox = createRef();
-    };
+    }
     getKey() {
         return this.keyTextBox.current.value;
-    };
-    render(props, state) {
+    }
+    render() {
         return (
             <span class={style.ciphercontainer}>
                 <h1>{this.state.title}</h1>
                 <p>
-                    <textarea ref={this.inputTextBox} cols="80" rows="12" autoFocus onKeyUp={() => this.encipher()} value={this.state.value}></textarea>
+                    <textarea ref={this.inputTextBox} cols="80" rows="12" autoFocus onKeyUp={() => this.encipher()} value={this.state.value} />
                 </p>
                 <p class={style.arrow}>↑</p>
                 <p style="display: flex; align-items: center; justify-content: center;">
-                    <textarea ref={this.keyTextBox} class={style.keyarea} id="key" cols="20" rows="1" maxlength="20" placeholder="Key:"></textarea>
+                    <textarea ref={this.keyTextBox} class={style.keyarea} id="key" cols="20" rows="1" maxlength="20" placeholder="Key:" />
                     <button class={style.keybutton} onClick={() => this.decipher()}>Decipher</button>
                 </p>
                 <p class={style.arrow}>↑</p>
                 <p>
-                    <textarea ref={this.outputTextBox} cols="80" rows="12"></textarea>
+                    <textarea ref={this.outputTextBox} cols="80" rows="12" />
                 </p>
             </span>
         )
-    };
-};
+    }
+}
 
 //TODO: note, i cannot support anything in this class
 //quick, hacky copy+paste job - breaks in strict mode, needed workaround - not sure why workaround even works??
@@ -169,4 +169,4 @@ export /* abstract */ class HashedCipher extends KeyedCipher {
         return hash;
     }
     )();
-};
+}
