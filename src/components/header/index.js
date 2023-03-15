@@ -13,9 +13,11 @@ const Header = () => {
             window.removeEventListener('resize', resizeHandler);
         }
     })
+    let isHidden = false;
+    if (typeof window !== "undefined") isHidden = screen.height === window.innerHeight;
     return (
         <>
-            <header class={style.header} hidden={screen.height === window.innerHeight}>
+            <header class={style.header} hidden={isHidden}>
                 <h1>xtraea.com</h1>
                 <nav>
                     <Link href="/">Home</Link>
