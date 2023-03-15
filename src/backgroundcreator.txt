@@ -1,0 +1,26 @@
+new website tool which just is background maker
+5 layers? should be not limited, order and layering needs to be taken into account
+    force layer of solid color as bottom layer - else bad things i imagine - nono, let canvas deal with that
+each layer needs 2 customisable colors, being the material and the shadow 
+    - auto shadow at like color + 10% black/white?
+            // third to specify which is transparent - checkbox
+    shadow goes both in and out of circle - need control for that -behind/in front of main layer?
+each layer has circles , specify size (range, just one size, or one size with random +/-?) 
+            // better still, all 3 with select, dictates whether there is one or two boxes, sum to same width - Uniform, Range and 
+need random source to float them along (probably rtl)
+    perhaps seed system so the same background can be remade? --- seed suggests that changing eg size will change everything, might be best not to
+render to a canvas - help with resizing and \/
+NEED EXPORT TO uhhh literally any dimensions, maybe a quick select of 16:9/common 
+need density control (of circles) too
+DO THE CSS
+add gradient so that is applied properly
+write proper description once all features implemented (add github issues link? theres a lot that could go wrong)
+
+Lines done: 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14
+Lines other: 1
+Lines wontfix: 5, 11
+
+issues:
+    Lines TODO: 16, 17
+    Lines later: 15
+    (16) gradient doesnt work under innerTransparent == true, no clue how to fix but by using the software without it it seems ~~fine~~ usable

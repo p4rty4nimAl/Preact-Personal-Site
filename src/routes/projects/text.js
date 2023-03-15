@@ -89,7 +89,7 @@ export const showcases = [
     },
     {
       link: "/projects/backgroundcreator",
-      name: "Background Creator",
+      name: "Background Creator (Beta)",
       desc: "A powerful tool which allows for creation of backgrounds (wallpapers) using only circles and layers.",
       keywords: "background creator circles layers wallpaper"
     }

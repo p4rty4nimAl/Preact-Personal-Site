@@ -13,7 +13,8 @@
   "eslintConfig": {
     "extends": "preact",
     "ignorePatterns": [
-      "build/"
+      "build/",
+      "docs/"
     ]
   },
   "devDependencies": {
