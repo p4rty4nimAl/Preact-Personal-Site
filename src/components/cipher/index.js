@@ -17,15 +17,9 @@ export /* abstract */ class Cipher extends Component {
         this.outputTextBox = createRef();
     }
 
-    reverseString(string) {
-        return string.split("").reverse().join("");
-    }
-    getVal(char) {
-        if (char != undefined) return char.toLowerCase().charCodeAt(0) - 96;
-    }
-    getChar(val) {
-        return String.fromCharCode((val % 32) + 96);
-    }
+    reverseString = string => string.split("").reverse().join("");
+    getVal = char => char?.toLowerCase().charCodeAt(0) - 96;
+    getChar = val => String.fromCharCode((val % 32) + 96);
 
     decipher(keepCase) {
         const output = this.outputTextBox.current.value;

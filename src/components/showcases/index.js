@@ -17,12 +17,16 @@ class Showcases extends Component {
 	render() {
         // style written like that due to the '-' in the name
 		return (
-			<div class={style["showcase-container"]}>
+            <>
+                <header class={style.spacer} />
+                <div class={style["showcase-container"]}>
 				<Searchbar parent={this} />
 				<div>
 					{this.state.showcaseWidgets}
 				</div>
 			</div>
+            </>
+			
 		)
 	}
 	search(query, items) {

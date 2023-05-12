@@ -30,3 +30,6 @@
 	background: var(--ht);
 	transition: 0.35s;
 }
+.spacer {
+    height: calc(10vh - 56px);
+}
