@@ -125,5 +125,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-# old builds 
+# builds/builds
+build/*
 OLD_*
+# size-plugin
+size-plugin.json
