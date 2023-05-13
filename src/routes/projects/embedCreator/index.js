@@ -71,11 +71,11 @@ const EmbedCreator = () => {
     }
     return (
         <>
-            <p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
+            <br /><p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
                 Title: The text at the top of an embed; can be clicked.<br />
                 Description: Typically the text displayed under the title.<br />
-                Image: Link to an image to embed into the external site.<br />
-                Color: If the external site supports an accent color, this will set it.
+                Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.<br />
+                Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it.
             </p>
             <InputForm type="Title" update={e => setTitle(e.target.value)} />
             <InputForm type="Description" update={e => setDescription(e.target.value)} />
