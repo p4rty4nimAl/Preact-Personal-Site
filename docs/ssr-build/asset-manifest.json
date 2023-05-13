@@ -1,6 +1,4 @@
 {
   "ssr-bundle.css": "ssr-bundle.4bc5f.css",
-  "ssr-bundle.js": "ssr-bundle.js",
-  "ssr-bundle.css.map": "ssr-bundle.4bc5f.css.map",
-  "ssr-bundle.js.map": "ssr-bundle.js.map"
+  "ssr-bundle.js": "ssr-bundle.js"
 }

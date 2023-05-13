@@ -916,9 +916,9 @@ var EmbedCreator = function EmbedCreator() {
     if (!none) request.send();
     return;
   };
-  return h(Fragment, null, h("p", {
+  return h(Fragment, null, h("br", null), h("p", {
     class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textDescription
-  }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site.", h("br", null), "Color: If the external site supports an accent color, this will set it."), h(InputForm, {
+  }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.", h("br", null), "Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it."), h(InputForm, {
     type: "Title",
     update: function update(e) {
       return setTitle(e.target.value);
@@ -2769,4 +2769,3 @@ var LayerControl = /*#__PURE__*/function (_Component3) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=ssr-bundle.js.map
