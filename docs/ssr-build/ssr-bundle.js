@@ -851,8 +851,8 @@ var OutputDisplay = function OutputDisplay(props) {
   var URLID = props.URLID;
   var copyLink = function copyLink() {
     var _navigator;
-    if (typeof window === "undefined" || typeof ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.clipboard) !== "undefined") return;
-    var url = "https://api.xtraea.com/v1/embed/?s=".concat(URLID);
+    if (typeof window === "undefined" || typeof ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.clipboard) === "undefined") return;
+    var url = "https://api.xtraea.com/v1/embed?s=".concat(URLID);
     navigator.clipboard.writeText(url);
   };
   return h(Fragment, null, h("div", {
@@ -862,7 +862,7 @@ var OutputDisplay = function OutputDisplay(props) {
     class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputButton
   }, "Copy to clipboard"), h("p", {
     class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag, " ").concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].output)
-  }, "https://api.xtraea.com/v1/embed/?s=".concat(URLID))));
+  }, "https://api.xtraea.com/v1/embed?s=".concat(URLID))));
 };
 var EmbedCreator = function EmbedCreator() {
   var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
