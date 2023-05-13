@@ -98,12 +98,9 @@ module.exports =
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("UxE5");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
@@ -111,6 +108,9 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 var Cipher = /*#__PURE__*/function (_Component) {
@@ -120,6 +120,15 @@ var Cipher = /*#__PURE__*/function (_Component) {
     var _this;
     _classCallCheck(this, Cipher);
     _this = _super.call(this, props);
+    _defineProperty(_assertThisInitialized(_this), "reverseString", function (string) {
+      return string.split("").reverse().join("");
+    });
+    _defineProperty(_assertThisInitialized(_this), "getVal", function (char) {
+      return (char === null || char === void 0 ? void 0 : char.toLowerCase().charCodeAt(0)) - 96;
+    });
+    _defineProperty(_assertThisInitialized(_this), "getChar", function (val) {
+      return String.fromCharCode(val % 32 + 96);
+    });
     _this.inputTextBox = Object(preact__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
     _this.outputTextBox = Object(preact__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
     return _this;
@@ -137,21 +146,6 @@ var Cipher = /*#__PURE__*/function (_Component) {
         value: event.target.value
       });
       this.encipher(false);
-    }
-  }, {
-    key: "reverseString",
-    value: function reverseString(string) {
-      return string.split("").reverse().join("");
-    }
-  }, {
-    key: "getVal",
-    value: function getVal(char) {
-      if (char != undefined) return char.toLowerCase().charCodeAt(0) - 96;
-    }
-  }, {
-    key: "getChar",
-    value: function getChar(val) {
-      return String.fromCharCode(val % 32 + 96);
     }
   }, {
     key: "decipher",
@@ -428,7 +422,12 @@ var showcases = [{
   link: "/projects/backgroundcreator",
   name: "Background Creator (Beta)",
   desc: "A powerful tool which allows for creation of backgrounds (wallpapers) using only circles and layers.",
-  keywords: "background creator circles layers wallpaper"
+  keywords: "background creator circles layers wallpaper (beta)"
+}, {
+  link: "/projects/embedCreator",
+  name: "Embed Creator (Beta)",
+  desc: "A tool to create custom link embeds on external sites that display link previews.",
+  keywords: "embed creator external previews (beta)"
 }];
 /* harmony default export */ __webpack_exports__["a"] = (showcases);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
@@ -536,23 +535,13 @@ var Searchbar = function Searchbar(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ showcases_Showcase; });
-
-// EXTERNAL MODULE: external "preact"
-var external_preact_ = __webpack_require__("HteQ");
-
-// CONCATENATED MODULE: ./components/showcases/style.css
-// extracted by mini-css-extract-plugin
-/* harmony default export */ var style = ({"showcase":"showcase__R8tAi","desc":"desc__dbAJB","link":"link__I2jZf"});
-// EXTERNAL MODULE: ../node_modules/preact-router/match.js
-var match = __webpack_require__("ox/y");
-
-// EXTERNAL MODULE: ./components/searchbar/index.js
-var searchbar = __webpack_require__("5PBX");
-
-// CONCATENATED MODULE: ./components/showcases/index.js
+/* WEBPACK VAR INJECTION */(function(Fragment) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Showcase; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("dwRq");
+/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("ox/y");
+/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(preact_router_match__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _searchbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("5PBX");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -570,7 +559,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var showcases_Showcases = /*#__PURE__*/function (_Component) {
+var Showcases = /*#__PURE__*/function (_Component) {
   _inherits(Showcases, _Component);
   var _super = _createSuper(Showcases);
   function Showcases(props) {
@@ -580,7 +569,7 @@ var showcases_Showcases = /*#__PURE__*/function (_Component) {
     var showcaseWidgets = props.items.filter(function (item) {
       return !item.hidden;
     }).map(function (item) {
-      return Object(external_preact_["h"])(showcases_Showcase, {
+      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Showcase, {
         item: item,
         key: item.link
       });
@@ -594,11 +583,13 @@ var showcases_Showcases = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       // style written like that due to the '-' in the name
-      return Object(external_preact_["h"])("div", {
-        class: style["showcase-container"]
-      }, Object(external_preact_["h"])(searchbar["a" /* default */], {
+      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("header", {
+        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].spacer
+      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]["showcase-container"]
+      }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(_searchbar__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"], {
         parent: this
-      }), Object(external_preact_["h"])("div", null, this.state.showcaseWidgets));
+      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("div", null, this.state.showcaseWidgets)));
     }
   }, {
     key: "search",
@@ -607,7 +598,7 @@ var showcases_Showcases = /*#__PURE__*/function (_Component) {
       var showcaseWidgets = items.filter(function (item) {
         return item.keywords.includes(query);
       }).map(function (item) {
-        return Object(external_preact_["h"])(showcases_Showcase, {
+        return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Showcase, {
           item: item,
           key: item.link
         });
@@ -618,24 +609,25 @@ var showcases_Showcases = /*#__PURE__*/function (_Component) {
     }
   }]);
   return Showcases;
-}(external_preact_["Component"]);
-var showcases_Showcase = function Showcase(props) {
+}(preact__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+var Showcase = function Showcase(props) {
   var item = props.item;
   var name = item.name,
     desc = item.desc,
     link = item.link;
-  return Object(external_preact_["h"])("span", {
-    class: style.showcase
-  }, Object(external_preact_["h"])("span", {
-    class: style.header
-  }, name), Object(external_preact_["h"])("span", {
-    class: style.desc
-  }, desc), Object(external_preact_["h"])(match["Link"], {
-    class: style.link,
+  return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].showcase
+  }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].header
+  }, name), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].desc
+  }, desc), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_router_match__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].link,
     href: link
-  }, Object(external_preact_["h"])("button", null, "Go!")));
+  }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("button", null, "Go!")));
 };
-/* harmony default export */ var showcases = __webpack_exports__["b"] = (showcases_Showcases);
+/* harmony default export */ __webpack_exports__["b"] = (Showcases);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["Fragment"]))
 
 /***/ }),
 
@@ -823,6 +815,138 @@ var Poems = {
 "use strict";
 // extracted by mini-css-extract-plugin
 /* harmony default export */ __webpack_exports__["a"] = ({"home":"home__uRcqa"});
+
+/***/ }),
+
+/***/ "FsrD":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nxe/");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var InputForm = function InputForm(props) {
+  var type = props.type,
+    update = props.update;
+  return h(Fragment, null, h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inputTag
+  }, h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].descriptionTag
+  }, type, ": "), h("textarea", {
+    maxlength: "500",
+    rows: "1",
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag,
+    onChange: update,
+    placeholder: "optional..."
+  })), h("br", null));
+};
+var OutputDisplay = function OutputDisplay(props) {
+  var URLID = props.URLID;
+  var copyLink = function copyLink() {
+    var _navigator;
+    if (typeof window === "undefined" || typeof ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.clipboard) !== "undefined") return;
+    var url = "https://api.xtraea.com/v1/embed/?s=".concat(URLID);
+    navigator.clipboard.writeText(url);
+  };
+  return h(Fragment, null, h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputContainer
+  }, h("button", {
+    onClick: copyLink,
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputButton
+  }, "Copy to clipboard"), h("p", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag, " ").concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].output)
+  }, "https://api.xtraea.com/v1/embed/?s=".concat(URLID))));
+};
+var EmbedCreator = function EmbedCreator() {
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState2 = _slicedToArray(_useState, 2),
+    title = _useState2[0],
+    setTitle = _useState2[1];
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    description = _useState4[0],
+    setDescription = _useState4[1];
+  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    image = _useState6[0],
+    setImage = _useState6[1];
+  var _useState7 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState8 = _slicedToArray(_useState7, 2),
+    color = _useState8[0],
+    setColor = _useState8[1];
+  var _useState9 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])("..."),
+    _useState10 = _slicedToArray(_useState9, 2),
+    outputURL = _useState10[0],
+    setOutput = _useState10[1];
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState === 4 && request.status === 200) {
+      var responseJSON = JSON.parse(request.responseText);
+      setOutput(responseJSON.response);
+    }
+  };
+  var submit = function submit() {
+    var authXHR = new XMLHttpRequest();
+    authXHR.open("GET", "https://api.xtraea.com/_/health?auth=true");
+    authXHR.send();
+    request.open("POST", "https://api.xtraea.com/v1/embed");
+    var headers = {
+      title: title,
+      description: description,
+      image: image,
+      color: color
+    };
+    var none = true;
+    for (var _i2 = 0, _Object$entries = Object.entries(headers); _i2 < _Object$entries.length; _i2++) {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+        name = _Object$entries$_i[0],
+        value = _Object$entries$_i[1];
+      if (value) {
+        none = false;
+        request.setRequestHeader(name, value);
+      }
+    }
+    if (!none) request.send();
+    return;
+  };
+  return h(Fragment, null, h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textDescription
+  }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site.", h("br", null), "Color: If the external site supports an accent color, this will set it."), h(InputForm, {
+    type: "Title",
+    update: function update(e) {
+      return setTitle(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Description",
+    update: function update(e) {
+      return setDescription(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Image",
+    update: function update(e) {
+      return setImage(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Color",
+    update: function update(e) {
+      return setColor(e.target.value);
+    }
+  }), h("br", null), h("button", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].submitButton,
+    onClick: submit
+  }, "Generate embed link"), h("br", null), h("br", null), h("br", null), h(OutputDisplay, {
+    URLID: outputURL
+  }));
+};
+/* harmony default export */ __webpack_exports__["a"] = (EmbedCreator);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
 
 /***/ }),
 
@@ -1087,14 +1211,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("WiEw");
 /* harmony import */ var _routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("AQju");
 /* harmony import */ var _routes_projects_backgroundcreator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("t/1Q");
-/* harmony import */ var _routes_portfolio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("ohOX");
-/* harmony import */ var _routes_docs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("TJL8");
-/* harmony import */ var _routes_error__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("ScL5");
+/* harmony import */ var _routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("FsrD");
+/* harmony import */ var _routes_portfolio__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("ohOX");
+/* harmony import */ var _routes_docs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("TJL8");
+/* harmony import */ var _routes_error__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("ScL5");
 
 
 
 
 // Code-splitting is automated for `routes` directory
+
 
 
 
@@ -1143,11 +1269,13 @@ var App = function App() {
     path: "/projects/poetry/moonlitOverpass/"
   }), h(_routes_projects_backgroundcreator__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
     path: "/projects/backgroundcreator/"
-  }), h(_routes_portfolio__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], {
+  }), h(_routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], {
+    path: "/projects/embedCreator"
+  }), h(_routes_portfolio__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"], {
     path: "/portfolio/"
-  }), h(_routes_docs__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"], {
+  }), h(_routes_docs__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"], {
     path: "/docs/"
-  }), h(_routes_error__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"], {
+  }), h(_routes_error__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"], {
     default: true
   })));
 };
@@ -2084,6 +2212,24 @@ Router.Link = Link;
 Router.exec = exec;
 
 /* harmony default export */ __webpack_exports__["default"] = (Router);
+
+/***/ }),
+
+/***/ "dwRq":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"showcase":"showcase__R8tAi","desc":"desc__dbAJB","link":"link__I2jZf","spacer":"spacer__o0E7m"});
+
+/***/ }),
+
+/***/ "nxe/":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"inputTag":"inputTag__08pCN","descriptionTag":"descriptionTag__A5cqg","textTag":"textTag__HFlbz","submitButton":"submitButton__IBL9+","outputContainer":"outputContainer__+-qWj","outputButton":"outputButton__kcWEc","output":"output__M4xD9","textDescription":"textDescription__QaKKM"});
 
 /***/ }),
 
