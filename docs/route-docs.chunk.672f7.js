@@ -1,2 +1,1 @@
 (window.webpackJsonp=window.webpackJsonp||[]).push([[2],{"9ZoI":function(){"use strict"},lDJ5:function(n,o,t){"use strict";t.r(o),function(n){t("9ZoI");o.default=function(){return n("div",null,n("p",null,"docs"))}}.call(this,t("hosL").h)}}]);
-//# sourceMappingURL=route-docs.chunk.672f7.js.map
