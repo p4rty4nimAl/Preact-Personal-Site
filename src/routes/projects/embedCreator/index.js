@@ -18,15 +18,15 @@ const OutputDisplay = (props) => {
     const {URLID} = props;
     
     const copyLink = () => {
-        if (typeof window === "undefined" || typeof navigator?.clipboard !== "undefined") return;
-        const url = `https://api.xtraea.com/v1/embed/?s=${URLID}`;
+        if (typeof window === "undefined" || typeof navigator?.clipboard === "undefined") return;
+        const url = `https://api.xtraea.com/v1/embed?s=${URLID}`;
         navigator.clipboard.writeText(url);
     }
     return (
         <>
             <div class={style.outputContainer}>
                 <button onClick={copyLink} class={style.outputButton}>Copy to clipboard</button>
-                <p class={`${style.textTag} ${style.output}`} >{`https://api.xtraea.com/v1/embed/?s=${URLID}`}</p>
+                <p class={`${style.textTag} ${style.output}`} >{`https://api.xtraea.com/v1/embed?s=${URLID}`}</p>
             </div>
         </>
     );
