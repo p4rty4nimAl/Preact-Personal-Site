@@ -91,7 +91,13 @@ export const showcases = [
       link: "/projects/backgroundcreator",
       name: "Background Creator (Beta)",
       desc: "A powerful tool which allows for creation of backgrounds (wallpapers) using only circles and layers.",
-      keywords: "background creator circles layers wallpaper"
+      keywords: "background creator circles layers wallpaper (beta)"
+    },
+    {
+        link: "/projects/embedCreator",
+        name: "Embed Creator (Beta)",
+        desc: "A tool to create custom link embeds on external sites that display link previews.",
+        keywords: "embed creator external previews (beta)"
     }
   ];
 

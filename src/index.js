@@ -10,6 +10,7 @@ import Projects from './routes/projects';
     import Ciphers from './routes/projects/ciphers';
     import Poems from './routes/projects/poems';
     import BackgroundCreator from './routes/projects/backgroundcreator';
+    import EmbedCreator from './routes/projects/embedCreator';
 import Portfolio from "./routes/portfolio";
 import Docs from "./routes/docs";
 import Error from './routes/error';
@@ -37,6 +38,7 @@ const App = () => {
                         <Poems.Yanwe path='/projects/poetry/nothingWithoutMe/' />
                         <Poems.Mnop path='/projects/poetry/moonlitOverpass/' />
                     <BackgroundCreator path='/projects/backgroundcreator/' />
+                    <EmbedCreator path='/projects/embedCreator' />
                 <Portfolio path="/portfolio/" />
                 <Docs path="/docs/" />
 

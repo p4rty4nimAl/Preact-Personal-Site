@@ -7,7 +7,24 @@
 	--b: #1f1f1f;
 	/*white*/
 	--w: #e8e8e8;
+    /*box-shadows*/
+    --bs1: #171717;
+    --bs2: #272727;
 
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --t: #77da77;
+        /*hovered-tertiary*/
+        --ht: #479647;
+        /*'white'*/
+        --w: #1f1f1f;
+        /*'black'*/
+        --b: #e8e8e8;
+        /*box-shadows*/
+        --bs1: #474747;
+        --bs2: #575757;
+    }
 }
 html, body {
 	height: 100%;

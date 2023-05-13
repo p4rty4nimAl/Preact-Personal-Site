@@ -1,0 +1,86 @@
+.inputTag {
+    display: flex;
+    align-items: center;
+    font-size: calc(20px + 1vmin);
+    font-weight: 400;
+    width: 75%;
+    margin: auto;
+    align-items: stretch;
+}
+.descriptionTag {
+    flex-shrink: 0;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    align-items: center;
+}
+.textTag {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    flex-grow: 1;
+    min-width: 0;
+    resize: none;
+    font-size: calc(20px + 1vmin);
+    border-radius: 0 15px 15px 0;
+    outline: none;
+}
+.descriptionTag,
+.textTag {
+    border: 0;
+    line-height: 1;
+    color: var(--b);
+    background-color: var(--w);
+    padding: 15px;
+    margin: 0;
+}
+.submitButton {
+    border: 0;
+	align-self: stretch;
+	width: 400px;
+	min-height: 80px;
+	background: var(--t);
+	border-radius: 25px;
+	transition: 0.35s;
+    font-size: calc(20px + 1vmin);
+    color: #1f1f1f;
+    box-shadow: 5px 5px 10px var(--bs1),
+                -5px -5px 10px var(--bs2);
+}
+.submitButton:active {
+    background: var(--ht);
+}
+.outputContainer {
+    display: flex;
+    align-items: center;
+    font-size: calc(20px + 1vmin);
+    font-weight: 400;
+    width: 75%;
+    margin: auto;
+    align-items: stretch;
+}
+.outputButton {
+    flex-shrink: 0;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 15px;
+	align-self: stretch;
+	background: var(--t);
+	transition: 0.35s;
+    font-size: calc(20px + 1vmin);
+    color: #1f1f1f;
+    box-shadow: 5px 5px 10px var(--bs1),
+                -5px -5px 10px var(--bs2);
+}
+.outputButton:active {
+    background: var(--ht);
+}
+.output {
+    text-align: left;
+}
+.textDescription {
+    margin: auto;
+    margin-bottom: 15px;
+    width: 75%;
+    text-align: left;
+}

@@ -4,8 +4,8 @@
     background-color: var(--w);
     color: var(--b);
     border-radius: 20px;
-    box-shadow:  3px 3px 5px #1a1a1a,
-                -3px -3px 5px #242424;
+    box-shadow:  3px 3px 5px var(--bs1),
+                -3px -3px 5px var(--bs2);
     border: none;
     padding: 8px 16px;
     resize: none;
@@ -15,8 +15,8 @@
 .pinger button {
     background-color: var(--t);
     border-radius: 20px;
-    box-shadow:  5px 5px 10px #1a1a1a,
-                 -5px -5px 10px #242424;
+    box-shadow:  5px 5px 10px var(--bs1),
+                 -5px -5px 10px var(--bs2);
     border: none;
     color: var(--b);
     padding: 15px 32px;
@@ -31,6 +31,6 @@
 }
 .pinger button:active {
     background-color: var(--ht);
-    box-shadow:  2px 2px 4px #1a1a1a,
-                 -2px -2px 4px #242424;
+    box-shadow:  2px 2px 4px var(--bs1),
+                 -2px -2px 4px var(--bs2);
 }
