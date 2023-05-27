@@ -1,0 +1,24 @@
+.entry {
+    display: inline-block;
+    width: 100%;
+    height: 75px;
+    font-size: 30px;
+    background-color: var(--b);
+    color: var(--w);
+    border: none;
+}
+.entry:not(:last-child)::after {
+    content: "";
+    position: relative;
+    left: -6px;
+    top: 17px;
+    display: block;
+    width: calc(100% + 12px);
+    height: 5px;
+    transition: 0.3s;
+    background-color: var(--t);
+}
+.selected::after {
+    transition: 0.3s;
+    background-color: var(--ht) !important;
+}
