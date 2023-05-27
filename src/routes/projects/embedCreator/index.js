@@ -38,6 +38,7 @@ const EmbedCreator = () => {
     const [image, setImage] = useState();
     const [color, setColor] = useState();
     const [outputURL, setOutput] = useState("...");
+    const [prevHeaders, setPrevHeaders] = useState();
     const request = new XMLHttpRequest;
     request.onreadystatechange = () => {
         if (request.readyState === 4 && request.status === 200) {
@@ -62,11 +63,14 @@ const EmbedCreator = () => {
         let none = true;
         for (const [name, value] of Object.entries(headers)) {
             if (value) {
-                none = false;
+                if (prevHeaders[name] !== value) none = false;
                 request.setRequestHeader(name, value);
             }
         }
-        if (!none) request.send();
+        if (!none) {
+            request.send();
+            setPrevHeaders(headers);
+        }
         return;
     }
     return (
