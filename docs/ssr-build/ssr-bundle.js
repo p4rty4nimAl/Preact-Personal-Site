@@ -345,6 +345,15 @@ var HashedCipher = /*#__PURE__*/function (_KeyedCipher) {
 
 /***/ }),
 
+/***/ "2Szp":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"entry":"entry__gsTuz","selected":"selected__yDgGZ"});
+
+/***/ }),
+
 /***/ "2kgO":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -411,7 +420,7 @@ var showcases = [{
 }, {
   link: "/projects/poetry",
   name: "Poems",
-  desc: "A collection of poems written by me, your loyal site administrator.",
+  desc: "A collection of poems written by me.",
   keywords: "ignorance someone else's panopticon poems poetry"
 }, {
   link: "/projects/mcserverping",
@@ -644,159 +653,85 @@ var Showcase = function Showcase(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var _components_showcases__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8M9P");
-/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("Y3FI");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("TQsQ");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-/* eslint-disable react/jsx-key */
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _poems_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("SH9d");
+/* harmony import */ var _components_itembrowser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("E46Y");
 
 
-
-var poems = [{
-  link: "/projects/poetry/Ignorance",
-  desc: "Ignorance",
-  keywords: "ignorance"
-}, {
-  link: "/projects/poetry/someoneElsesPanopticon",
-  desc: "Someone Else's Panopticon",
-  keywords: "someone elses else's panopticon"
-}, {
-  link: "/projects/poetry/nothingWithoutMe",
-  desc: "You are Nothing without me",
-  keywords: "you are nothing without me",
-  hidden: true
-}, {
-  link: "/projects/poetry/moonlitOverpass",
-  desc: "Moonlit Overpass",
-  keywords: "moonlit overpass",
-  hidden: true
-}];
-var Index = function Index() {
-  return h(PoemsShowcases, {
-    items: poems
+var PoemWrapper = function PoemWrapper() {
+  return h(_components_itembrowser__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], {
+    titles: _poems_js__WEBPACK_IMPORTED_MODULE_0__[/* poems */ "b"],
+    items: _poems_js__WEBPACK_IMPORTED_MODULE_0__[/* contentMap */ "a"]
   });
 };
-var PoemsShowcases = /*#__PURE__*/function (_Showcases) {
-  _inherits(PoemsShowcases, _Showcases);
-  var _super = _createSuper(PoemsShowcases);
-  function PoemsShowcases(props) {
-    var _this;
-    _classCallCheck(this, PoemsShowcases);
-    _this = _super.call(this, props);
-    var showcaseWidgets = props.items.filter(function (item) {
-      return !item.hidden;
-    }).map(function (item) {
-      return h(_components_showcases__WEBPACK_IMPORTED_MODULE_0__[/* Showcase */ "a"], {
-        item: item,
-        key: item.link
-      });
-    });
-    _this.state = {
-      showcaseWidgets: showcaseWidgets
-    };
-    return _this;
-  }
-  _createClass(PoemsShowcases, [{
-    key: "search",
-    value: function search(query, items) {
-      query = query.toLowerCase();
-      var showcaseWidgets;
-      if (query === "hidden") {
-        showcaseWidgets = items.filter(function (item) {
-          return item.hidden;
-        }).map(function (item) {
-          return h(_components_showcases__WEBPACK_IMPORTED_MODULE_0__[/* Showcase */ "a"], {
-            item: item,
-            key: item.link
-          });
-        });
-      } else {
-        showcaseWidgets = items.filter(function (item) {
-          return !item.hidden && item.keywords.includes(query);
-        }).map(function (item) {
-          return h(_components_showcases__WEBPACK_IMPORTED_MODULE_0__[/* Showcase */ "a"], {
-            item: item,
-            key: item.link
-          });
-        });
-      }
-      this.setState({
-        showcaseWidgets: showcaseWidgets
-      });
+/* harmony default export */ __webpack_exports__["a"] = (PoemWrapper);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "E46Y":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ev0s");
+/* harmony import */ var _components_scroll___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("HRRe");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var ItemBrowser = function ItemBrowser(props) {
+  var titles = props.titles,
+    items = props.items;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState2 = _slicedToArray(_useState, 2),
+    displayedDoc = _useState2[0],
+    setDoc = _useState2[1];
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    selectedButton = _useState4[0],
+    setSelectedButton = _useState4[1];
+  var formatForURL = function formatForURL(url) {
+    return url === null || url === void 0 ? void 0 : url.replace(/[():' ]/g, "");
+  };
+  var changeMenu = function changeMenu(title) {
+    setDoc(items[title]);
+    setSelectedButton(title);
+    window.location.href = "".concat(window.location.href.split("#")[0], "#").concat(formatForURL(title));
+  };
+  Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useEffect */ "a"])(function () {
+    if (typeof window === "undefined") return;
+    //on page load, therefore not SSR; nav to correct doc
+    var doc = window.location.href.split("#")[1];
+    if (!doc) {
+      setDoc("This will display an item's contents when it is clicked.");
+      return;
     }
-  }]);
-  return PoemsShowcases;
-}(_components_showcases__WEBPACK_IMPORTED_MODULE_0__[/* default */ "b"]);
-var Poem = function Poem(props) {
-  var title = props.title,
-    poem = props.poem;
+    var docTitle = titles.find(function (_ref) {
+      var title = _ref.title;
+      return formatForURL(title) === doc;
+    }).title;
+    changeMenu(docTitle);
+  }, []);
   return h("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].poemcontainer
-  }, h("br", null), h("fieldset", null, h("legend", null, title), h("span", null, poem)), h("br", null), h(preact_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    href: "/projects/poetry"
-  }, "Back"), h("p", null));
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].container
+  }, h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].scrollable
+  }, h(_components_scroll___WEBPACK_IMPORTED_MODULE_2__[/* Scroll */ "a"], {
+    changeMenu: changeMenu,
+    selectedButton: selectedButton
+  }, titles)), h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].divider
+  }), h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].scrollable
+  }, displayedDoc));
 };
-var Igno = function Igno() {
-  var text = ["I laid still, in a field of grass,", "The curve of a lifetime forgotten,", "Traceable,", "", "The grass of a thousand lives before me,", "Each identical under the gaze of the masses,", "Each with such story,", "Such individuality,", "", "A tree stands, squats: the horizon calls,", "You ignore it,", "", "As you distance, trees disappear,", "Forests give way to cities;", "Give way to the trap,", "", "Hundreds of trees stand, still,", "Surrounded by smoke and steel,", "A breath of fresh air no more than a myth,", "", "I lay once again in this former field,", "", "You see me, silently approach;", "I think: I know your words;", "But you just walk away,", "Once more."];
-  var poem = text.map(function (line) {
-    return h(Fragment, null, line, h("br", null));
-  });
-  return h(Poem, {
-    title: "Ignorance",
-    poem: poem
-  });
-};
-var Smep = function Smep() {
-  var text = ["I look outside, after silence,", "I look inside, I see flashes,", "Flashes of light reflected in me,", "", "Flashes in the past tense,", "Thoughts from sounds ago,", "", "Can't hold a conversation,", "Too caught up in my own", "Head, turning to look at another screen,", "", "Spot another camera,", "Regulate my behaviour,", "", "What concrete madness we live in,", "Block it all out; next time it shows,", "I'm different, it's all alien. "];
-  var poem = text.map(function (line) {
-    return h(Fragment, null, line, h("br", null));
-  });
-  return h(Poem, {
-    title: "Someone Else's Panopticon",
-    poem: poem
-  });
-};
-var Yanwe = function Yanwe() {
-  var text = ["A ray of hope, caught in a razor,", "what's next is anyone's guess,", "", "A sharp line of skin,", "A slicing, stinging, burning pain,", "and the past comes rushing back.", "", "Rushing, like the veins,", "like the arteries,", " which don't suffer thought:", "saying, \"You are Nothing without me\"", "", "They are not alone in their message,", "Echoed by scars,", "Repeated by the scales,", "A prisoner turned against its sole possesor."];
-  var poem = text.map(function (line) {
-    return h(Fragment, null, line, h("br", null));
-  });
-  return h(Poem, {
-    title: "You are Nothing without me",
-    poem: poem
-  });
-};
-var Mnop = function Mnop() {
-  var text = ["The beauty of the moon,", "seen from a million miles away,", "stunning still from a pillow,", "A view rivalled only by:", "", "That of a rural bridge,", "over the tracks, chasing,", "A rolling landscape,", "Ended by a tree.", "", "Soaring.", "", "A bridge chased away,", "Supports a body not,", "So it soars and falls,", "Towards the tracks below.", "", "Onwards and downwards,", "As gravity runs course,", "A body finds the ground,", "Passing underneath.", "", "Searing."];
-  var poem = text.map(function (line) {
-    return h(Fragment, null, line, h("br", null));
-  });
-  return h(Poem, {
-    title: "Moonlit Overpass",
-    poem: poem
-  });
-};
-var Poems = {
-  Index: Index,
-  Igno: Igno,
-  Smep: Smep,
-  Yanwe: Yanwe,
-  Mnop: Mnop
-};
-/* harmony default export */ __webpack_exports__["a"] = (Poems);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+/* harmony default export */ __webpack_exports__["a"] = (ItemBrowser);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
 
 /***/ }),
 
@@ -885,6 +820,10 @@ var EmbedCreator = function EmbedCreator() {
     _useState10 = _slicedToArray(_useState9, 2),
     outputURL = _useState10[0],
     setOutput = _useState10[1];
+  var _useState11 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+    _useState12 = _slicedToArray(_useState11, 2),
+    prevHeaders = _useState12[0],
+    setPrevHeaders = _useState12[1];
   var request = new XMLHttpRequest();
   request.onreadystatechange = function () {
     if (request.readyState === 4 && request.status === 200) {
@@ -909,11 +848,14 @@ var EmbedCreator = function EmbedCreator() {
         name = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
       if (value) {
-        none = false;
+        if (prevHeaders[name] !== value) none = false;
         request.setRequestHeader(name, value);
       }
     }
-    if (!none) request.send();
+    if (!none) {
+      request.send();
+      setPrevHeaders(headers);
+    }
     return;
   };
   return h(Fragment, null, h("br", null), h("p", {
@@ -956,6 +898,42 @@ var EmbedCreator = function EmbedCreator() {
 "use strict";
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "HRRe":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scroll; });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2Szp");
+
+var Scroll = function Scroll(props) {
+  var children = props.children,
+    changeMenu = props.changeMenu,
+    selectedButton = props.selectedButton;
+  var childNodes = children.map(function (child, index) {
+    return h(ScrollEntry, {
+      highlight: selectedButton === child.title,
+      key: index,
+      onclick: function onclick() {
+        return changeMenu(child.title);
+      },
+      title: child.title
+    });
+  });
+  return h(Fragment, null, childNodes);
+};
+var ScrollEntry = function ScrollEntry(props) {
+  var title = props.title,
+    onclick = props.onclick,
+    highlight = props.highlight;
+  return h("button", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].entry, " ").concat(highlight ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].selected : ""),
+    onclick: onclick
+  }, title);
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
 
 /***/ }),
 
@@ -1257,16 +1235,8 @@ var App = function App() {
     path: "/projects/K0090C4/"
   }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Keysmash, {
     path: "/projects/keysmashCipher/"
-  }), h(_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].Index, {
+  }), h(_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"], {
     path: "/projects/poetry/"
-  }), h(_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].Igno, {
-    path: "/projects/poetry/Ignorance/"
-  }), h(_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].Smep, {
-    path: "/projects/poetry/someoneElsesPanopticon/"
-  }), h(_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].Yanwe, {
-    path: "/projects/poetry/nothingWithoutMe/"
-  }), h(_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].Mnop, {
-    path: "/projects/poetry/moonlitOverpass/"
   }), h(_routes_projects_backgroundcreator__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
     path: "/projects/backgroundcreator/"
   }), h(_routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], {
@@ -1332,6 +1302,97 @@ var Header = function Header() {
 };
 /* harmony default export */ __webpack_exports__["a"] = (Header);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+
+/***/ }),
+
+/***/ "SH9d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return contentMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return poems; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("TQsQ");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+var Poem = function Poem(props) {
+  var title = props.title,
+    poem = props.poem;
+  return h("span", {
+    class: _style__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].poemcontainer
+  }, h("br", null), h("fieldset", null, h("legend", null, title), h("span", null, poem)), h("br", null));
+};
+var poems = [{
+  id: 0,
+  title: "Ignorance",
+  desc: ["I laid still, in a field of grass,", "The curve of a lifetime forgotten,", "Traceable,", "", "The grass of a thousand lives before me,", "Each identical under the gaze of the masses,", "Each with such story,", "Such individuality,", "", "A tree stands, squats: the horizon calls,", "You ignore it,", "", "As you distance, trees disappear,", "Forests give way to cities;", "Give way to the trap,", "", "Hundreds of trees stand, still,", "Surrounded by smoke and steel,", "A breath of fresh air no more than a myth,", "", "I lay once again in this former field,", "", "You see me, silently approach;", "I think: I know your words;", "But you just walk away,", "Once more."]
+}, {
+  id: 1,
+  title: "Someone Else's Panopticon",
+  desc: ["I look outside, after silence,", "I look inside, I see flashes,", "Flashes of light reflected in me,", "", "Flashes in the past tense,", "Thoughts from sounds ago,", "", "Can't hold a conversation,", "Too caught up in my own", "Head, turning to look at another screen,", "", "Spot another camera,", "Regulate my behaviour,", "", "What concrete madness we live in,", "Block it all out; next time it shows,", "I'm different, it's all alien. "]
+}, {
+  id: 2,
+  title: "You are Nothing without me",
+  desc: ["A ray of hope, caught in a razor,", "what's next is anyone's guess,", "", "A sharp line of skin,", "A slicing, stinging, burning pain,", "and the past comes rushing back.", "", "Rushing, like the veins,", "like the arteries,", " which don't suffer thought:", "saying, \"You are Nothing without me\"", "", "They are not alone in their message,", "Echoed by scars,", "Repeated by the scales,", "A prisoner turned against its sole possesor."]
+}, {
+  id: 3,
+  title: "Moonlit Overpass",
+  desc: ["The beauty of the moon,", "seen from a million miles away,", "stunning still from a pillow,", "A view rivalled only by:", "", "That of a rural bridge,", "over the tracks, chasing,", "A rolling landscape,", "Ended by a tree.", "", "Soaring.", "", "A bridge chased away,", "Supports a body not,", "So it soars and falls,", "Towards the tracks below.", "", "Onwards and downwards,", "As gravity runs course,", "A body finds the ground,", "Passing underneath.", "", "Searing."]
+}, {
+  id: 4,
+  title: "Heartbroken",
+  desc: ["an embrace... a kiss... a date...", "all of a past life... none familiar...", "What is it for?", "Am I broken? Am I?", "", "A hole in my heart,", "told I should hope,", "get a filling, or two,", "Am I broken?", "", "Deemed a worthless piece,", "reduced to a problem,", "emotion as an extra,", "Am I broken?", "", "Tell me I'm loveable", "and I am deserving,", "I'm still broken, discarded.", "You can't ever fill an empty heart,", "", "except with more holes.", ""]
+}, {
+  id: 5,
+  title: "Regulation",
+  desc: ["Grant that: a word is just that.", "No more. No less.", "Can it be they have meaning?", "As mathematics once was", "separated. Symbols.", "", "Reality.", "Detached from origins,", "Can it be they still have meaning?", "A schism, a rift", "between word and form.", "", "By word, only another may be referred.", "An object of reality,", "cannot interact with a fake:", "Construction of the mind.", "", "What use was connection?", "Coordinated society?", "A society split as easily as words?", "My vision may be your smell,", "my green:", "", "your blue; your blood,", "What use are words to describe fleeting vision?", "Extremes elude words,", "as do emotions,", "as do words themselves."]
+}, {
+  id: 6,
+  title: "My Own Terms",
+  desc: ["I dreamt.", "", "Of freedom:", "  to walk.", "  to walk alone at night.", "  to walk alone in June", "  with a wife.", "", "I once dreamt that one day,", "perhaps a June night,", "I could one day walk a beach", "among a sea breeze", "- one that did not smell of sewage.", "", "Beyond my furthest hopes:", "  I walk there, over hellish tarmac", "  past tortured homes,", "  under tremendous trees", "- and I cannot see the stars", "", "yet I never once dreamt:", "  that walk could contain", "  noise so loud; pop no doubt,", "  blasted over hills", "  to the beach", "- and I cannot hear the waves.", "", "But upon this beach,", "one I never dreamed about:", "I see stars, I hear waves, I smell only air.", "I am here:", "  in June...", "  At night...", "  With a wife:", "    but no life, in death."]
+}, {
+  id: 7,
+  title: "Spite",
+  desc: ["Because I would stay up", "all night, if it would make you any better,", "perhaps no rhyme, no reason, no rhythm, ", "but what is love if it rhymes?", "", "Because I would write you a poem", "and if I had to hide my love,", "address it to a tree, a tower, a beach", "or dedicate it to an anthology,", "if I could not dedicate myself to you.", "", "Passion, irrelevant.", "Hypotheticals unnecessary, for what can be ", "done in a moment.", "Why bother, with metaphors, comparisons, delusions?", "You could be here, now", "with me and my mind, to share.", "", "The freedom to love;", "a right within Europe, France.", "The city of love, Paris,", "I left a lock on that bridge", "to symbolise our love like so many others.", "", "And that is where it ends, isn't it?", "Why bother, in the face of rhyme, repetition and refrain?"]
+}].map(function (poem) {
+  return _objectSpread(_objectSpread({}, poem), {}, {
+    desc: h(Poem, {
+      title: poem.title,
+      poem: poem.desc.map(function (value, index) {
+        return h(preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
+          key: index
+        }, value, h("br", null));
+      })
+    })
+  });
+});
+var contentMap = {};
+var _iterator = _createForOfIteratorHelper(poems),
+  _step;
+try {
+  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    var _step$value = _step.value,
+      title = _step$value.title,
+      desc = _step$value.desc;
+    contentMap[title] = desc;
+  }
+} catch (err) {
+  _iterator.e(err);
+} finally {
+  _iterator.f();
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
 
 /***/ }),
 
@@ -2221,6 +2282,15 @@ Router.exec = exec;
 "use strict";
 // extracted by mini-css-extract-plugin
 /* harmony default export */ __webpack_exports__["a"] = ({"showcase":"showcase__R8tAi","desc":"desc__dbAJB","link":"link__I2jZf","spacer":"spacer__o0E7m"});
+
+/***/ }),
+
+/***/ "ev0s":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"container":"container__XBPsU","scrollable":"scrollable__wHEWf","divider":"divider__jwaXt"});
 
 /***/ }),
 
