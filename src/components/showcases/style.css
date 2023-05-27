@@ -7,7 +7,7 @@
 	height: calc(200px + 10vw);
 	margin: max(5vh, 30px) 2vw;
 	border-radius: 50px;
-	box-shadow: calc(10px + 0.5vw) calc(10px + 0.5vw) calc((200px + 10vw) / 12) #171717, calc(-10px - 0.5vw) calc(-10px - 0.5vw) calc((200px + 10vw) / 12) #272727;
+	box-shadow: calc(10px + 0.5vw) calc(10px + 0.5vw) calc((200px + 10vw) / 12) var(--bs1), calc(-10px - 0.5vw) calc(-10px - 0.5vw) calc((200px + 10vw) / 12) var(--bs2);
 	justify-content: space-between;
 	flex-direction: column;
 }
@@ -19,7 +19,7 @@
 	align-self: stretch;
 	width: 100px;
 	min-height: 60px;
-	background: #77da77;
+	background: var(--t);
 	border-radius: 25px;
 	transition: 0.35s;
 }

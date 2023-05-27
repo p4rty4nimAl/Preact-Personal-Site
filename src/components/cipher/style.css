@@ -2,8 +2,8 @@
     background-color: var(--w);
     color: var(--b);
     border-radius: 40px;
-    box-shadow:  5px 5px 10px #1a1a1a,
-                -5px -5px 10px #242424;
+    box-shadow: 5px 5px 10px var(--bs1),
+                -5px -5px 10px var(--bs2);
     border: none;
     padding: 15px 32px;
     resize: none;
@@ -18,10 +18,10 @@
 .ciphercontainer button {
     background-color: var(--t);
     border-radius: 40px;
-    box-shadow:  5px 5px 10px #1a1a1a,
-                 -5px -5px 10px #242424;
+    box-shadow: 5px 5px 10px var(--bs1),
+                -5px -5px 10px var(--bs2);
     border: none;
-    color: var(--b);
+    color: #1f1f1f;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -33,8 +33,8 @@
 }
 .ciphercontainer button:active {
     background-color: var(--ht);
-    box-shadow:  2px 2px 4px #1a1a1a,
-                 -2px -2px 4px #242424;
+    box-shadow: 2px 2px 4px var(--bs1),
+                -2px -2px 4px var(--bs2);
 }
 .keybutton {
     margin-left: 2% !important;

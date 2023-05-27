@@ -1,7 +1,10 @@
 .searchbar {
 	display: inline-flex;
+    
 }
 .searchbar input {
+    background-color: var(--w);
+    color: var(--b);
 	font-size: calc(13px + 0.5vw);
 	padding: 10px 15px;
 	border-radius: 20px 0 0 20px;
@@ -9,7 +12,7 @@
 	outline: none;
 }
 .searchbar button {
-	background-color: #FFFFFF;
+	background-color: var(--w);
 	border-radius: 0 20px 20px 0;
 	border: 0;
 	outline: none;
@@ -18,4 +21,9 @@
 }
 .searchbar button img {
 	height: calc(13px + 0.5vw + 5px);
+}
+@media (prefers-color-scheme: light) {
+    .searchbar button img {
+        filter: invert(1);
+    }
 }
