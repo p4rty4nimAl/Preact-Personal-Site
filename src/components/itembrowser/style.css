@@ -1,0 +1,34 @@
+:root {
+    /*selector width*/
+    --sw: 25%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 10vh);
+}
+.scrollable {
+    height: calc(100% - 56px + 10vh);
+    width: var(--sw);
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
+.divider {
+    position: fixed;
+    top: 0;
+    left: var(--sw);
+    width: 2%;
+    height: calc(100%);
+    background-color: var(--t);
+    box-shadow: -5px 0 5px 0 var(--b);
+}
+.divider~.scrollable {
+    height: calc(100%);
+    margin-top: calc(10vh - 56px);
+    font-size: 24px;
+    width: calc(98% - var(--sw));
+}
+::-webkit-scrollbar {
+    display: none;
+}

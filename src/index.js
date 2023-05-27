@@ -8,7 +8,7 @@ import Home from './routes/home';
 import Projects from './routes/projects';
     import Pinger from './routes/projects/pinger'
     import Ciphers from './routes/projects/ciphers';
-    import Poems from './routes/projects/poems';
+    import PoemWrapper from './routes/projects/poems';
     import BackgroundCreator from './routes/projects/backgroundcreator';
     import EmbedCreator from './routes/projects/embedCreator';
 import Portfolio from "./routes/portfolio";
@@ -32,11 +32,7 @@ const App = () => {
                     <Ciphers.HKCRCR path='/projects/hCRCRework/' />
                     <Ciphers.Weezd2 path='/projects/K0090C4/' />
                     <Ciphers.Keysmash path='/projects/keysmashCipher/' />
-                    <Poems.Index path='/projects/poetry/' />
-                        <Poems.Igno path='/projects/poetry/Ignorance/' />
-                        <Poems.Smep path='/projects/poetry/someoneElsesPanopticon/' />
-                        <Poems.Yanwe path='/projects/poetry/nothingWithoutMe/' />
-                        <Poems.Mnop path='/projects/poetry/moonlitOverpass/' />
+                    <PoemWrapper path='/projects/poetry/' />
                     <BackgroundCreator path='/projects/backgroundcreator/' />
                     <EmbedCreator path='/projects/embedCreator' />
                 <Portfolio path="/portfolio/" />

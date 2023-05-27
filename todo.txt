@@ -3,6 +3,7 @@ files done: {
     manifest.json
     packag*.json
     tests/* // actually have tests?
+    robots.txt
 }
 done areas {
     404 page!!
@@ -14,7 +15,6 @@ done areas {
     README.md!!
 }
 todo: {
-    robots.txt
     docs
     portfolio
     meta tags

@@ -78,7 +78,7 @@ export const showcases = [
     {
       link: "/projects/poetry",
       name: "Poems",
-      desc: "A collection of poems written by me, your loyal site administrator.",
+      desc: "A collection of poems written by me.",
       keywords: "ignorance someone else's panopticon poems poetry"
     },
     {
