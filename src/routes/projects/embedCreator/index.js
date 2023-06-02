@@ -54,7 +54,7 @@ const EmbedCreator = () => {
         const headers = {title, description, image, color};
         let none = true;
         for (const [name, value] of Object.entries(headers)) {
-            if (value && prevHeaders?.[name] !== value) none = false;
+            if (value && prevHeaders && prevHeaders[name] !== value) none = false;
         }
         if (!none) {
             const authXHR = new XMLHttpRequest;
