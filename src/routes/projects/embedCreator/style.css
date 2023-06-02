@@ -56,6 +56,7 @@
     width: 75%;
     margin: auto;
     align-items: stretch;
+    padding-bottom: 50px;
 }
 .outputButton {
     flex-shrink: 0;

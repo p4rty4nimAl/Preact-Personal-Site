@@ -3,6 +3,7 @@ import style from './style.css';
 import projects from './text';
 
 import Showcases from '../../components/showcases';
+import { Link } from 'preact-router';
 
 const Projects = () => {
     return (
@@ -10,7 +11,7 @@ const Projects = () => {
             <Showcases items={projects} />
             <p>
                 This is where all my projects are stored. Click any you like the look of!<br />
-                <a href="/" rel="noopener noreferrer">Home</a>
+                <Link href="/" rel="noopener noreferrer">Home</Link>
             </p>
             <footer />
         </div>

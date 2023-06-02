@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import style from './style.css';
+import { Link } from 'preact-router';
 
 const InputForm = (props) => {
     const {type, update} = props;
@@ -16,17 +17,17 @@ const InputForm = (props) => {
 }
 const OutputDisplay = (props) => {
     const {URLID} = props;
-    
+    const url = `https://api.xtraea.com/v1/embed?s=${URLID}`
+
     const copyLink = () => {
         if (typeof window === "undefined" || typeof navigator?.clipboard === "undefined") return;
-        const url = `https://api.xtraea.com/v1/embed?s=${URLID}`;
         navigator.clipboard.writeText(url);
     }
     return (
         <>
             <div class={style.outputContainer}>
                 <button onClick={copyLink} class={style.outputButton}>Copy to clipboard</button>
-                <p class={`${style.textTag} ${style.output}`} >{`https://api.xtraea.com/v1/embed?s=${URLID}`}</p>
+                <p class={`${style.textTag} ${style.output}`} >{url}</p>
             </div>
         </>
     );
@@ -48,34 +49,28 @@ const EmbedCreator = () => {
     }
 
     const submit = () => {
-        const authXHR = new XMLHttpRequest;
-        authXHR.open("GET", "https://api.xtraea.com/_/health?auth=true");
-        authXHR.send();
-
         request.open("POST", "https://api.xtraea.com/v1/embed");
 
-        const headers = {
-            title,
-            description,
-            image,
-            color
-        };
+        const headers = {title, description, image, color};
         let none = true;
         for (const [name, value] of Object.entries(headers)) {
-            if (value) {
-                if (prevHeaders[name] !== value) none = false;
-                request.setRequestHeader(name, value);
-            }
+            if (value && prevHeaders[name] !== value) none = false;
         }
         if (!none) {
-            request.send();
+            const authXHR = new XMLHttpRequest;
+            authXHR.open("GET", "https://api.xtraea.com/v1/auth");
+            authXHR.send();
+            
+            request.send(headers);
             setPrevHeaders(headers);
         }
         return;
     }
     return (
         <>
-            <br /><p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
+            <br />
+            <p><Link href="/disclaimer">Disclaimer</Link></p>
+            <p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
                 Title: The text at the top of an embed; can be clicked.<br />
                 Description: Typically the text displayed under the title.<br />
                 Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.<br />
