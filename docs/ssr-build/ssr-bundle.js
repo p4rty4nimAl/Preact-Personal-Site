@@ -846,7 +846,7 @@ var EmbedCreator = function EmbedCreator() {
       var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
         name = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
-      if (value && (prevHeaders === null || prevHeaders === void 0 ? void 0 : prevHeaders[name]) !== value) none = false;
+      if (value && prevHeaders && prevHeaders[name] !== value) none = false;
     }
     if (!none) {
       var authXHR = new XMLHttpRequest();
