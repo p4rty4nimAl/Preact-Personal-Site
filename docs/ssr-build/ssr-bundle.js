@@ -822,7 +822,7 @@ var EmbedCreator = function EmbedCreator() {
     _useState10 = _slicedToArray(_useState9, 2),
     outputURL = _useState10[0],
     setOutput = _useState10[1];
-  var _useState11 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+  var _useState11 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])({}),
     _useState12 = _slicedToArray(_useState11, 2),
     prevHeaders = _useState12[0],
     setPrevHeaders = _useState12[1];
@@ -846,7 +846,7 @@ var EmbedCreator = function EmbedCreator() {
       var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
         name = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
-      if (value && prevHeaders[name] !== value) none = false;
+      if (value && (prevHeaders === null || prevHeaders === void 0 ? void 0 : prevHeaders[name]) !== value) none = false;
     }
     if (!none) {
       var authXHR = new XMLHttpRequest();
