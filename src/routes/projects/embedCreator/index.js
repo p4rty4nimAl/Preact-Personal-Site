@@ -61,7 +61,7 @@ const EmbedCreator = () => {
             authXHR.open("GET", "https://api.xtraea.com/v1/auth");
             authXHR.send();
             
-            request.send(headers);
+            request.send(JSON.stringify(headers));
             setPrevHeaders(headers);
         }
         return;
