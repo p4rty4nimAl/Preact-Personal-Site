@@ -452,6 +452,7 @@ canvas {
     margin: auto;
     -ms-flex-align: stretch;
         align-items: stretch;
+    padding-bottom: 50px;
 }
 .outputButton__kcWEc {
     -ms-flex-negative: 0;

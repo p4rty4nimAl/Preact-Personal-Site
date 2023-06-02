@@ -759,12 +759,14 @@ var ItemBrowser = function ItemBrowser(props) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nxe/");
+/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("Y3FI");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 var InputForm = function InputForm(props) {
@@ -784,10 +786,10 @@ var InputForm = function InputForm(props) {
 };
 var OutputDisplay = function OutputDisplay(props) {
   var URLID = props.URLID;
+  var url = "https://api.xtraea.com/v1/embed?s=".concat(URLID);
   var copyLink = function copyLink() {
     var _navigator;
     if (typeof window === "undefined" || typeof ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.clipboard) === "undefined") return;
-    var url = "https://api.xtraea.com/v1/embed?s=".concat(URLID);
     navigator.clipboard.writeText(url);
   };
   return h(Fragment, null, h("div", {
@@ -797,7 +799,7 @@ var OutputDisplay = function OutputDisplay(props) {
     class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputButton
   }, "Copy to clipboard"), h("p", {
     class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag, " ").concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].output)
-  }, "https://api.xtraea.com/v1/embed?s=".concat(URLID))));
+  }, url)));
 };
 var EmbedCreator = function EmbedCreator() {
   var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
@@ -832,9 +834,6 @@ var EmbedCreator = function EmbedCreator() {
     }
   };
   var submit = function submit() {
-    var authXHR = new XMLHttpRequest();
-    authXHR.open("GET", "https://api.xtraea.com/_/health?auth=true");
-    authXHR.send();
     request.open("POST", "https://api.xtraea.com/v1/embed");
     var headers = {
       title: title,
@@ -847,18 +846,20 @@ var EmbedCreator = function EmbedCreator() {
       var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
         name = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
-      if (value) {
-        if (prevHeaders[name] !== value) none = false;
-        request.setRequestHeader(name, value);
-      }
+      if (value && prevHeaders[name] !== value) none = false;
     }
     if (!none) {
-      request.send();
+      var authXHR = new XMLHttpRequest();
+      authXHR.open("GET", "https://api.xtraea.com/v1/auth");
+      authXHR.send();
+      request.send(headers);
       setPrevHeaders(headers);
     }
     return;
   };
-  return h(Fragment, null, h("br", null), h("p", {
+  return h(Fragment, null, h("br", null), h("p", null, h(preact_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: "/disclaimer"
+  }, "Disclaimer")), h("p", {
     class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textDescription
   }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.", h("br", null), "Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it."), h(InputForm, {
     type: "Title",
@@ -951,6 +952,8 @@ module.exports = require("preact");
 /* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("UnQz");
 /* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2kgO");
 /* harmony import */ var _components_showcases__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("8M9P");
+/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Y3FI");
+
 
 
 
@@ -959,7 +962,7 @@ var Projects = function Projects() {
     class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].showcases
   }, h(_components_showcases__WEBPACK_IMPORTED_MODULE_2__[/* default */ "b"], {
     items: _text__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]
-  }), h("p", null, "This is where all my projects are stored. Click any you like the look of!", h("br", null), h("a", {
+  }), h("p", null, "This is where all my projects are stored. Click any you like the look of!", h("br", null), h(preact_router__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     href: "/",
     rel: "noopener noreferrer"
   }, "Home")), h("footer", null));
