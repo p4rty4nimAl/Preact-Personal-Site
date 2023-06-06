@@ -40,27 +40,23 @@ const EmbedCreator = () => {
     const [color, setColor] = useState();
     const [outputURL, setOutput] = useState("...");
     const [prevHeaders, setPrevHeaders] = useState({});
-    const request = new XMLHttpRequest;
-    request.onreadystatechange = () => {
-        if (request.readyState === 4 && request.status === 200) {
-            const responseJSON = JSON.parse(request.responseText);
-            setOutput(responseJSON.response);
-        }
-    }
 
     const submit = () => {
+        const request = new XMLHttpRequest;
+        request.onreadystatechange = () => {
+            if (request.readyState === 4 && request.status === 200) {
+                const responseJSON = JSON.parse(request.responseText);
+                setOutput(responseJSON.response);
+            }
+        }
         request.open("POST", "https://api.xtraea.com/v1/embed");
 
         const headers = {title, description, image, color};
-        let none = true;
+        let valuesValid = false;
         for (const [name, value] of Object.entries(headers)) {
-            if (value && prevHeaders && prevHeaders[name] !== value) none = false;
+            if (value && prevHeaders && prevHeaders[name] !== value) valuesValid = true;
         }
-        if (!none) {
-            const authXHR = new XMLHttpRequest;
-            authXHR.open("GET", "https://api.xtraea.com/v1/auth");
-            authXHR.send();
-            
+        if (valuesValid) {
             request.send(JSON.stringify(headers));
             setPrevHeaders(headers);
         }

@@ -6,11 +6,12 @@ import Header from './components/header';
 // Code-splitting is automated for `routes` directory
 import Home from './routes/home';
 import Projects from './routes/projects';
-    import Pinger from './routes/projects/pinger'
-    import Ciphers from './routes/projects/ciphers';
-    import PoemWrapper from './routes/projects/poems';
-    import BackgroundCreator from './routes/projects/backgroundcreator';
-    import EmbedCreator from './routes/projects/embedCreator';
+    import Pinger from 'async!./routes/projects/pinger';
+    import Ciphers from 'async!./routes/projects/ciphers';
+    import PoemWrapper from 'async!./routes/projects/poems';
+    import BackgroundCreator from 'async!./routes/projects/backgroundcreator';
+    import EmbedCreator from 'async!./routes/projects/embedCreator';
+    import Disclaimer from 'async!./routes/disclaimer';
 import Portfolio from "./routes/portfolio";
 import Docs from "./routes/docs";
 import Error from './routes/error';
@@ -37,6 +38,7 @@ const App = () => {
                     <EmbedCreator path='/projects/embedCreator' />
                 <Portfolio path="/portfolio/" />
                 <Docs path="/docs/" />
+                <Disclaimer path="/disclaimer/" />
 
                 <Error default />
             </Router>
