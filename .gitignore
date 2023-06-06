@@ -128,5 +128,6 @@ dist
 # builds/builds
 build/*
 OLD_*
+*_OLD*
 # size-plugin
 size-plugin.json

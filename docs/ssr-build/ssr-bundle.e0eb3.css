@@ -315,10 +315,9 @@ legend {
     box-shadow: -5px 0 5px 0 var(--b);
 }
 .divider__jwaXt~.scrollable__wHEWf {
-    height: calc(100%);
-    margin-top: calc(10vh - 56px);
+    padding-top: calc(10vh - 56px);
     font-size: 24px;
-    width: calc(98% - var(--sw));
+    width: calc(100% - var(--sw));
 }
 ::-webkit-scrollbar {
     display: none;
@@ -482,6 +481,12 @@ canvas {
     margin-bottom: 15px;
     width: 75%;
     text-align: left;
+}
+.disclaimerbody__ItAv- {
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
 }
 .portfolio__Cz5s5 {
 	

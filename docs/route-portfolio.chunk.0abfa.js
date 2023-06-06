@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{Eb7j:function(o,n){"use strict";n.a={portfolio:"portfolio__Cz5s5"}},ndBN:function(o,n,t){"use strict";t.r(n),function(o){var i=t("Eb7j");n.default=function(){return o("div",{class:i.a.portfolio},o("p",null,"portfolio"))}}.call(this,t("hosL").h)}}]);
