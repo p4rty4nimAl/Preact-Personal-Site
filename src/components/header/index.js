@@ -5,16 +5,15 @@ import style from './style.css';
 const Header = () => {
     const [_, rerender] = useState();
     useEffect(() => {
-        const resizeHandler = () => {
-			rerender({});
-		}
+        const resizeHandler = () => rerender({});
         window.addEventListener('resize', resizeHandler);
         return () => {
             window.removeEventListener('resize', resizeHandler);
         }
     })
     let isHidden = false;
-    if (typeof window !== "undefined") isHidden = screen.height === window.innerHeight;
+    // not a fan of the hiding rn, so its getting removed temporarily
+    //if (typeof window !== "undefined") isHidden = screen.height === window.innerHeight;
     return (
         <>
             <header class={style.header} hidden={isHidden}>
