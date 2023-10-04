@@ -10,15 +10,12 @@ import Projects from './routes/projects';
     import Ciphers from './routes/projects/ciphers'; // cant async an object!!
     import PoemWrapper from 'async!./routes/projects/poems';
     import BackgroundCreator from 'async!./routes/projects/backgroundcreator';
-    import BGRefactor from 'async!./routes/projects/bgrefactor';
     import EmbedCreator from 'async!./routes/projects/embedCreator';
     import EmbedBrowser from 'async!./routes/projects/embedBrowser';
     import Disclaimer from 'async!./routes/disclaimer';
-    import BackgroundCreator2 from 'async!./routes/projects/bgref2';
 import Portfolio from "./routes/portfolio";
 import Docs from "./routes/docs";
 import Error from './routes/error';
-import { useState } from 'preact/hooks';
 
 const Routes = <Router>
     <Home path="/" />
@@ -35,8 +32,6 @@ const Routes = <Router>
         <Ciphers.Keysmash path='/projects/keysmashCipher/' />
         <PoemWrapper path='/projects/poetry/' />
         <BackgroundCreator path='/projects/backgroundcreator/' />
-        <BGRefactor path='/projects/testing' />
-        <BackgroundCreator2 path="/projects/testing2" />
         <EmbedCreator path='/projects/embedCreator' />
         <EmbedBrowser path='/projects/embedBrowser' />
     <Portfolio path="/portfolio/" />
@@ -50,7 +45,7 @@ const App = () => {
     return (
         <div id="app">
             <Header />
-            Routes
+            {Routes}
         </div>
     )
 }
