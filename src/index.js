@@ -7,7 +7,7 @@ import Header from './components/header';
 import Home from './routes/home';
 import Projects from './routes/projects';
     import Pinger from 'async!./routes/projects/pinger';
-    import Ciphers from 'async!./routes/projects/ciphers';
+    import Ciphers from './routes/projects/ciphers'; // cant async an object!!
     import PoemWrapper from 'async!./routes/projects/poems';
     import BackgroundCreator from 'async!./routes/projects/backgroundcreator';
     import EmbedCreator from 'async!./routes/projects/embedCreator';
