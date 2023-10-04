@@ -30,7 +30,6 @@ const ItemBrowser = (props) => {
                     {titles}
                 </Scroll>
             </div>
-            <div class={style.divider} />
             <div class={style.scrollable}>{displayedDoc}</div>
         </span>
     );

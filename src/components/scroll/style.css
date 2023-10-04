@@ -1,15 +1,15 @@
 .entry {
-    display: inline-block;
+    display: inline;
     width: 100%;
-    height: 75px;
+    min-height: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: 30px;
     background-color: var(--b);
     color: var(--w);
     border: none;
 }
-.entry:not(:last-child)::after {
-    content: "";
-    position: relative;
+.entry+.after:not(:last-child) {
     left: -6px;
     top: 17px;
     display: block;
@@ -18,7 +18,37 @@
     transition: 0.3s;
     background-color: var(--t);
 }
-.selected::after {
+.selected+.after {
     transition: 0.3s;
     background-color: var(--ht) !important;
+}
+.divider {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: var(--sw);
+    width: 2%;
+    height: calc(100%);
+    background-color: var(--t);
+    box-shadow: -5px 0 5px 0 var(--b);
+    z-index: 1;
+    transition: 0.3s;
+}
+.collapse-control {
+    display: block;
+    z-index: 2;
+    position: absolute;
+    top: 56px;
+    left: var(--sw);
+    width: 2vw;
+    height: 2vw;
+    transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--b);
+    border: none;
+    transform: rotate(90deg);
+    font-size: 1vw;
+}
+.collapsed {
+    transform: rotate(-90deg);
 }
