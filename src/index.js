@@ -11,6 +11,7 @@ import Projects from './routes/projects';
     import PoemWrapper from 'async!./routes/projects/poems';
     import BackgroundCreator from 'async!./routes/projects/backgroundcreator';
     import EmbedCreator from 'async!./routes/projects/embedCreator';
+    import EmbedBrowser from 'async!./routes/projects/embedBrowser';
     import Disclaimer from 'async!./routes/disclaimer';
 import Portfolio from "./routes/portfolio";
 import Docs from "./routes/docs";

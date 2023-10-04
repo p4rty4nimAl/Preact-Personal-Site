@@ -1,0 +1,72 @@
+.displayContainer {
+    box-shadow: var(--bs1);
+    border: 10px solid var(--t);
+    box-sizing: unset;
+	font-size: calc(30px + 1vmin);
+	display: inline-flex;
+	padding: 30px 30px;
+	width: calc(200px + 10vw);
+	height: calc(200px + 10vw);
+	margin: max(5vh, 30px) 2vw;
+	border-radius: 50px;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.embed-page {
+    display: block;
+}
+.imageAlign {
+    display: flex;
+}
+.displayTitleText {
+    font-size: calc(20px + 1vmin);
+    max-width: calc(200px + 10vw - 100px);
+}
+.displayDescText {
+    font-size: calc(10px + 1vmin);
+    max-width: calc(200px + 10vw - 50px + max(5vh, 30px));
+    
+}
+.displayDescText, .displayTitleText {
+    resize: none;
+    outline: none;
+    color: var(--w);
+    background-color: var(--b);
+    border: 2px;
+    border-color: var(--w);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+.displayID {
+    font-size: 0.3em;
+    text-align: left;
+    padding: 2px;
+}
+.displayButton {
+    border: 0;
+	align-self: stretch;
+	min-height: 60px;
+	border-radius: 25px;
+	transition: 0.35s;
+    background-color: var(--t);
+    font-size: calc(15px + 1vmin);
+    color: var(--b);
+}
+.embedInput,.embedInput input {
+    background-color: var(--w);
+    color: var(--b);
+	font-size: calc(10px + 0.5vw);
+    padding: 0 0 0 10px;
+}
+.embedInput {
+	padding: 10px 15px;
+	border-radius: 20px;
+	border: 0;
+	outline: none;
+    resize: none;
+    width: 60px;
+}
+.embedPrev, .embedNext {
+    margin: 5px;
+    border: none;
+    font-size: 1em;
+}
