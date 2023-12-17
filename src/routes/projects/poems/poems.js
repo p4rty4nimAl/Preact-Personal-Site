@@ -257,6 +257,30 @@ const poems = [
             "And that is where it ends, isn't it?",
             "Why bother, in the face of rhyme, repetition and refrain?"
         ]
+    },
+    {
+        id: 8,
+        title: "Babylon",
+        desc: [
+            "am I losing it? or is",
+            "this simply the result of",
+            "the accumulation of knowledge?",
+            "",
+            "activities of the day,",
+            "seeping, bleeding into the night.",
+            "does reality become weaker,",
+            "as we force ourselves around it?",
+            "",
+            "a field of noise, persistent in vision,",
+            "never to end, but ever endured.",
+            "can the visual voice be silenced,",
+            "or is it destined to outlive me?",
+            "",
+            "thousands of years, ",
+            "education only develops.",
+            "as more is known, can it's",
+            "impartation be safe? the constant. the increase, it overloads a simple mind."
+        ]
     }
 ].map((poem) => ({
     ...poem, 
