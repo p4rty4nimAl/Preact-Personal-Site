@@ -35,10 +35,8 @@
     transition: 0.3s;
 }
 .collapse-control {
-    display: block;
     z-index: 2;
-    position: absolute;
-    top: 56px;
+    position: fixed;
     left: var(--sw);
     width: 2vw;
     height: 2vw;

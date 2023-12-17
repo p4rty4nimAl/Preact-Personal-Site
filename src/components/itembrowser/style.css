@@ -13,13 +13,21 @@
     width: var(--sw);
     overflow-y: scroll;
     overflow-x: hidden;
+    transition: 0.3s;
+}
+.scrollable.items-list {
+    /* --sw HARDCODED */
+    width: 25%;
+    flex-shrink: 0;
+    position: relative;
+    left: calc(var(--sw) - 25%);
 }
 .scrollable:last-child {
+    height: calc(100% - 56px);
+    position: absolute;
+    right: 0;
     margin: auto;
     padding-top: calc(10vh - 56px);
     font-size: 24px;
     width: calc(100% - var(--sw));
-}
-::-webkit-scrollbar {
-    display: none;
 }

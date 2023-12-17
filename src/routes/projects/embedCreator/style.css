@@ -45,7 +45,7 @@
 	border-radius: 25px;
 	transition: 0.35s;
     font-size: calc(20px + 1vmin);
-    color: #1f1f1f;
+    color: var(--ab);
     box-shadow: 5px 5px 10px var(--bs1),
                 -5px -5px 10px var(--bs2);
 }
@@ -73,7 +73,7 @@
 	background: var(--t);
 	transition: 0.35s;
     font-size: calc(20px + 1vmin);
-    color: #1f1f1f;
+    color: var(--ab);
 }
 .outputButton:active {
     background: var(--ht);

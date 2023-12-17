@@ -37,13 +37,13 @@
 	padding: 0 15px;
 	min-width: 50px;
 	text-align: center;
-	background: rgba(255,255,255,0);
 	text-decoration: none;
-    color: #1f1f1f;
+    color: var(--ab);
 	will-change: background-color;
+    transition: 0.15s;
 }
 
 .header nav a:hover,
 .header nav a:active {
-	background: rgba(0,0,0,0.2);
+	background: var(--ht);
 }

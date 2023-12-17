@@ -71,18 +71,15 @@ class CRC extends Cipher {
         let register = 0;
         let output = "";
         for (let i = 0; i < string.length; i++) {
-            // eslint-disable-next-line no-undef
-            register = (register + getVal(string[i])) % 32;
-            // eslint-disable-next-line no-undef
-            output += getChar(register);
+            register = (register + this.getVal(string[i])) % 32;
+            output += this.getChar(register);
         }
         return output;
     }
     bDF(string) {
         let output = string[0];
         for (let i = 1; i < string.length; i++) {
-            // eslint-disable-next-line no-undef
-            output += getChar(getVal(string[i]) - getVal(string[i - 1]));
+            output += this.getChar(this.getVal(string[i]) - this.getVal(string[i - 1]));
         }
         return output;
     }

@@ -4,9 +4,12 @@ import { useState } from 'preact/hooks';
 export const Scroll = (props) => {
     const {children, changeMenu, selectedButton} = props;
     const [isHidden, setHidden] = useState(false)
-    const childNodes = !isHidden ? 
-        children.map((child, index) => <ScrollEntry highlight={selectedButton === child.title} key={index} onclick={() => changeMenu(child.title)} title={child.title} />)
-        : undefined;
+    const childNodes = children.map((child, index) => <ScrollEntry 
+        key={index} 
+        highlight={selectedButton === child.title} 
+        onclick={() => changeMenu(child.title)} 
+        title={child.title}
+    />);
     document.querySelector(':root').style.setProperty("--sw", isHidden ? "0%" : "25%");
     return (<>
         <button class={`${style['collapse-control']} ${isHidden ? style.collapsed : ""}`} onClick={() => {setHidden(!isHidden)}}>V</button>

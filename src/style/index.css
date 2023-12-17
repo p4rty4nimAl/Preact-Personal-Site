@@ -4,9 +4,13 @@
 	/*hovered-tertiary*/
 	--ht: #479647;
 	/*black*/
-	--b: #1f1f1f;
+	--b: #313131;
+    /*always black; for text on tertiary*/
+    --ab: #313131;
 	/*white*/
-	--w: #e8e8e8;
+	--w: #f1f1f1;
+    /*always white; for consistency*/
+    --aw: #f1f1f1;
     /*box-shadows*/
     --bs1: #171717;
     --bs2: #272727;
@@ -14,13 +18,10 @@
 }
 @media (prefers-color-scheme: light) {
     :root {
-        --t: #77da77;
-        /*hovered-tertiary*/
-        --ht: #479647;
         /*'white'*/
-        --w: #1f1f1f;
+        --w: #313131;
         /*'black'*/
-        --b: #e8e8e8;
+        --b: #f1f1f1;
         /*box-shadows*/
         --bs1: #474747;
         --bs2: #575757;
