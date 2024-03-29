@@ -14,7 +14,7 @@ const ItemBrowser = (props) => {
     }
     useEffect(() => {
         if (typeof window === "undefined") return;
-        //on page load, therefore not SSR; nav to correct doc
+        // page load, therefore not SSR; nav to correct doc
         const doc = window.location.href.split("#")[1];
         if (!doc) {
             setDoc("This will display an item's contents when it is clicked.");
@@ -25,7 +25,7 @@ const ItemBrowser = (props) => {
     }, []);
     return (
         <span class={style.container}>
-            <div class={style.scrollable}>
+            <div class={`${style.scrollable} ${style['items-list']}`}>
                 <Scroll changeMenu={changeMenu} selectedButton={selectedButton}>
                     {titles}
                 </Scroll>
