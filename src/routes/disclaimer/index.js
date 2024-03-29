@@ -12,20 +12,24 @@ const Disclaimer = () => {
             </li>
 
             <li>
-                Users are solely responsible for the content they submit. 
+                Users are solely responsible for the content they submit.
                 I ask that all users confirm they have the rights to submit something before submitting it. 
                 I also ask that users refrain from submitting content if it is illegal, defamatory or if it may infringe on the rights of others.
             </li>
 
             <li>
+                By submitting content, you agree that some data may be collected for the purpose of moderation.
+            </li>
+
+            <li>
                 Content will be deleted at my discretion, as the maintainer of xtraea.com.
-                If you feel there is content on a page containing this disclaimer that should be removed, contact <a href="mailto:support@xtraea.com">this email</a>.
+                If you feel there is content on a page containing this disclaimer that should be removed, contact <a href="mailto:moderation@xtraea.com">this email</a>.
                 I do not assume responsibility for actively monitoring all content and cannot guarantee the immediate removal of material that violates point 2.
             </li>
 
             <li>
                 I claim no liability for consquences of users' actions.
-                If you believe that any content infringes upon your intellectual property rights, please contact me <a href="mailto:support@xtraea.com">here</a>.
+                If you believe that any content infringes upon your intellectual property rights, please contact me <a href="mailto:ipinfringement@xtraea.com">here</a>.
                 I reserve the right to remove any content at any point, without prior notice or explanation. I may take such action for any reason.
             </li>
         </ol>

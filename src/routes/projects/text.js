@@ -104,6 +104,12 @@ export const showcases = [
         name: "Embed Browser (Beta)",
         desc: "A tool, made to browse embeds made by the Embed Creator.",
         keywords: "embed creator browser external previews"
+    },
+    {
+        link: "/docs#API",
+        name: "API",
+        desc: "The API for this site, which can be used by individuals.",
+        keywords: "api backend program"
     }
 ];
 

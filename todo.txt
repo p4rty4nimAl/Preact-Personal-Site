@@ -1,26 +1,33 @@
 files done: {
     assets/* //add more as necessary
     manifest.json
-    packag*.json
+    package*.json
     tests/* // actually have tests?
     robots.txt
 }
 done areas {
-    404 page!!
-    home page!!
-    projects page!!
-        ciphers!!
-        poems!!
-        mcsp!!
-    README.md!!
+    404 page
+    home page
+    projects page
+        ciphers
+        poems
+        mcsp
+    README.md
 }
 todo: {
+    name the new poem
+
+    link to github? (where? portfolio?)
+    link to curseforge (portfolio?)
+
+    finish beta projects
+
     docs
     portfolio
     meta tags
     sw.js // last - no use?
     background creator 
 }
-potentials: {
+backlog: {
     hashkeycipher
 }

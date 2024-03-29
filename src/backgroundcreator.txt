@@ -16,11 +16,10 @@ DO THE CSS
 add gradient so that is applied properly
 write proper description once all features implemented (add github issues link? theres a lot that could go wrong)
 
-Lines done: 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14
+Lines done: 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 16
 Lines other: 1
 Lines wontfix: 5, 11
 
 issues:
     Lines TODO: 16, 17
     Lines later: 15
-    (16) gradient doesnt work under innerTransparent == true, no clue how to fix but by using the software without it it seems ~~fine~~ usable
