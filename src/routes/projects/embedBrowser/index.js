@@ -3,15 +3,24 @@ import { useState, useEffect } from "preact/hooks";
 import DeferredImage from "../../../components/deferredimage";
 import style from './style.css';
 
-const fetchData = async (page, items) => await (await fetch(`https://api.xtraea.com/v1/embed/list?page=${page}&items=${items}`)).json();
-const getTimeUntilExpiry = time => new Date(new Date(time + 7 * 24 * 60 * 60 * 1000) - new Date());
+const fetchData = (page, items) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve({}), 10000);
+        fetch(`https://api.xtraea.com/v1/embed/list?page=${page}&items=${items}`).then(result => {
+            resolve(result.json());
+        }).catch(() => reject({}));
+    });
+}
+// const fetchData = (page, items) => await (await fetch(`https://api.xtraea.com/v1/embed/list?page=${page}&items=${items}`)).json();
 
+const getTimeUntilExpiry = time => new Date(new Date(time + 7 * 24 * 60 * 60 * 1000) - new Date());
 
 const EmbedBrowser = () => {
     const [fetchedData, setData] = useState({});
     const [pageTotal, setPageTotal] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemCount, setItemCount] = useState(9);
+    const [loaded, setLoaded] = useState(0);
 
     // load things
     useEffect(() => {
@@ -19,6 +28,7 @@ const EmbedBrowser = () => {
             const response = await fetchData(currentPage, itemCount);
             setPageTotal(response.pages);
             setData(response.embeds);
+            setLoaded(Object.entries(response).length > 0 ? 1 : -1)
         })();
     }, [currentPage, itemCount]);
 
@@ -31,16 +41,16 @@ const EmbedBrowser = () => {
         <>
             <p><Link href="/disclaimer">Disclaimer</Link></p>
             {controls}
-            <EmbedPage displayData={fetchedData} />
+            {loaded ? <EmbedPage displayData={fetchedData} loadState={loaded} /> : <div class={style.loader} />}
             {pageTotal > 1 ? controls : ""}
             <footer />
         </>
     )
 }
 const EmbedPage = (props) => {
-    const {displayData} = props;
-    if (!displayData) return <p>Loading...</p>
-    let embeds = [];
+    const {displayData, loadState} = props;
+    if (!displayData) return loadState === 1 ? <p>No embeds!</p> : <p>Unable to access service!</p>
+    const embeds = [];
     for (const [id, value] of Object.entries(displayData)) {
         if (getTimeUntilExpiry(value.time) > 0) embeds.push(
             <EmbedDisplay 
@@ -103,7 +113,7 @@ const EmbedDisplay = (props) => {
     
         const timeValues = [days, hours, minutes, seconds];
     
-        return timeValues.map((value, index) => value !== 0 ? ` ${value}${times[index]}` : '');
+        return timeValues.map((value, index) => value !== 0 ? ` ${value}${times[index]}` : '').filter(value => value !== '');
     }
     
     return (
