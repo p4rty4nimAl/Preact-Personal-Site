@@ -1,10 +1,7 @@
 import style from './style.css';
 
-const Searchbar = (props) => {
-    const {parent} = props;
-    const handleChange = (event) => {
-        parent.search(event.target.value, parent.props.items);
-    }
+const Searchbar = ({searchFunction}) => {
+    const handleChange = event => searchFunction(event.target.value);
     return (
         <span class={style.searchbar}>
             <input placeholder="Search..." onInput={handleChange} autoFocus />
