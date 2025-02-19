@@ -23,19 +23,13 @@ export /* abstract */ class Cipher extends Component {
 
     decipher(keepCase) {
         const output = this.outputTextBox.current.value;
-        if (keepCase) {
-            this.inputTextBox.current.value = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ");
-        } else {
-            this.inputTextBox.current.value = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ").toLowerCase();
-        }
+        const decipheredString = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ");
+        this.inputTextBox.current.value = keepCase ? decipheredString : decipheredString.toLowerCase();
     }
     encipher(keepCase) {
         const input = this.inputTextBox.current.value;
-        if (keepCase) {
-            this.outputTextBox.current.value = this.reverseString(this.bEF(this.reverseString(this.bEF(input)))).replaceAll("`", " ");
-        } else {
-            this.outputTextBox.current.value = this.reverseString(this.bEF(this.reverseString(this.bEF(input)))).replaceAll("`", " ").toLowerCase();
-        }
+        const encipheredString = this.reverseString(this.bEF(this.reverseString(this.bEF(input)))).replaceAll("`", " ");
+        this.outputTextBox.current.value = keepCase ? encipheredString : encipheredString.toLowerCase();
     }
 
     render() {

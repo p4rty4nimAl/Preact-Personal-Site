@@ -8,10 +8,10 @@ const Showcases = ({items}) => {
     const [showcaseWidgets, setShowcaseWidgets] = useState(items.map(item => <Showcase item={item} key={item.link} />));
 
     const search = query => { 
-        //const showcaseWidgets = items.filter(item => item.keywords.includes(query.toLowerCase()))
-        //    .map(item => <Showcase item={item} key={item.link} />);
         const showcaseWidgets = [];
-        for (let i = 0; i < items.length; i++) if (items[i].keywords.includes(query.toLowerCase())) showcaseWidgets.push(<Showcase item={items[i]} key={items[i].link} />); 
+        for (let i = 0; i < items.length; i++) 
+            if (items[i].keywords.includes(query.toLowerCase())) 
+                showcaseWidgets.push(<Showcase item={items[i]} key={items[i].link} />); 
         setShowcaseWidgets(showcaseWidgets);
     };
     
