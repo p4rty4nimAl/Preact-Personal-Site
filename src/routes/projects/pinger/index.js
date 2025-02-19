@@ -11,8 +11,8 @@ const Pinger = () => {
     request.onreadystatechange = () => {
         if (request.readyState === 4 && request.status === 200) {
             const responseJSON = JSON.parse(request.responseText);
-            const playerCount = responseJSON.players.max === 0 ? "Invalid IP/Server offline!" : `${responseJSON.players.now}/${responseJSON.players.max} players online!`;
-            const playerList = responseJSON.players.sample.map(player => player.name)
+            const playerCount = responseJSON.players.max === 0 ? "Invalid IP/Server offline!" : `${responseJSON.players.online}/${responseJSON.players.max} players online!`;
+            const playerList = responseJSON.players?.sample?.map(player => player.name) ?? "";
             setOutput(playerCount);
             setPlayerList(playerList);
         }
