@@ -110,6 +110,12 @@ export const showcases = [
         name: "API",
         desc: "The API for this site, which can be used by individuals.",
         keywords: "api backend program"
+    },
+    {
+        link: "/projects/subSolver",
+        name: "Substitution Cipher Solver",
+        desc: "Tool to aid solving a ciphertext enciphered with a substitution cipher",
+        keywords: "substitution cipher solver subsolver"
     }
 ];
 

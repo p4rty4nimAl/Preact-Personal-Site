@@ -1,0 +1,13 @@
+.description {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+.ring {
+    padding-top: 10px;
+    overflow-x: scroll;
+}
+.ringlayer {
+    display: flex;
+    flex-direction: row;
+}
