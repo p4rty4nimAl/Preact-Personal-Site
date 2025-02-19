@@ -1,11 +1,13 @@
-import style from './style.css';
+import { docs } from './docs.js';
+import ItemBrowser from '../../components/itembrowser/index.js';
 
-const Docs = () => { 
-    return (
-        <div>
-            <p>docs</p>
-        </div>
-    );
+import text from '../projects/text.js'
+
+const DocWrapper = () => {
+    return <ItemBrowser 
+        titles={text.map((element, id) => ({title: element.name, id, desc: docs[element.name]}))}
+        items={docs}
+    />
 }
 
-export default Docs;
+export default DocWrapper;

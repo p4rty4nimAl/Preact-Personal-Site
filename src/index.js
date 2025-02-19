@@ -14,7 +14,7 @@ import Projects from './routes/projects';
     import EmbedBrowser from 'async!./routes/projects/embedBrowser';
     import Disclaimer from 'async!./routes/disclaimer';
 import Portfolio from "./routes/portfolio";
-import Docs from "./routes/docs";
+import DocWrapper from "./routes/docs";
 import Error from './routes/error';
 
 const Routes = <Router>
@@ -35,11 +35,11 @@ const Routes = <Router>
         <EmbedCreator path='/projects/embedCreator' />
         <EmbedBrowser path='/projects/embedBrowser' />
     <Portfolio path="/portfolio/" />
-    <Docs path="/docs/" />
     <Disclaimer path="/disclaimer/" />
 
     <Error default />
 </Router>
+            <DocWrapper path="/docs/" />
 
 const App = () => {
     return (
