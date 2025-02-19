@@ -38,7 +38,6 @@ const App = () => (
                 <PoemWrapper path='/projects/poetry/' />
                 <CirclesCreator path='/projects/wallpapers/circles/' />
                 <CirclesCreator path='/projects/backgroundcreator' />
-                <GradientsCreator path='/projects/wallpapers/gradients/' />
                 <EmbedCreator path='/projects/embedCreator' />
                 <EmbedBrowser path='/projects/embedBrowser' />
                 <SubSolver path='/projects/subSolver' />
