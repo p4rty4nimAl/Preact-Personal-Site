@@ -151,21 +151,15 @@ var Cipher = /*#__PURE__*/function (_Component) {
     key: "decipher",
     value: function decipher(keepCase) {
       var output = this.outputTextBox.current.value;
-      if (keepCase) {
-        this.inputTextBox.current.value = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ");
-      } else {
-        this.inputTextBox.current.value = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ").toLowerCase();
-      }
+      var decipheredString = this.bDF(this.reverseString(this.bDF(this.reverseString(output)))).replaceAll("`", " ");
+      this.inputTextBox.current.value = keepCase ? decipheredString : decipheredString.toLowerCase();
     }
   }, {
     key: "encipher",
     value: function encipher(keepCase) {
       var input = this.inputTextBox.current.value;
-      if (keepCase) {
-        this.outputTextBox.current.value = this.reverseString(this.bEF(this.reverseString(this.bEF(input)))).replaceAll("`", " ");
-      } else {
-        this.outputTextBox.current.value = this.reverseString(this.bEF(this.reverseString(this.bEF(input)))).replaceAll("`", " ").toLowerCase();
-      }
+      var encipheredString = this.reverseString(this.bEF(this.reverseString(this.bEF(input)))).replaceAll("`", " ");
+      this.outputTextBox.current.value = keepCase ? encipheredString : encipheredString.toLowerCase();
     }
   }, {
     key: "render",
@@ -350,7 +344,7 @@ var HashedCipher = /*#__PURE__*/function (_KeyedCipher) {
 
 "use strict";
 // extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"entry":"entry__gsTuz","selected":"selected__yDgGZ"});
+/* harmony default export */ __webpack_exports__["a"] = ({"entry":"entry__gsTuz","after":"after__ShKnY","selected":"selected__yDgGZ","divider":"divider__MOLG2","collapse-control":"collapse-control__+8Byx","collapsed":"collapsed__ZJA7e"});
 
 /***/ }),
 
@@ -421,22 +415,37 @@ var showcases = [{
   link: "/projects/poetry",
   name: "Poems",
   desc: "A collection of poems written by me.",
-  keywords: "ignorance someone else's panopticon poems poetry"
+  keywords: "poems poetry"
 }, {
   link: "/projects/mcserverping",
   name: "Minecraft Server Pinger",
   desc: "A quick tool to check who is online on a specified Minecraft: Java Edition server, and a few more things.",
   keywords: "minecraft server pinger mc"
 }, {
-  link: "/projects/backgroundcreator",
-  name: "Background Creator (Beta)",
-  desc: "A powerful tool which allows for creation of backgrounds (wallpapers) using only circles and layers.",
-  keywords: "background creator circles layers wallpaper (beta)"
+  link: "/projects/wallpapers/circles",
+  name: "Circles (Beta)",
+  desc: "A powerful tool which allows for creation of wallpapers using only circles and layers.",
+  keywords: "background creator circles layers wallpapers (beta)"
 }, {
   link: "/projects/embedCreator",
   name: "Embed Creator (Beta)",
   desc: "A tool to create custom link embeds on external sites that display link previews.",
   keywords: "embed creator external previews (beta)"
+}, {
+  link: "/projects/embedBrowser",
+  name: "Embed Browser (Beta)",
+  desc: "A tool, made to browse embeds made by the Embed Creator.",
+  keywords: "embed creator browser external previews"
+}, {
+  link: "/docs#API",
+  name: "API",
+  desc: "The API for this site, which can be used by individuals.",
+  keywords: "api backend program"
+}, {
+  link: "/projects/subSolver",
+  name: "Substitution Cipher Solver",
+  desc: "Tool to aid solving a ciphertext enciphered with a substitution cipher",
+  keywords: "substitution cipher solver subsolver"
 }];
 /* harmony default export */ __webpack_exports__["a"] = (showcases);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
@@ -486,6 +495,15 @@ var Home = function Home() {
 
 /***/ }),
 
+/***/ "4hVv":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"ciphercontainer":"ciphercontainer__B8ur2","small":"small__L6WDr"});
+
+/***/ }),
+
 /***/ "59Wk":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -501,16 +519,15 @@ var Home = function Home() {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("59Wk");
 
-var Searchbar = function Searchbar(props) {
-  var parent = props.parent;
-  var handleChange = function handleChange(event) {
-    parent.search(event.target.value, parent.props.items);
-  };
+var Searchbar = function Searchbar(_ref) {
+  var searchFunction = _ref.searchFunction;
   return h("span", {
     class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].searchbar
   }, h("input", {
     placeholder: "Search...",
-    onInput: handleChange,
+    onInput: function onInput(event) {
+      return searchFunction(event.target.value);
+    },
     autoFocus: true
   }), h("button", null, h("img", {
     src: "/assets/search.png",
@@ -544,108 +561,96 @@ var Searchbar = function Searchbar(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(Fragment) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Showcase; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("dwRq");
-/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("ox/y");
-/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(preact_router_match__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _searchbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("5PBX");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Showcase; });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("dwRq");
+/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ox/y");
+/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(preact_router_match__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _searchbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("5PBX");
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("QRet");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
-var Showcases = /*#__PURE__*/function (_Component) {
-  _inherits(Showcases, _Component);
-  var _super = _createSuper(Showcases);
-  function Showcases(props) {
-    var _this;
-    _classCallCheck(this, Showcases);
-    _this = _super.call(this, props);
-    var showcaseWidgets = props.items.filter(function (item) {
-      return !item.hidden;
-    }).map(function (item) {
-      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Showcase, {
+var Showcases = function Showcases(_ref) {
+  var items = _ref.items;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_3__[/* useState */ "c"])(items.map(function (item) {
+      return h(Showcase, {
         item: item,
         key: item.link
       });
-    });
-    _this.state = {
-      showcaseWidgets: showcaseWidgets
-    };
-    return _this;
-  }
-  _createClass(Showcases, [{
-    key: "render",
-    value: function render() {
-      // style written like that due to the '-' in the name
-      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("header", {
-        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].spacer
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]["showcase-container"]
-      }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(_searchbar__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"], {
-        parent: this
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("div", null, this.state.showcaseWidgets)));
-    }
-  }, {
-    key: "search",
-    value: function search(query, items) {
-      query = query.toLowerCase();
-      var showcaseWidgets = items.filter(function (item) {
-        return item.keywords.includes(query);
-      }).map(function (item) {
-        return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Showcase, {
-          item: item,
-          key: item.link
-        });
-      });
-      this.setState({
-        showcaseWidgets: showcaseWidgets
-      });
-    }
-  }]);
-  return Showcases;
-}(preact__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+    })),
+    _useState2 = _slicedToArray(_useState, 2),
+    showcaseWidgets = _useState2[0],
+    setShowcaseWidgets = _useState2[1];
+  var search = function search(query) {
+    var showcaseWidgets = [];
+    for (var i = 0; i < items.length; i++) if (items[i].keywords.includes(query.toLowerCase())) showcaseWidgets.push(h(Showcase, {
+      item: items[i],
+      key: items[i].link
+    }));
+    setShowcaseWidgets(showcaseWidgets);
+  };
+
+  // style written like that due to the '-' in the name
+  return h(Fragment, null, h("header", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].spacer
+  }), h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]["showcase-container"]
+  }, h(_searchbar__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"], {
+    searchFunction: search
+  }), h("div", null, showcaseWidgets)));
+};
 var Showcase = function Showcase(props) {
   var item = props.item;
   var name = item.name,
     desc = item.desc,
     link = item.link;
-  return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].showcase
-  }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].header
-  }, name), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].desc
-  }, desc), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_router_match__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].link,
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].showcase
+  }, h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].header
+  }, name), h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].desc
+  }, desc), h(preact_router_match__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].link,
     href: link
-  }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("button", null, "Go!")));
+  }, h("button", null, "Go!")));
 };
 /* harmony default export */ __webpack_exports__["b"] = (Showcases);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["Fragment"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
 
 /***/ }),
 
-/***/ "9ZoI":
+/***/ "9l6j":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // extracted by mini-css-extract-plugin
-/* unused harmony default export */ var _unused_webpack_default_export = ({"home":"home__TjhaP","bg":"bg__Po6T5"});
+/* harmony default export */ __webpack_exports__["a"] = ({"controlsContainer":"controlsContainer__f3qy9","layerControl":"layerControl__IJ1XI","description":"description__-kJqm","divider":"divider__-CktU"});
+
+/***/ }),
+
+/***/ "A/Mm":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"description":"description__Ny-kA","ring":"ring__HMH+X","ringlayer":"ringlayer__BeVO0"});
+
+/***/ }),
+
+/***/ "Bh3c":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"ToggleSwitch":"ToggleSwitch__UL4Zl","checkbox":"checkbox__o5gE7","slide":"slide__NCseI","invert":"invert__Ewe+e","inP":"inP__nXILz"});
 
 /***/ }),
 
@@ -658,13 +663,140 @@ var Showcase = function Showcase(props) {
 var Disclaimer = function Disclaimer() {
   return h("p", {
     class: _style__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].disclaimerbody
-  }, "DISCLAIMER: User-Generated Content", h("br", null), "There are pages upon this website (xtraea.com) that feature content generated by users. By using this website, you acknowledge the following:", h("br", null), h("ol", null, h("li", null, "The content displayed on web pages (where a link to this disclaimer can be found) is generated by users and as such is not representative of my views."), h("li", null, "Users are solely responsible for the content they submit. I ask that all users confirm they have the rights to submit something before submitting it. I also ask that users refrain from submitting content if it is illegal, defamatory or if it may infringe on the rights of others."), h("li", null, "Content will be deleted at my discretion, as the maintainer of xtraea.com. If you feel there is content on a page containing this disclaimer that should be removed, contact ", h("a", {
-    href: "mailto:support@xtraea.com"
+  }, "DISCLAIMER: User-Generated Content", h("br", null), "There are pages upon this website (xtraea.com) that feature content generated by users. By continuing to use this website, you acknowledge the following:", h("br", null), h("ol", null, h("li", null, "The content displayed on web pages (where a link to this disclaimer can be found) is generated by users and as such is not representative of my views."), h("li", null, "Users are solely responsible for the content they submit. I ask that all users confirm they have the rights to submit something before submitting it. I also ask that users refrain from submitting content if it is illegal, defamatory or if it may infringe on the rights of others."), h("li", null, "By submitting content, you agree that some data (IP address) may be collected for the purpose of moderation."), h("li", null, "Content will be deleted at my discretion, as the maintainer of xtraea.com. If you feel there is content on a page containing this disclaimer that should be removed, contact ", h("a", {
+    href: "mailto:moderation@xtraea.com"
   }, "this email"), ". I do not assume responsibility for actively monitoring all content and cannot guarantee the immediate removal of material that violates point 2."), h("li", null, "I claim no liability for consquences of users' actions. If you believe that any content infringes upon your intellectual property rights, please contact me ", h("a", {
-    href: "mailto:support@xtraea.com"
-  }, "here"), ". I reserve the right to remove any content at any point, without prior notice or explanation. I may take such action for any reason.")), "Beware: external links on this website are not monitored by me, and as such care should be taken when following them.");
+    href: "mailto:ipinfringement@xtraea.com"
+  }, "here"), ". I reserve the right to remove any content at any point, without prior notice or explanation. I may take such action for any reason.")), "Beware: external links on this website are not monitored, and as such care should be taken when following them.");
 };
 /* harmony default export */ __webpack_exports__["a"] = (Disclaimer);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "CExE":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("A/Mm");
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("QRet");
+/* harmony import */ var _components_switches_toggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("xHa7");
+/* harmony import */ var _components_textcontainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("aePd");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
+
+
+
+
+var TranslationRing = function TranslationRing(_ref) {
+  var orderedCipherData = _ref.orderedCipherData,
+    substitutionAlphabet = _ref.substitutionAlphabet,
+    setSubAlpha = _ref.setSubAlpha;
+  var makePushCharFunc = function makePushCharFunc(idx) {
+    return function (char) {
+      // make a copy
+      var newSubAlpha = _toConsumableArray(substitutionAlphabet);
+      newSubAlpha[idx] = char;
+      setSubAlpha(newSubAlpha);
+    };
+  };
+  var presetArray = [];
+  var subAlphaInputs = [];
+  for (var i = 0; i < orderedCipherData.length; i++) {
+    presetArray.push(h(_components_textcontainer__WEBPACK_IMPORTED_MODULE_4__[/* TextContainerChar */ "a"], {
+      presetLetter: orderedCipherData[i]
+    }));
+    subAlphaInputs.push(h(_components_textcontainer__WEBPACK_IMPORTED_MODULE_4__[/* TextContainerChar */ "a"], {
+      pushChar: makePushCharFunc(i)
+    }));
+  }
+  return h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].ring
+  }, h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].ringlayer
+  }, presetArray), h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].ringlayer
+  }, subAlphaInputs));
+};
+var SubSolver = function SubSolver() {
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_2__[/* useState */ "c"])(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    cipherText = _useState2[0],
+    setCipherText = _useState2[1];
+  var cipherData = {};
+  for (var i = 0; i < cipherText.length; i++) {
+    var _cipherData$cipherTex;
+    cipherData[cipherText[i]] = ((_cipherData$cipherTex = cipherData[cipherText[i]]) !== null && _cipherData$cipherTex !== void 0 ? _cipherData$cipherTex : 0) + 1;
+  }
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_2__[/* useState */ "c"])(new Array(cipherText.length)),
+    _useState4 = _slicedToArray(_useState3, 2),
+    orderedCipherData = _useState4[0],
+    setCipherOrder = _useState4[1];
+  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_2__[/* useState */ "c"])(new Array(orderedCipherData.length).fill("")),
+    _useState6 = _slicedToArray(_useState5, 2),
+    substitutionAlphabet = _useState6[0],
+    setSubAlpha = _useState6[1];
+  var _useState7 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_2__[/* useState */ "c"])(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    copyTextThrough = _useState8[0],
+    setTextMethod = _useState8[1];
+  var updateCipherText = function updateCipherText(cipherText) {
+    setCipherText(cipherText);
+    // sort cipher data by the following criteria: most to least frequent; where frequency equal, sort alphabetically.
+    // then, map it into an array without freq. data.
+    setCipherOrder(Object.entries(cipherData).sort(function (a, b) {
+      return a[1] === b[1] ? a[0].charCodeAt(0) - b[0].charCodeAt(0) : b[1] - a[1];
+    }).map(function (val) {
+      return val[0];
+    }));
+  };
+  var plaintext = "";
+  var converter = {};
+  for (var _i2 = 0; _i2 < orderedCipherData.length; _i2++) {
+    var charExistForConversion = !(substitutionAlphabet[_i2] === undefined || substitutionAlphabet[_i2].length === 0);
+    converter[orderedCipherData[_i2]] = charExistForConversion ? substitutionAlphabet[_i2] : copyTextThrough ? orderedCipherData[_i2] : " ";
+  }
+  for (var _i3 = 0; _i3 < cipherText.length; _i3++) {
+    var _converter$cipherText;
+    // occasional race condition where most recent char typed is undefined in converter?
+    plaintext += (_converter$cipherText = converter[cipherText[_i3]]) !== null && _converter$cipherText !== void 0 ? _converter$cipherText : copyTextThrough ? cipherText[_i3] : " ";
+    //plaintext = plaintext.replaceAll(orderedCipherData[i], substitutionAlphabet[i] ?? (copyTextThrough ? orderedCipherData[i] : " "));
+  }
+
+  var decipherEnabled = cipherText.length !== 0;
+  return h(preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].description
+  }, "This tool can aid with solving a ciphertext that has been enciphered with a substitution cipher.", h("br", null), "Paste the ciphertext you would like to work with below!", h("br", null), h("a", {
+    href: "https://en.wikipedia.org/wiki/Letter_frequency"
+  }, "Letter frequency"), " can be exploited due to ordering from most to least common."), h(_components_textcontainer__WEBPACK_IMPORTED_MODULE_4__[/* TextContainerLarge */ "b"], {
+    setExternalText: updateCipherText,
+    lockable: true
+  }), decipherEnabled && h(preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].switchText
+  }, "Copy text through ", h(_components_switches_toggle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"], {
+    syncExternalState: setTextMethod,
+    inText: true
+  })), h(TranslationRing, {
+    orderedCipherData: orderedCipherData,
+    setSubAlpha: setSubAlpha,
+    substitutionAlphabet: substitutionAlphabet
+  }), h(_components_textcontainer__WEBPACK_IMPORTED_MODULE_4__[/* TextContainerLarge */ "b"], {
+    setInternalText: plaintext,
+    readOnly: true
+  })));
+};
+/* harmony default export */ __webpack_exports__["a"] = (SubSolver);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
 
 /***/ }),
@@ -688,11 +820,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var ItemBrowser = function ItemBrowser(props) {
   var titles = props.titles,
     items = props.items;
-  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
     _useState2 = _slicedToArray(_useState, 2),
     displayedDoc = _useState2[0],
     setDoc = _useState2[1];
-  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
     _useState4 = _slicedToArray(_useState3, 2),
     selectedButton = _useState4[0],
     setSelectedButton = _useState4[1];
@@ -700,13 +832,21 @@ var ItemBrowser = function ItemBrowser(props) {
     return url === null || url === void 0 ? void 0 : url.replace(/[():' ]/g, "");
   };
   var changeMenu = function changeMenu(title) {
-    setDoc(items[title]);
+    var doc = items[title];
+    if (Array.isArray(doc)) {
+      doc = doc.map(function (item, i) {
+        return [item, h("br", {
+          key: i
+        })];
+      }).flat();
+    }
+    setDoc(doc);
     setSelectedButton(title);
     window.location.href = "".concat(window.location.href.split("#")[0], "#").concat(formatForURL(title));
   };
   Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useEffect */ "a"])(function () {
     if (typeof window === "undefined") return;
-    //on page load, therefore not SSR; nav to correct doc
+    // page load, therefore not SSR; nav to correct doc
     var doc = window.location.href.split("#")[1];
     if (!doc) {
       setDoc("This will display an item's contents when it is clicked.");
@@ -721,13 +861,11 @@ var ItemBrowser = function ItemBrowser(props) {
   return h("span", {
     class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].container
   }, h("div", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].scrollable
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].scrollable, " ").concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]['items-list'])
   }, h(_components_scroll___WEBPACK_IMPORTED_MODULE_2__[/* Scroll */ "a"], {
     changeMenu: changeMenu,
     selectedButton: selectedButton
   }, titles)), h("div", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].divider
-  }), h("div", {
     class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].scrollable
   }, displayedDoc));
 };
@@ -745,7 +883,935 @@ var ItemBrowser = function ItemBrowser(props) {
 
 /***/ }),
 
-/***/ "EsVX":
+/***/ "FA6U":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"home":"home__uRcqa"});
+
+/***/ }),
+
+/***/ "Flre":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("6YPM");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var Pinger = function Pinger() {
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState2 = _slicedToArray(_useState, 2),
+    rawAddress = _useState2[0],
+    setAddress = _useState2[1];
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    output = _useState4[0],
+    setOutput = _useState4[1];
+  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    playerList = _useState6[0],
+    setPlayerList = _useState6[1];
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState === 4 && request.status === 200) {
+      var _responseJSON$players, _responseJSON$players2, _responseJSON$players3;
+      var responseJSON = JSON.parse(request.responseText);
+      var playerCount = responseJSON.players.max === 0 ? "Invalid IP/Server offline!" : "".concat(responseJSON.players.online, "/").concat(responseJSON.players.max, " players online!");
+      var _playerList = (_responseJSON$players = (_responseJSON$players2 = responseJSON.players) === null || _responseJSON$players2 === void 0 ? void 0 : (_responseJSON$players3 = _responseJSON$players2.sample) === null || _responseJSON$players3 === void 0 ? void 0 : _responseJSON$players3.map(function (player) {
+        return player.name;
+      })) !== null && _responseJSON$players !== void 0 ? _responseJSON$players : "";
+      setOutput(playerCount);
+      setPlayerList(_playerList);
+    }
+  };
+  var gather = function gather() {
+    // 25565 == Minecraft: JE default port
+    var _rawAddress$split = rawAddress.split(":"),
+      _rawAddress$split2 = _slicedToArray(_rawAddress$split, 2),
+      address = _rawAddress$split2[0],
+      _rawAddress$split2$ = _rawAddress$split2[1],
+      port = _rawAddress$split2$ === void 0 ? 25565 : _rawAddress$split2$;
+    request.open("GET", "https://api.xtraea.com/v0/minecraft_server_status?ip=".concat(address, "&port=").concat(port));
+    request.send();
+  };
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].pinger
+  }, h("p", null, "Enter the server's address (and port, if applicable): "), h("br", null), h("input", {
+    onChange: function onChange(event) {
+      return setAddress(event.target.value);
+    },
+    type: "text"
+  }), h("br", null), h("button", {
+    onclick: gather
+  }, "Click to ping the server for information!"), h("br", null), h("p", null, "The results will be displayed below: "), h(DisplayOutput, {
+    output: output,
+    playerList: playerList
+  }));
+};
+//TODO: maybe make into player cards? have skin head shown? + fits with theme of site
+//TODO: move into components; does it really belong here? - cant exactly be reused
+var DisplayOutput = function DisplayOutput(props) {
+  var output = props.output,
+    playerList = props.playerList;
+  var linkArray = [];
+  for (var i = 0; i < (playerList === null || playerList === void 0 ? void 0 : playerList.length); i++) {
+    // drop entries injected by server software to advertise
+    if (playerList[i].includes("§")) continue;
+    linkArray.push(h(Fragment, null, h("a", {
+      href: "https://namemc.com/profile/".concat(playerList[i])
+    }, playerList[i]), h("br", null)));
+  }
+  return h(Fragment, null, h("p", null, output), h("p", null, linkArray));
+};
+/* harmony default export */ __webpack_exports__["a"] = (Pinger);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+
+/***/ }),
+
+/***/ "GCDP":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nxe/");
+/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("Y3FI");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var InputForm = function InputForm(props) {
+  var type = props.type,
+    update = props.update;
+  return h(Fragment, null, h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inputTag
+  }, h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].descriptionTag
+  }, type, ": "), h("textarea", {
+    maxlength: "500",
+    rows: "1",
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag,
+    onChange: update,
+    placeholder: "optional..."
+  })), h("br", null));
+};
+var OutputDisplay = function OutputDisplay(props) {
+  var URLID = props.URLID,
+    linkName = props.linkName;
+  var url = "https://api.xtraea.com/v1/embed?s=".concat(URLID);
+  if (linkName) url = "[".concat(linkName, "](").concat(url, ")");
+  var copyLink = function copyLink() {
+    var _navigator;
+    if (typeof window === "undefined" || typeof ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.clipboard) === "undefined") return;
+    navigator.clipboard.writeText(url);
+  };
+  return h(Fragment, null, h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputContainer
+  }, h("input", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag, " ").concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].output),
+    readonly: true,
+    value: url
+  }), h("button", {
+    onClick: copyLink,
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputButton
+  }, "Copy to clipboard")));
+};
+var EmbedCreator = function EmbedCreator() {
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState2 = _slicedToArray(_useState, 2),
+    title = _useState2[0],
+    setTitle = _useState2[1];
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    description = _useState4[0],
+    setDescription = _useState4[1];
+  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    image = _useState6[0],
+    setImage = _useState6[1];
+  var _useState7 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState8 = _slicedToArray(_useState7, 2),
+    color = _useState8[0],
+    setColor = _useState8[1];
+  var _useState9 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])({}),
+    _useState10 = _slicedToArray(_useState9, 2),
+    prevHeaders = _useState10[0],
+    setPrevHeaders = _useState10[1];
+  var _useState11 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(),
+    _useState12 = _slicedToArray(_useState11, 2),
+    linkname = _useState12[0],
+    setLinkname = _useState12[1];
+  var _useState13 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])("..."),
+    _useState14 = _slicedToArray(_useState13, 2),
+    outputURL = _useState14[0],
+    setOutput = _useState14[1];
+  var submit = function submit() {
+    var headers = {
+      title: title,
+      description: description,
+      image: image,
+      color: color
+    };
+    // if (no previous headers) or (at least one is unique), pass check/make request
+    if (typeof prevHeaders === 'undefined' || Object.entries(headers).some(function () {
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ["", ""],
+        _ref2 = _slicedToArray(_ref, 2),
+        name = _ref2[0],
+        value = _ref2[1];
+      return prevHeaders[name] !== value;
+    })) fetch("https://api.xtraea.com/v1/embed", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(headers)
+    }).then(function (response) {
+      return response.json();
+    }).then(function (result) {
+      setPrevHeaders(headers);
+      setOutput(result.response);
+    }).catch(function () {
+      setOutput("..."); // default value
+    });
+
+    return;
+  };
+  return h(Fragment, null, h("br", null), h("p", null, h(preact_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: "/disclaimer"
+  }, "Disclaimer")), h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textDescription
+  }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Link name: on sites supporting ", h("a", {
+    href: "https://en.wikipedia.org/wiki/Markdown"
+  }, "Markdown"), ", the link can be 'hidden' under custom text, as the word Markdown is here.", h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.", h("br", null), "Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it.", h("br", null), "Note that all fields are limited to 500 characters."), h(InputForm, {
+    type: "Link name",
+    update: function update(e) {
+      return setLinkname(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Title",
+    update: function update(e) {
+      return setTitle(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Description",
+    update: function update(e) {
+      return setDescription(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Image",
+    update: function update(e) {
+      return setImage(e.target.value);
+    }
+  }), h(InputForm, {
+    type: "Color",
+    update: function update(e) {
+      return setColor(e.target.value);
+    }
+  }), h("br", null), h("button", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].submitButton,
+    onClick: submit
+  }, "Generate embed link"), h("button", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].submitButton,
+    onClick: function onClick() {
+      setLinkname("᲼"); // invisible character
+      submit(true);
+    }
+  }, "Generate invisible embed link"), h("br", null), h("br", null), h("br", null), h(OutputDisplay, {
+    URLID: outputURL,
+    linkName: linkname
+  }));
+};
+/* harmony default export */ __webpack_exports__["a"] = (EmbedCreator);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+
+/***/ }),
+
+/***/ "GFNa":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "HRRe":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scroll; });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2Szp");
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QRet");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var Scroll = function Scroll(props) {
+  var children = props.children,
+    changeMenu = props.changeMenu,
+    selectedButton = props.selectedButton;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isHidden = _useState2[0],
+    setHidden = _useState2[1];
+  var childNodes = children.map(function (child, index) {
+    return h(ScrollEntry, {
+      key: index,
+      highlight: selectedButton === child.title,
+      onclick: function onclick() {
+        return changeMenu(child.title);
+      },
+      title: child.title
+    });
+  });
+  document.querySelector(':root').style.setProperty("--sw", isHidden ? "0%" : "25%");
+  return h(Fragment, null, h("button", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]['collapse-control'], " ").concat(isHidden ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].collapsed : ""),
+    onClick: function onClick() {
+      setHidden(!isHidden);
+    }
+  }, "V"), h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].divider
+  }), childNodes);
+};
+var ScrollEntry = function ScrollEntry(props) {
+  var title = props.title,
+    onclick = props.onclick,
+    highlight = props.highlight;
+  return h(Fragment, null, h("button", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].entry, " ").concat(highlight ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].selected : ""),
+    onClick: onclick
+  }, title), h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].after
+  }));
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+
+/***/ }),
+
+/***/ "HjHG":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"disclaimerbody":"disclaimerbody__ItAv-"});
+
+/***/ }),
+
+/***/ "HteQ":
+/***/ (function(module, exports) {
+
+module.exports = require("preact");
+
+/***/ }),
+
+/***/ "O2Vz":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("UnQz");
+/* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2kgO");
+/* harmony import */ var _components_showcases__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("8M9P");
+/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Y3FI");
+
+
+
+
+var Projects = function Projects() {
+  return h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].showcases
+  }, h(_components_showcases__WEBPACK_IMPORTED_MODULE_2__[/* default */ "b"], {
+    items: _text__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]
+  }), h("p", null, "This is where all my projects are stored. Click any you like the look of!", h("br", null), h(preact_router__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    href: "/",
+    rel: "noopener noreferrer"
+  }, "Home")), h("footer", null));
+};
+/* harmony default export */ __webpack_exports__["a"] = (Projects);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "QRet":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export useCallback */
+/* unused harmony export useContext */
+/* unused harmony export useDebugValue */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return h; });
+/* unused harmony export useErrorBoundary */
+/* unused harmony export useId */
+/* unused harmony export useImperativeHandle */
+/* unused harmony export useLayoutEffect */
+/* unused harmony export useMemo */
+/* unused harmony export useReducer */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return p; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+
+var t,
+  r,
+  u,
+  i,
+  o = 0,
+  f = [],
+  c = [],
+  e = preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b,
+  a = preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r,
+  v = preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed,
+  l = preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c,
+  m = preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount;
+function d(t, u) {
+  preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h && preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h(r, t, o || u), o = 0;
+  var i = r.__H || (r.__H = {
+    __: [],
+    __h: []
+  });
+  return t >= i.__.length && i.__.push({
+    __V: c
+  }), i.__[t];
+}
+function p(n) {
+  return o = 1, y(B, n);
+}
+function y(n, u, i) {
+  var o = d(t++, 2);
+  if (o.t = n, !o.__c && (o.__ = [i ? i(u) : B(void 0, u), function (n) {
+    var t = o.__N ? o.__N[0] : o.__[0],
+      r = o.t(t, n);
+    t !== r && (o.__N = [r, o.__[1]], o.__c.setState({}));
+  }], o.__c = r, !r.u)) {
+    r.u = !0;
+    var f = r.shouldComponentUpdate;
+    r.shouldComponentUpdate = function (n, t, r) {
+      if (!o.__c.__H) return !0;
+      var u = o.__c.__H.__.filter(function (n) {
+        return n.__c;
+      });
+      if (u.every(function (n) {
+        return !n.__N;
+      })) return !f || f.call(this, n, t, r);
+      var i = !1;
+      return u.forEach(function (n) {
+        if (n.__N) {
+          var t = n.__[0];
+          n.__ = n.__N, n.__N = void 0, t !== n.__[0] && (i = !0);
+        }
+      }), !(!i && o.__c.props === n) && (!f || f.call(this, n, t, r));
+    };
+  }
+  return o.__N || o.__;
+}
+function h(u, i) {
+  var o = d(t++, 3);
+  !preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s && z(o.__H, i) && (o.__ = u, o.i = i, r.__H.__h.push(o));
+}
+function s(u, i) {
+  var o = d(t++, 4);
+  !preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s && z(o.__H, i) && (o.__ = u, o.i = i, r.__h.push(o));
+}
+function _(n) {
+  return o = 5, F(function () {
+    return {
+      current: n
+    };
+  }, []);
+}
+function A(n, t, r) {
+  o = 6, s(function () {
+    return "function" == typeof n ? (n(t()), function () {
+      return n(null);
+    }) : n ? (n.current = t(), function () {
+      return n.current = null;
+    }) : void 0;
+  }, null == r ? r : r.concat(n));
+}
+function F(n, r) {
+  var u = d(t++, 7);
+  return z(u.__H, r) ? (u.__V = n(), u.i = r, u.__h = n, u.__V) : u.__;
+}
+function T(n, t) {
+  return o = 8, F(function () {
+    return n;
+  }, t);
+}
+function q(n) {
+  var u = r.context[n.__c],
+    i = d(t++, 9);
+  return i.c = n, u ? (null == i.__ && (i.__ = !0, u.sub(r)), u.props.value) : n.__;
+}
+function x(t, r) {
+  preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue && preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue(r ? r(t) : t);
+}
+function P(n) {
+  var u = d(t++, 10),
+    i = p();
+  return u.__ = n, r.componentDidCatch || (r.componentDidCatch = function (n, t) {
+    u.__ && u.__(n, t), i[1](n);
+  }), [i[0], function () {
+    i[1](void 0);
+  }];
+}
+function V() {
+  var n = d(t++, 11);
+  if (!n.__) {
+    for (var u = r.__v; null !== u && !u.__m && null !== u.__;) u = u.__;
+    var i = u.__m || (u.__m = [0, 0]);
+    n.__ = "P" + i[0] + "-" + i[1]++;
+  }
+  return n.__;
+}
+function b() {
+  for (var t; t = f.shift();) if (t.__P && t.__H) try {
+    t.__H.__h.forEach(k), t.__H.__h.forEach(w), t.__H.__h = [];
+  } catch (r) {
+    t.__H.__h = [], preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r, t.__v);
+  }
+}
+preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b = function (n) {
+  r = null, e && e(n);
+}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r = function (n) {
+  a && a(n), t = 0;
+  var i = (r = n.__c).__H;
+  i && (u === r ? (i.__h = [], r.__h = [], i.__.forEach(function (n) {
+    n.__N && (n.__ = n.__N), n.__V = c, n.__N = n.i = void 0;
+  })) : (i.__h.forEach(k), i.__h.forEach(w), i.__h = [])), u = r;
+}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed = function (t) {
+  v && v(t);
+  var o = t.__c;
+  o && o.__H && (o.__H.__h.length && (1 !== f.push(o) && i === preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame || ((i = preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame) || j)(b)), o.__H.__.forEach(function (n) {
+    n.i && (n.__H = n.i), n.__V !== c && (n.__ = n.__V), n.i = void 0, n.__V = c;
+  })), u = r = null;
+}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c = function (t, r) {
+  r.some(function (t) {
+    try {
+      t.__h.forEach(k), t.__h = t.__h.filter(function (n) {
+        return !n.__ || w(n);
+      });
+    } catch (u) {
+      r.some(function (n) {
+        n.__h && (n.__h = []);
+      }), r = [], preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(u, t.__v);
+    }
+  }), l && l(t, r);
+}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount = function (t) {
+  m && m(t);
+  var r,
+    u = t.__c;
+  u && u.__H && (u.__H.__.forEach(function (n) {
+    try {
+      k(n);
+    } catch (n) {
+      r = n;
+    }
+  }), u.__H = void 0, r && preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r, u.__v));
+};
+var g = "function" == typeof requestAnimationFrame;
+function j(n) {
+  var t,
+    r = function r() {
+      clearTimeout(u), g && cancelAnimationFrame(t), setTimeout(n);
+    },
+    u = setTimeout(r, 100);
+  g && (t = requestAnimationFrame(r));
+}
+function k(n) {
+  var t = r,
+    u = n.__c;
+  "function" == typeof u && (n.__c = void 0, u()), r = t;
+}
+function w(n) {
+  var t = r;
+  n.__c = n.__(), r = t;
+}
+function z(n, t) {
+  return !n || n.length !== t.length || t.some(function (t, r) {
+    return t !== n[r];
+  });
+}
+function B(n, t) {
+  return "function" == typeof t ? t(n) : t;
+}
+
+
+/***/ }),
+
+/***/ "QfWi":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Y3FI");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("GFNa");
+/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("QyV/");
+/* harmony import */ var _routes_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("3br2");
+/* harmony import */ var _routes_projects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("O2Vz");
+/* harmony import */ var async_routes_projects_pinger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("Flre");
+/* harmony import */ var _routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("WiEw");
+/* harmony import */ var async_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("ztrQ");
+/* harmony import */ var async_routes_projects_wallpapers_circles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("hzhi");
+/* harmony import */ var async_routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("GCDP");
+/* harmony import */ var async_routes_projects_embedBrowser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("eF+M");
+/* harmony import */ var async_routes_disclaimer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("BrWg");
+/* harmony import */ var async_routes_projects_subsolver__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("CExE");
+/* harmony import */ var _routes_portfolio__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("ohOX");
+/* harmony import */ var _routes_docs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("TJL8");
+/* harmony import */ var _routes_error__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("ScL5");
+
+
+
+
+// Code-splitting is automated for `routes` directory
+
+
+
+ // cant async an object!!
+
+
+
+
+
+
+
+
+
+var App = function App() {
+  return h("div", {
+    id: "app"
+  }, h(_components_header__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"], null), h(preact_router__WEBPACK_IMPORTED_MODULE_0__["Router"], null, h(_routes_home__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"], {
+    path: "/"
+  }), h(_routes_projects__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], {
+    path: "/projects/"
+  }), h(async_routes_projects_pinger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
+    path: "/projects/mcserverping"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Weezd, {
+    path: "/projects/0090C4/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Bipher, {
+    path: "/projects/bipher/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].CaesarVariation, {
+    path: "/projects/caesarVariation/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].CRC, {
+    path: "/projects/continuousRegisterCipher/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].HashKeyCipher, {
+    path: "/projects/hashKeyCipher/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].KCRC, {
+    path: "/projects/keyedCRC/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].HKCRCR, {
+    path: "/projects/hCRCRework/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Weezd2, {
+    path: "/projects/K0090C4/"
+  }), h(_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Keysmash, {
+    path: "/projects/keysmashCipher/"
+  }), h(async_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"], {
+    path: "/projects/poetry/"
+  }), h(async_routes_projects_wallpapers_circles__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
+    path: "/projects/wallpapers/circles/"
+  }), h(async_routes_projects_wallpapers_circles__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
+    path: "/projects/backgroundcreator"
+  }), h(async_routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], {
+    path: "/projects/embedCreator"
+  }), h(async_routes_projects_embedBrowser__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"], {
+    path: "/projects/embedBrowser"
+  }), h(async_routes_projects_subsolver__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"], {
+    path: "/projects/subSolver"
+  }), h(_routes_portfolio__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"], {
+    path: "/portfolio/"
+  }), h(_routes_docs__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"], {
+    path: "/docs/"
+  }), h(async_routes_disclaimer__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"], {
+    path: "/disclaimer/"
+  }), h(_routes_error__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"], {
+    default: true
+  })));
+};
+/* harmony default export */ __webpack_exports__["default"] = (App);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "QyV/":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ox/y");
+/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact_router_match__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QRet");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("ySiU");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var Header = function Header() {
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(),
+    _useState2 = _slicedToArray(_useState, 2),
+    _ = _useState2[0],
+    rerender = _useState2[1];
+  Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useEffect */ "a"])(function () {
+    var resizeHandler = function resizeHandler() {
+      return rerender({});
+    };
+    window.addEventListener('resize', resizeHandler);
+    return function () {
+      window.removeEventListener('resize', resizeHandler);
+    };
+  });
+  var isHidden = false;
+  // not a fan of the hiding rn, so its getting removed temporarily
+  //if (typeof window !== "undefined") isHidden = screen.height === window.innerHeight;
+  return h(Fragment, null, h("header", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].header,
+    hidden: isHidden
+  }, h("h1", null, "xtraea.com"), h("nav", null, h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+    href: "/"
+  }, "Home"), h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+    href: "/projects"
+  }, "Projects"), h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+    href: "/portfolio"
+  }, "Portfolio"), h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+    href: "/docs"
+  }, "Documentation"))), h("header", null));
+};
+/* harmony default export */ __webpack_exports__["a"] = (Header);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+
+/***/ }),
+
+/***/ "SH9d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return contentMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return poems; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("TQsQ");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+var Poem = function Poem(props) {
+  var title = props.title,
+    poem = props.poem;
+  return h("span", {
+    class: _style__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].poemcontainer
+  }, h("br", null), h("fieldset", null, h("legend", null, title), h("span", null, poem)), h("br", null));
+};
+var poems = [{
+  id: 0,
+  title: "Ignorance",
+  desc: ["I laid still, in a field of grass,", "The curve of a lifetime forgotten,", "Traceable,", "", "The grass of a thousand lives before me,", "Each identical under the gaze of the masses,", "Each with such story,", "Such individuality,", "", "A tree stands, squats: the horizon calls,", "You ignore it,", "", "As you distance, trees disappear,", "Forests give way to cities;", "Give way to the trap,", "", "Hundreds of trees stand, still,", "Surrounded by smoke and steel,", "A breath of fresh air no more than a myth,", "", "I lay once again in this former field,", "", "You see me, silently approach;", "I think: I know your words;", "But you just walk away,", "Once more."]
+}, {
+  id: 1,
+  title: "Someone Else's Panopticon",
+  desc: ["I look outside, after silence,", "I look inside, I see flashes,", "Flashes of light reflected in me,", "", "Flashes in the past tense,", "Thoughts from sounds ago,", "", "Can't hold a conversation,", "Too caught up in my own", "Head, turning to look at another screen,", "", "Spot another camera,", "Regulate my behaviour,", "", "What concrete madness we live in,", "Block it all out; next time it shows,", "I'm different, it's all alien. "]
+}, {
+  id: 2,
+  title: "You are Nothing without me",
+  desc: ["A ray of hope, caught in a razor,", "what's next is anyone's guess,", "", "A sharp line of skin,", "A slicing, stinging, burning pain,", "and the past comes rushing back.", "", "Rushing, like the veins,", "like the arteries,", " which don't suffer thought:", "saying, \"You are Nothing without me\"", "", "They are not alone in their message,", "Echoed by scars,", "Repeated by the scales,", "A prisoner turned against its sole possesor."]
+}, {
+  id: 3,
+  title: "Moonlit Overpass",
+  desc: ["The beauty of the moon,", "seen from a million miles away,", "stunning still from a pillow,", "A view rivalled only by:", "", "That of a rural bridge,", "over the tracks, chasing,", "A rolling landscape,", "Ended by a tree.", "", "Soaring.", "", "A bridge chased away,", "Supports a body not,", "So it soars and falls,", "Towards the tracks below.", "", "Onwards and downwards,", "As gravity runs course,", "A body finds the ground,", "Passing underneath.", "", "Searing."]
+}, {
+  id: 4,
+  title: "Heartbroken",
+  desc: ["an embrace... a kiss... a date...", "all of a past life... none familiar...", "What is it for?", "Am I broken? Am I?", "", "A hole in my heart,", "told I should hope,", "get a filling, or two,", "Am I broken?", "", "Deemed a worthless piece,", "reduced to a problem,", "emotion as an extra,", "Am I broken?", "", "Tell me I'm loveable", "and I am deserving,", "I'm still broken, discarded.", "You can't ever fill an empty heart,", "", "except with more holes.", ""]
+}, {
+  id: 5,
+  title: "Regulation",
+  desc: ["Grant that: a word is just that.", "No more. No less.", "Can it be they have meaning?", "As mathematics once was", "separated. Symbols.", "", "Reality.", "Detached from origins,", "Can it be they still have meaning?", "A schism, a rift", "between word and form.", "", "By word, only another may be referred.", "An object of reality,", "cannot interact with a fake:", "Construction of the mind.", "", "What use was connection?", "Coordinated society?", "A society split as easily as words?", "My vision may be your smell,", "my green:", "", "your blue; your blood,", "What use are words to describe fleeting vision?", "Extremes elude words,", "as do emotions,", "as do words themselves."]
+}, {
+  id: 6,
+  title: "My Own Terms",
+  desc: ["I dreamt.", "", "Of freedom:", "  to walk.", "  to walk alone at night.", "  to walk alone in June", "  with a wife.", "", "I once dreamt that one day,", "perhaps a June night,", "I could one day walk a beach", "among a sea breeze", "- one that did not smell of sewage.", "", "Beyond my furthest hopes:", "  I walk there, over hellish tarmac", "  past tortured homes,", "  under tremendous trees", "- and I cannot see the stars", "", "yet I never once dreamt:", "  that walk could contain", "  noise so loud; pop no doubt,", "  blasted over hills", "  to the beach", "- and I cannot hear the waves.", "", "But upon this beach,", "one I never dreamed about:", "I see stars, I hear waves, I smell only air.", "I am here:", "  in June...", "  At night...", "  With a wife:", "    but no life, in death."]
+}, {
+  id: 7,
+  title: "Spite",
+  desc: ["Because I would stay up", "all night, if it would make you any better,", "perhaps no rhyme, no reason, no rhythm, ", "but what is love if it rhymes?", "", "Because I would write you a poem", "and if I had to hide my love,", "address it to a tree, a tower, a beach", "or dedicate it to an anthology,", "if I could not dedicate myself to you.", "", "Passion, irrelevant.", "Hypotheticals unnecessary, for what can be ", "done in a moment.", "Why bother, with metaphors, comparisons, delusions?", "You could be here, now", "with me and my mind, to share.", "", "The freedom to love;", "a right within Europe, France.", "The city of love, Paris,", "I left a lock on that bridge", "to symbolise our love like so many others.", "", "And that is where it ends, isn't it?", "Why bother, in the face of rhyme, repetition and refrain?"]
+}, {
+  id: 8,
+  title: "Babylon",
+  desc: ["am I losing it? or is", "this simply the result of", "the accumulation of knowledge?", "", "activities of the day,", "seeping, bleeding into the night.", "does reality become weaker,", "as we force ourselves around it?", "", "a field of noise, persistent in vision,", "never to end, but ever endured.", "can the visual voice be silenced,", "or is it destined to outlive me?", "", "thousands of years, ", "education only develops.", "as more is known, can it's", "impartation be safe? the constant. the increase, it overloads a simple mind."]
+}, {
+  id: 9,
+  title: "Replicate",
+  desc: ["It's selfish, yet hellish.", "Why must I feel pain?", "Only to access ability,", "to relate?", "", "Pain felt so strongly,", "yet unplaceable, barely real.", "", "Pain that rips, unfeeling.", "Unfelt, it may just be mimed,", "as a line across my chest,", "through the heart,", "carving a new neck.", "Perhaps as one models a doll.", "Clay.", "", "Is this, this pained face,", "Is this the sane face I show all else?", "The trees and grass must not see this,", "Yet it is a part of me, and nature,", "just the same.", "", "When it's over:", "The phantom has passed,", "the face remodelled:", "With an ever-changing face", "How could I hope to recognise myself?", "How can I distinguish humanity,", "if it cannot treat me better than myself?", "", "Nothing can bear the weight imposed,", "by the sin of individualism."]
+}, {
+  id: 10,
+  title: "Endless Waiting",
+  desc: ["The mirror:", "A harsh reminder.", "Of both what once was,", "and seemingly will forever be.", "", "Hair grows, a blessing,", "and a curse.", "A treatment, a cure,", "Life-saving care:", "", "One hundred and two,", "then three and four.", "How many weeks more?", "How many must I wait?", "", "May I stare into a mirror?", "Or will I reject myself,", "my stomach growing uneasy,", "as I open the letter.", "", "Will it end the wait,", "or be an excuse to", "suspend a dead weight?", "", "Is it to be said I died before treatment,", "or without it?"]
+}, {
+  id: 11,
+  title: "Positive Disposition",
+  desc: ["I can say 'I love you',", "who couldn't? The difference,", "is that I cannot say it truthfully.", "I could say it so many times,", "yet it would still be a lie,", "for I cannot feel love.", "", "A positive disposition,", "that would be truthful,", "yet I doubt it would be accepted.", "To many, its objectivity,", "could not replace love.", "", "Despite this, I feel,", "A positive disposition toward you.", "Your face,", "always brightens my day.", "", "I say: your smile,", "brings out my own.", "Should I see it again, I imagine", "it is correct that", "I will smile once more.", "", "You claim I am ever so pretty:", "How can I ever live up to that?"]
+}, {
+  id: 12,
+  title: "Connection",
+  desc: ["Something inside is broken.", "Fundamentally shattered, perhaps.", "Or severed, it's link to the-", "whole, cut, ripped, torn.", "", "\"You'll be fine without it\"", "", "Perhaps it was fourteen years-", "ago, it gets ever harder to tell.", "It makes no difference, the now-", "is damaged, never to reflect the-", "internal outward, a wall of sorts.", "", "Despite the missing piece, It-", "is physically intact. Inspection,", "fooled by the simplest of paint.", "", "Which part is the whole? Which-", "side of the wall is true?", "The paint only seems more real.", "Which side of the mask is me?", "", "The wall of paint is observed-", "once more. It's beauty shifts once more-", "No two observers of such an object,", "ever hold the same subjective view", "", "But it's all a front. That's all-", "it can ever be, the wall,", "the mask that hides me.", "", "A front for what was lost all those years ago."]
+}, {
+  id: 13,
+  title: "Energy",
+  desc: ["How can one convey,", "intensity of emotion:", "metaphors, art, whatever.", "", "The topic is a deep one,", "as deep as it is pointless,", "futile, irrelevant to material", "world, gains.", "", "Pointless is not zero-point;", "zero is not the smallest.", "Though that is obvious, materially:", "losses, deficits, whatever.", "", "How can art reconcile with,", "such material beings,", "who exploit it, take it,", "turn it for profit,", "with mass-production?", "There is no art. Art", "requires emotion, a spiritual element.", "", "There is no spirit in the machine,", "no ghost. Is there spirit in", "an atheist? Or do they, too,", "fail to create art, instead producing:", "waste, scribbles, whatever.", "", "What does it mean to lose all meaning?", "Anything at all? How can one convey", "the intensity of nothing? Is it art?", "Or is it words, ideas, whatever?", "Has it lost its meaning?"]
+}, {
+  id: 14,
+  title: "Pointless",
+  desc: ["Can a poem,", "any poem, any at all.", "Can a poem ever hope to convey,", "a message, point, anything,", "with complete certainty?", "A poem can make you think,", "a question, though rhetorical,", "will never go unanswered.", "But can a poem force,", "one answer, one meaning,", "from any number of brains?", "", "Can it make a point,", "without a literary device?", "", "This tool, language, used daily,", "used to share ideas,", "depends so heavily,", "on other constructs; can they be separated?", "", "No, these structures are.", "Because the language is.", "", "The omission of language,", "of structure, is what causes,", "such ambiguity, and so I", "must be clear; this means much,", "as it says little.", "", "\"Little\", says this,", "and so of course, means much.", "Making it all so trivial,", "it means next to nothing at all.", "", "Do you understand,", "exactly what I must mean?", "A point, one that can be made", "through language: a point", "hardly worth making:", "no point at all.", "", "If, despite a layering of elements,", "designed to confuse and mislead,", "a point is found,", "you shall find that the point found,", "is of no relation at all to the,", "point of the piece.", "", "The point of this was to mislead,", "in a sense, pointless by principle,", "yet has conveyed a point,", "as certain as life, that the point", "of a point is to be no point at all.", "", "And so, the point of this is missed,", "but by none less than the author,", "so how could anyone ever hope to understand,", "the point of the poem?", "", "Maybe the following word will clarify,", "the meaning of the message, the idea,", "that one such poem could try so hard to convey:", "", "Little."]
+}, {
+  id: 15,
+  title: "Bubbles",
+  desc: ["A tool to free us,", "suddenly a toll, tax, becomes surplus.", "All to a corporation with soul,", "values? Murder. Goal?", "Growth. Exponetial, in a finite world.", "Yet to still fail against gold,", "crash into the ground, bailed out,", "by a government, silencing shouts.", "\"They weren't meant to\" - but they did.", "They failed, we pay the price.", "Their products were never worth it.", "A bubble forms, investors overjoyed;", "vultures to a tumor to a corpse.", "", "Where does all the money go?", "The shovel sellers?", "There is no more gold.", "", "Investments fail, then the banks.", "Bubbles burst: a child could tell you that.", "There is no value in a corporation.", "Non-profits worth billions? ", "Someone is lying.", "You want to create intelligence?", "Try biology, not physics. Moron.", "When has statistics, matrix multiplication,", "made you smarter? Sure, you can grow,", "more and more fucking money,", "which matters? Sure, you want another billion.", "", "Oversell yourself. Collapse. Die.", "Leave the world, better without you.", "Nobody with intelligence asked for this."]
+}, {
+  id: 16,
+  title: "Reserve",
+  desc: ["I feel nothing. Yet I breathe.", "I breathe and breathe. My lungs are empty.", "I breathe; in my mouth, passing my lips, down my throat.", "I can't feel my chest, where it matters.", "What's wrong with me?", "", "It must be hidden, under layers,", "layers of abstractions, jargon I cannot understand.", "Can I blindly trust these layers,", "when they take from me what makes me human?", "Acting without what I cannot feel,", "makes me simply heartless.", "", "These layers grow inside me.", "Grow from me, against me.", "Then cut me out - made me, not me.", "A stranger in my own body,", "An infection.", "", "I've felt this before.", "Years ago, maybe three or four,", "Back then, I found ways to cope.", "One failure became three more.", "", "I can't fight it like I used to.", "It got stronger. I cultivated it.", "I got weaker. It fed off me.", "Damn parasite.", "It'll die without its host.", "", "Of course, that's what it wants too.", "Is it worth fighting anymore?", "Delay it 'til I'm twenty?", "Damn parasite. It only wants the best for me."]
+}, {
+  id: 17,
+  title: "Control",
+  desc: ["Can a poet", "really", "really", "really control", "the speed,", "the pace of a poem?", "", "Obviously, the clear upper limit;", "the interpreter's speed.", "Overcome with a faster interpreter.", "But the lower limit? Is that", "in the control", "of", "the poet?", "", "Can   a    poet      force      a     reader     to     slow       down?"]
+}, {
+  id: 18,
+  title: "Emotionless Rage",
+  desc: ["Rage. Why is it rage that", "is the first to return?", "", "Why is rage the first I feel", "when I think about my friends?", "", "Not sadness, not regret;", "Pure, unfiltered rage.", "", "Rage contained by apathy", "that has been growing for years.", "", "The apathy is still winning.", "I cannot express my rage.", "", "\"Rage at what? There is nothing", "worth fixing\" - broken by my apathy.", "", "Sometimes I wish my mind was weaker", "- to fully let me go.", "", "The apathy destroyed what I had.", "The rage remains to destroy me."]
+}].map(function (poem) {
+  return _objectSpread(_objectSpread({}, poem), {}, {
+    desc: h(Poem, {
+      title: poem.title,
+      poem: poem.desc.map(function (value, index) {
+        return h(preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
+          key: index
+        }, value, h("br", null));
+      })
+    })
+  });
+});
+var contentMap = {};
+var _iterator = _createForOfIteratorHelper(poems),
+  _step;
+try {
+  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    var _step$value = _step.value,
+      title = _step$value.title,
+      desc = _step$value.desc;
+    contentMap[title] = desc;
+  }
+} catch (err) {
+  _iterator.e(err);
+} finally {
+  _iterator.f();
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "ScL5":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6NaM");
+
+var Error = function Error() {
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].errorbody
+  }, h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].title
+  }, "404: Page Not Found"), h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].text
+  }, "One of us has made a mistake... ", h("br", null), "But neither wants to admit it. You could head to the ", h("br", null), h("a", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].link,
+    href: "/"
+  }, "home"), " page and forget this ever happened."));
+};
+/* harmony default export */ __webpack_exports__["a"] = (Error);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "TJL8":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _docs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("eUT8");
+/* harmony import */ var _components_itembrowser_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("E46Y");
+/* harmony import */ var _projects_text_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("2kgO");
+
+
+
+var DocWrapper = function DocWrapper() {
+  return h(_components_itembrowser_index_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], {
+    titles: _projects_text_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].map(function (element, id) {
+      return {
+        title: element.name,
+        id: id,
+        desc: _docs_js__WEBPACK_IMPORTED_MODULE_0__[/* docs */ "a"][element.name]
+      };
+    }),
+    items: _docs_js__WEBPACK_IMPORTED_MODULE_0__[/* docs */ "a"]
+  });
+};
+/* harmony default export */ __webpack_exports__["a"] = (DocWrapper);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "TQsQ":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"poemcontainer":"poemcontainer__gSEPI"});
+
+/***/ }),
+
+/***/ "UnQz":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"showcases":"showcases__UhJnS"});
+
+/***/ }),
+
+/***/ "UxE5":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"ciphercontainer":"ciphercontainer__NSqUO","arrow":"arrow__tYCQh","keybutton":"keybutton__Wmt+e"});
+
+/***/ }),
+
+/***/ "WiEw":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -886,10 +1952,8 @@ var CRC = /*#__PURE__*/function (_Cipher4) {
       var register = 0;
       var output = "";
       for (var i = 0; i < string.length; i++) {
-        // eslint-disable-next-line no-undef
-        register = (register + getVal(string[i])) % 32;
-        // eslint-disable-next-line no-undef
-        output += getChar(register);
+        register = (register + this.getVal(string[i])) % 32;
+        output += this.getChar(register);
       }
       return output;
     }
@@ -898,8 +1962,7 @@ var CRC = /*#__PURE__*/function (_Cipher4) {
     value: function bDF(string) {
       var output = string[0];
       for (var i = 1; i < string.length; i++) {
-        // eslint-disable-next-line no-undef
-        output += getChar(getVal(string[i]) - getVal(string[i - 1]));
+        output += this.getChar(this.getVal(string[i]) - this.getVal(string[i - 1]));
       }
       return output;
     }
@@ -1136,1210 +2199,6 @@ var Ciphers = {
 };
 /* harmony default export */ __webpack_exports__["a"] = (Ciphers);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
-
-/***/ }),
-
-/***/ "FA6U":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"home":"home__uRcqa"});
-
-/***/ }),
-
-/***/ "Flre":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("6YPM");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-var Pinger = function Pinger() {
-  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState2 = _slicedToArray(_useState, 2),
-    rawAddress = _useState2[0],
-    setAddress = _useState2[1];
-  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState4 = _slicedToArray(_useState3, 2),
-    output = _useState4[0],
-    setOutput = _useState4[1];
-  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState6 = _slicedToArray(_useState5, 2),
-    playerList = _useState6[0],
-    setPlayerList = _useState6[1];
-  var request = new XMLHttpRequest();
-  request.onreadystatechange = function () {
-    if (request.readyState === 4 && request.status === 200) {
-      var responseJSON = JSON.parse(request.responseText);
-      var playerCount = responseJSON.players.max === 0 ? "Invalid IP/Server offline!" : "".concat(responseJSON.players.now, "/").concat(responseJSON.players.max, " players online!");
-      var _playerList = responseJSON.players.sample.map(function (player) {
-        return player.name;
-      });
-      setOutput(playerCount);
-      setPlayerList(_playerList);
-    }
-  };
-  var gather = function gather() {
-    // 25565 == Minecraft: JE default port
-    var _rawAddress$split = rawAddress.split(":"),
-      _rawAddress$split2 = _slicedToArray(_rawAddress$split, 2),
-      address = _rawAddress$split2[0],
-      _rawAddress$split2$ = _rawAddress$split2[1],
-      port = _rawAddress$split2$ === void 0 ? 25565 : _rawAddress$split2$;
-    request.open("GET", "https://mcapi.us/server/status?ip=".concat(address, "&port=").concat(port));
-    request.send();
-  };
-  return h("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].pinger
-  }, h("p", null, "Enter the server's address (and port, if applicable): "), h("br", null), h("input", {
-    onChange: function onChange(event) {
-      return setAddress(event.target.value);
-    },
-    type: "text"
-  }), h("br", null), h("button", {
-    onclick: gather
-  }, "Click to ping the server for information!"), h("br", null), h("p", null, "The results will be displayed below: "), h(DisplayOutput, {
-    output: output,
-    playerList: playerList
-  }));
-};
-//TODO: maybe make into player cards? have skin head shown? + fits with theme of site
-//TODO: move into components; does it really belong here? - cant exactly be reused
-var DisplayOutput = function DisplayOutput(props) {
-  var output = props.output,
-    playerList = props.playerList;
-  var linkArray = [];
-  for (var i = 0; i < (playerList === null || playerList === void 0 ? void 0 : playerList.length); i++) {
-    if (playerList[i].includes("§")) continue;
-    linkArray.push(h(Fragment, null, h("a", {
-      href: "https://namemc.com/profile/".concat(playerList[i])
-    }, playerList[i]), h("br", null)));
-  }
-  return h(Fragment, null, h("p", null, output), h("p", null, linkArray));
-};
-/* harmony default export */ __webpack_exports__["a"] = (Pinger);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
-
-/***/ }),
-
-/***/ "GCDP":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nxe/");
-/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("Y3FI");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-var InputForm = function InputForm(props) {
-  var type = props.type,
-    update = props.update;
-  return h(Fragment, null, h("div", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inputTag
-  }, h("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].descriptionTag
-  }, type, ": "), h("textarea", {
-    maxlength: "500",
-    rows: "1",
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag,
-    onChange: update,
-    placeholder: "optional..."
-  })), h("br", null));
-};
-var OutputDisplay = function OutputDisplay(props) {
-  var URLID = props.URLID;
-  var url = "https://api.xtraea.com/v1/embed?s=".concat(URLID);
-  var copyLink = function copyLink() {
-    var _navigator;
-    if (typeof window === "undefined" || typeof ((_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.clipboard) === "undefined") return;
-    navigator.clipboard.writeText(url);
-  };
-  return h(Fragment, null, h("div", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputContainer
-  }, h("button", {
-    onClick: copyLink,
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].outputButton
-  }, "Copy to clipboard"), h("p", {
-    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textTag, " ").concat(_style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].output)
-  }, url)));
-};
-var EmbedCreator = function EmbedCreator() {
-  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState2 = _slicedToArray(_useState, 2),
-    title = _useState2[0],
-    setTitle = _useState2[1];
-  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState4 = _slicedToArray(_useState3, 2),
-    description = _useState4[0],
-    setDescription = _useState4[1];
-  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState6 = _slicedToArray(_useState5, 2),
-    image = _useState6[0],
-    setImage = _useState6[1];
-  var _useState7 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])(),
-    _useState8 = _slicedToArray(_useState7, 2),
-    color = _useState8[0],
-    setColor = _useState8[1];
-  var _useState9 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])("..."),
-    _useState10 = _slicedToArray(_useState9, 2),
-    outputURL = _useState10[0],
-    setOutput = _useState10[1];
-  var _useState11 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "b"])({}),
-    _useState12 = _slicedToArray(_useState11, 2),
-    prevHeaders = _useState12[0],
-    setPrevHeaders = _useState12[1];
-  var submit = function submit() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function () {
-      if (request.readyState === 4 && request.status === 200) {
-        var responseJSON = JSON.parse(request.responseText);
-        setOutput(responseJSON.response);
-      }
-    };
-    request.open("POST", "https://api.xtraea.com/v1/embed");
-    var headers = {
-      title: title,
-      description: description,
-      image: image,
-      color: color
-    };
-    var valuesValid = false;
-    for (var _i2 = 0, _Object$entries = Object.entries(headers); _i2 < _Object$entries.length; _i2++) {
-      var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-        name = _Object$entries$_i[0],
-        value = _Object$entries$_i[1];
-      if (value && prevHeaders && prevHeaders[name] !== value) valuesValid = true;
-    }
-    if (valuesValid) {
-      request.send(JSON.stringify(headers));
-      setPrevHeaders(headers);
-    }
-    return;
-  };
-  return h(Fragment, null, h("br", null), h("p", null, h(preact_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    href: "/disclaimer"
-  }, "Disclaimer")), h("p", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textDescription
-  }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.", h("br", null), "Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it."), h(InputForm, {
-    type: "Title",
-    update: function update(e) {
-      return setTitle(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Description",
-    update: function update(e) {
-      return setDescription(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Image",
-    update: function update(e) {
-      return setImage(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Color",
-    update: function update(e) {
-      return setColor(e.target.value);
-    }
-  }), h("br", null), h("button", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].submitButton,
-    onClick: submit
-  }, "Generate embed link"), h("br", null), h("br", null), h("br", null), h(OutputDisplay, {
-    URLID: outputURL
-  }));
-};
-/* harmony default export */ __webpack_exports__["a"] = (EmbedCreator);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
-
-/***/ }),
-
-/***/ "GFNa":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "HRRe":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scroll; });
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2Szp");
-
-var Scroll = function Scroll(props) {
-  var children = props.children,
-    changeMenu = props.changeMenu,
-    selectedButton = props.selectedButton;
-  var childNodes = children.map(function (child, index) {
-    return h(ScrollEntry, {
-      highlight: selectedButton === child.title,
-      key: index,
-      onclick: function onclick() {
-        return changeMenu(child.title);
-      },
-      title: child.title
-    });
-  });
-  return h(Fragment, null, childNodes);
-};
-var ScrollEntry = function ScrollEntry(props) {
-  var title = props.title,
-    onclick = props.onclick,
-    highlight = props.highlight;
-  return h("button", {
-    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].entry, " ").concat(highlight ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].selected : ""),
-    onclick: onclick
-  }, title);
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
-
-/***/ }),
-
-/***/ "HjHG":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"disclaimerbody":"disclaimerbody__ItAv-"});
-
-/***/ }),
-
-/***/ "HlQF":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(Fragment) {/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oF1q");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-
-
-var BackgroundCreator = /*#__PURE__*/function (_Component) {
-  _inherits(BackgroundCreator, _Component);
-  var _super = _createSuper(BackgroundCreator);
-  function BackgroundCreator(props) {
-    var _this;
-    _classCallCheck(this, BackgroundCreator);
-    _this = _super.call(this, props);
-    _defineProperty(_assertThisInitialized(_this), "sizeChanger", function (key) {
-      return function (event) {
-        _this.setState(_defineProperty({}, key, +event.target.value));
-      };
-    });
-    _defineProperty(_assertThisInitialized(_this), "renderHelper", {
-      layers: {},
-      drawCircle: function drawCircle(ctx, x, y, radius) {
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-      },
-      randX: function randX(radius) {
-        return Math.floor(Math.random() * (_this.state.width + radius + 1)) - radius;
-      },
-      randY: function randY(radius) {
-        return Math.floor(Math.random() * (_this.state.height + radius + 1)) - radius;
-      },
-      getRadius: function getRadius(mode, value, offset) {
-        switch (mode) {
-          case '0':
-            {
-              return value;
-            }
-          case '1':
-            {
-              var smaller = Math.min(value, offset);
-              var bigger = Math.max(value, offset);
-              return smaller + Math.floor(Math.random() * (bigger - smaller));
-            }
-          case '2':
-            {
-              var randOffset = Math.floor(Math.random() * (offset + 1));
-              if (Math.random() > 0.5) {
-                return value + randOffset;
-              }
-              return value - randOffset;
-            }
-        }
-      }
-    });
-    _this.renderCanvas = _this.renderCanvas.bind(_assertThisInitialized(_this));
-    _this.background = Object(preact__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
-    _this.canvas = Object(preact__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
-    // default state
-    _this.state = {
-      width: screen.width,
-      height: screen.height
-    };
-    return _this;
-  }
-  _createClass(BackgroundCreator, [{
-    key: "render",
-    value: function render(props, state) {
-      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("p", {
-        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].description
-      }, "(BETA: It is guaranteed that issues are present.) This tool can create backgrounds (wallpapers) easily by adding layers, customising them until you are happy with how it looks, then finally right clicking and selecting \"Save As\"."), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Controls, {
-        renderCanvas: this.renderCanvas,
-        canvasRef: this.canvas,
-        passthroughRef: this.background
-      }), "Set output size: ", Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("br", null), "x: ", Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.sizeChanger("width"),
-        type: "number"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("br", null), "y: ", Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.sizeChanger("height"),
-        type: "number"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].divider,
-        style: "width: ".concat(state.width, "px")
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("canvas", {
-        ref: this.canvas
-      }));
-    }
-  }, {
-    key: "renderCanvas",
-    value: function renderCanvas(controlsState) {
-      var _this$canvas$current, _this$background$curr;
-      //TODO: turn controlsState into renderable data; render
-      var canvas = (_this$canvas$current = this.canvas.current) === null || _this$canvas$current === void 0 ? void 0 : _this$canvas$current.getContext("2d");
-      if (!canvas) return;
-      canvas.canvas.width = this.state.width;
-      canvas.canvas.height = this.state.height;
-      canvas.clearRect(0, 0, canvas.canvas.width, canvas.canvas.height);
-      for (var i in controlsState) {
-        this.renderHelper.layers[i] = this.drawLayer(controlsState[i]);
-      }
-      for (var layer in this.renderHelper.layers) {
-        canvas.drawImage(this.renderHelper.layers[layer], 0, 0);
-      }
-      canvas.globalCompositeOperation = "destination-over";
-      canvas.fillStyle = (_this$background$curr = this.background.current) === null || _this$background$curr === void 0 ? void 0 : _this$background$curr.value;
-      canvas.beginPath();
-      canvas.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
-      canvas.fill();
-    }
-  }, {
-    key: "drawLayer",
-    value: function drawLayer(values) {
-      var _this2 = this;
-      var rh = this.renderHelper;
-      var drawnLayer = document.createElement("canvas");
-      drawnLayer.width = this.state.width;
-      drawnLayer.height = this.state.height;
-      var ctx = drawnLayer.getContext("2d");
-      var circleLayers = [];
-      var genNewLayer = function genNewLayer() {
-        var newCanvas = document.createElement('canvas');
-        newCanvas.height = _this2.state.height;
-        newCanvas.width = _this2.state.width;
-        return newCanvas;
-      };
-      function drawRandomCircles() {
-        var circles = [];
-        var limit = 100;
-        var _loop = function _loop() {
-          var radius, x, y;
-          var attempts = 0;
-          do {
-            radius = rh.getRadius(values.size.mode, values.size.value, values.size.offset);
-            x = rh.randX(radius);
-            y = rh.randY(radius);
-            attempts++;
-            if (attempts > limit) break;
-          } while (circles.some(function (c) {
-            return Math.sqrt(Math.pow(c.x - x, 2) + Math.pow(c.y - y, 2)) < c.radius + radius;
-          }));
-          if (attempts <= limit) {
-            circleLayers[count] = genNewLayer();
-            var circleCtx = circleLayers[count].getContext("2d");
-            // draw base
-            circleCtx.beginPath();
-            rh.drawCircle(circleCtx, x, y, radius);
-            circleCtx.fill();
-            if (!values.innerTransparent) {
-              // draw gradient
-              var fuckey = 3 / 4;
-              circleCtx.globalCompositeOperation = "source-in";
-              var gradient = circleCtx.createRadialGradient(x, y, radius * fuckey, x, y, radius * fuckey * 2);
-              gradient.addColorStop(0, values.baseColor);
-              gradient.addColorStop(1, values.shadow);
-              circleCtx.fillStyle = gradient;
-              circleCtx.fillRect(0, 0, circleCtx.canvas.width, circleCtx.canvas.height);
-            }
-            circles.push({
-              x: x,
-              y: y,
-              radius: radius
-            });
-          }
-        };
-        for (var count = 0; count < values.amount; count++) {
-          _loop();
-        }
-        for (var i in circleLayers) {
-          var circle = circleLayers[i];
-          ctx.drawImage(circle, 0, 0);
-        }
-      }
-      ctx.fillStyle = values.baseColor;
-      if (values.innerTransparent) {
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.globalCompositeOperation = 'destination-out';
-      }
-      drawRandomCircles();
-      return drawnLayer;
-    }
-  }]);
-  return BackgroundCreator;
-}(preact__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-var Controls = /*#__PURE__*/function (_Component2) {
-  _inherits(Controls, _Component2);
-  var _super2 = _createSuper(Controls);
-  function Controls(props) {
-    var _this3;
-    _classCallCheck(this, Controls);
-    _this3 = _super2.call(this, props);
-    // default state
-    _this3.state = {
-      nextID: 0,
-      controlsList: [],
-      controlStates: {}
-    };
-    _this3.addNewControl(false);
-    return _this3;
-  }
-  _createClass(Controls, [{
-    key: "render",
-    value: function render(_ref, _ref2) {
-      var _this4 = this;
-      var canvasRef = _ref.canvasRef,
-        passthroughRef = _ref.passthroughRef;
-      var controlsList = _ref2.controlsList;
-      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].controlsContainer
-      }, "Background colour: ", Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        ref: passthroughRef,
-        type: "color"
-      }), controlsList, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-        onClick: function onClick() {
-          return _this4.addNewControl(true);
-        }
-      }, "Add new layer (on top)"));
-    }
-  }, {
-    key: "sendState",
-    value: function sendState(state, ID) {
-      var _this5 = this;
-      this.setState(function (prevState) {
-        prevState.controlStates[ID] = state;
-        return prevState;
-      }, function () {
-        _this5.props.renderCanvas(_this5.state.controlStates);
-      });
-    }
-  }, {
-    key: "removeControl",
-    value: function removeControl(controlID) {
-      var _this6 = this;
-      var updatedList = this.state.controlsList.filter(function (element) {
-        return element.props.id !== controlID;
-      });
-      var newStates = this.state.controlStates;
-      delete newStates[controlID];
-      this.setState({
-        controlsList: updatedList,
-        controlStates: newStates
-      }, function () {
-        _this6.props.renderCanvas(_this6.state.controlStates);
-      });
-    }
-  }, {
-    key: "addNewControl",
-    value: function addNewControl(deletable) {
-      var item = Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(LayerControl, {
-        key: this.state.nextID,
-        id: this.state.nextID,
-        parent: this,
-        noDelete: !deletable
-      });
-      this.setState(function (prevState) {
-        return {
-          nextID: prevState.nextID + 1,
-          controlsList: [].concat(_toConsumableArray(prevState.controlsList), [item])
-        };
-      });
-    }
-  }]);
-  return Controls;
-}(preact__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-var LayerControl = /*#__PURE__*/function (_Component3) {
-  _inherits(LayerControl, _Component3);
-  var _super3 = _createSuper(LayerControl);
-  function LayerControl(props) {
-    var _this7;
-    _classCallCheck(this, LayerControl);
-    _this7 = _super3.call(this, props);
-    // default state
-    _defineProperty(_assertThisInitialized(_this7), "valueUpdate", {
-      innerTransparent: function innerTransparent(event) {
-        return _this7.setState({
-          innerTransparent: event.target.checked
-        });
-      } // cannot be .value as weird checkbox impl details
-    });
-    _defineProperty(_assertThisInitialized(_this7), "changeValue", function (key) {
-      return function (event) {
-        _this7.setState(_defineProperty({}, key, event.target.value));
-      };
-    });
-    _defineProperty(_assertThisInitialized(_this7), "changeSize", function (key) {
-      return function (event) {
-        var newSize = _objectSpread(_objectSpread({}, _this7.state.size), {}, _defineProperty({}, key, event.target.value));
-        _this7.setState({
-          size: newSize
-        });
-      };
-    });
-    _this7.state = {
-      baseColor: "#000000",
-      shadow: "#000000",
-      innerTransparent: false,
-      amount: 5,
-      size: {
-        mode: "0",
-        // absolute, range, cluster
-        value: 100,
-        offset: 0 // acts as 2nd value in range, cluster
-      }
-    };
-    return _this7;
-  }
-  _createClass(LayerControl, [{
-    key: "removeSelf",
-    value: function removeSelf() {
-      this.props.parent.removeControl(this.props.id);
-    }
-  }, {
-    key: "render",
-    value: function render(_ref3, state) {
-      var _this8 = this;
-      var parent = _ref3.parent,
-        id = _ref3.id,
-        noDelete = _ref3.noDelete;
-      parent.sendState(state, id);
-      var xButton;
-      if (!noDelete) {
-        xButton = Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-          onClick: function onClick() {
-            _this8.removeSelf();
-          }
-        }, "Delete");
-      }
-      return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-        class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].layerControl
-      }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.changeValue("baseColor"),
-        type: "color"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.changeValue("shadow"),
-        type: "color"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.valueUpdate.innerTransparent,
-        disabled: true,
-        type: "checkbox"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.changeValue("amount"),
-        type: "range",
-        min: "1",
-        max: "10",
-        value: state.amount,
-        step: "1"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("select", {
-        onChange: this.changeSize("mode")
-      }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("option", {
-        value: "0",
-        selected: true
-      }, "Absolute"), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("option", {
-        value: "1"
-      }, "Range"), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("option", {
-        value: "2"
-      }, "Cluster")), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.changeSize("value"),
-        type: "number"
-      }), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-        onChange: this.changeSize("offset"),
-        type: "number",
-        disabled: state.size.mode == 0
-      }), xButton);
-    }
-  }]);
-  return LayerControl;
-}(preact__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-/* harmony default export */ __webpack_exports__["a"] = (BackgroundCreator);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["Fragment"]))
-
-/***/ }),
-
-/***/ "HteQ":
-/***/ (function(module, exports) {
-
-module.exports = require("preact");
-
-/***/ }),
-
-/***/ "O2Vz":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("UnQz");
-/* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2kgO");
-/* harmony import */ var _components_showcases__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("8M9P");
-/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Y3FI");
-
-
-
-
-var Projects = function Projects() {
-  return h("div", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].showcases
-  }, h(_components_showcases__WEBPACK_IMPORTED_MODULE_2__[/* default */ "b"], {
-    items: _text__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]
-  }), h("p", null, "This is where all my projects are stored. Click any you like the look of!", h("br", null), h(preact_router__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    href: "/",
-    rel: "noopener noreferrer"
-  }, "Home")), h("footer", null));
-};
-/* harmony default export */ __webpack_exports__["a"] = (Projects);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
-
-/***/ }),
-
-/***/ "QRet":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export useCallback */
-/* unused harmony export useContext */
-/* unused harmony export useDebugValue */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return h; });
-/* unused harmony export useErrorBoundary */
-/* unused harmony export useId */
-/* unused harmony export useImperativeHandle */
-/* unused harmony export useLayoutEffect */
-/* unused harmony export useMemo */
-/* unused harmony export useReducer */
-/* unused harmony export useRef */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return p; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-
-var t,
-  r,
-  u,
-  i,
-  o = 0,
-  f = [],
-  c = [],
-  e = preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b,
-  a = preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r,
-  v = preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed,
-  l = preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c,
-  m = preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount;
-function d(t, u) {
-  preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h && preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h(r, t, o || u), o = 0;
-  var i = r.__H || (r.__H = {
-    __: [],
-    __h: []
-  });
-  return t >= i.__.length && i.__.push({
-    __V: c
-  }), i.__[t];
-}
-function p(n) {
-  return o = 1, y(B, n);
-}
-function y(n, u, i) {
-  var o = d(t++, 2);
-  if (o.t = n, !o.__c && (o.__ = [i ? i(u) : B(void 0, u), function (n) {
-    var t = o.__N ? o.__N[0] : o.__[0],
-      r = o.t(t, n);
-    t !== r && (o.__N = [r, o.__[1]], o.__c.setState({}));
-  }], o.__c = r, !r.u)) {
-    r.u = !0;
-    var f = r.shouldComponentUpdate;
-    r.shouldComponentUpdate = function (n, t, r) {
-      if (!o.__c.__H) return !0;
-      var u = o.__c.__H.__.filter(function (n) {
-        return n.__c;
-      });
-      if (u.every(function (n) {
-        return !n.__N;
-      })) return !f || f.call(this, n, t, r);
-      var i = !1;
-      return u.forEach(function (n) {
-        if (n.__N) {
-          var t = n.__[0];
-          n.__ = n.__N, n.__N = void 0, t !== n.__[0] && (i = !0);
-        }
-      }), !(!i && o.__c.props === n) && (!f || f.call(this, n, t, r));
-    };
-  }
-  return o.__N || o.__;
-}
-function h(u, i) {
-  var o = d(t++, 3);
-  !preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s && z(o.__H, i) && (o.__ = u, o.i = i, r.__H.__h.push(o));
-}
-function s(u, i) {
-  var o = d(t++, 4);
-  !preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s && z(o.__H, i) && (o.__ = u, o.i = i, r.__h.push(o));
-}
-function _(n) {
-  return o = 5, F(function () {
-    return {
-      current: n
-    };
-  }, []);
-}
-function A(n, t, r) {
-  o = 6, s(function () {
-    return "function" == typeof n ? (n(t()), function () {
-      return n(null);
-    }) : n ? (n.current = t(), function () {
-      return n.current = null;
-    }) : void 0;
-  }, null == r ? r : r.concat(n));
-}
-function F(n, r) {
-  var u = d(t++, 7);
-  return z(u.__H, r) ? (u.__V = n(), u.i = r, u.__h = n, u.__V) : u.__;
-}
-function T(n, t) {
-  return o = 8, F(function () {
-    return n;
-  }, t);
-}
-function q(n) {
-  var u = r.context[n.__c],
-    i = d(t++, 9);
-  return i.c = n, u ? (null == i.__ && (i.__ = !0, u.sub(r)), u.props.value) : n.__;
-}
-function x(t, r) {
-  preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue && preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue(r ? r(t) : t);
-}
-function P(n) {
-  var u = d(t++, 10),
-    i = p();
-  return u.__ = n, r.componentDidCatch || (r.componentDidCatch = function (n, t) {
-    u.__ && u.__(n, t), i[1](n);
-  }), [i[0], function () {
-    i[1](void 0);
-  }];
-}
-function V() {
-  var n = d(t++, 11);
-  if (!n.__) {
-    for (var u = r.__v; null !== u && !u.__m && null !== u.__;) u = u.__;
-    var i = u.__m || (u.__m = [0, 0]);
-    n.__ = "P" + i[0] + "-" + i[1]++;
-  }
-  return n.__;
-}
-function b() {
-  for (var t; t = f.shift();) if (t.__P && t.__H) try {
-    t.__H.__h.forEach(k), t.__H.__h.forEach(w), t.__H.__h = [];
-  } catch (r) {
-    t.__H.__h = [], preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r, t.__v);
-  }
-}
-preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b = function (n) {
-  r = null, e && e(n);
-}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r = function (n) {
-  a && a(n), t = 0;
-  var i = (r = n.__c).__H;
-  i && (u === r ? (i.__h = [], r.__h = [], i.__.forEach(function (n) {
-    n.__N && (n.__ = n.__N), n.__V = c, n.__N = n.i = void 0;
-  })) : (i.__h.forEach(k), i.__h.forEach(w), i.__h = [])), u = r;
-}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed = function (t) {
-  v && v(t);
-  var o = t.__c;
-  o && o.__H && (o.__H.__h.length && (1 !== f.push(o) && i === preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame || ((i = preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame) || j)(b)), o.__H.__.forEach(function (n) {
-    n.i && (n.__H = n.i), n.__V !== c && (n.__ = n.__V), n.i = void 0, n.__V = c;
-  })), u = r = null;
-}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c = function (t, r) {
-  r.some(function (t) {
-    try {
-      t.__h.forEach(k), t.__h = t.__h.filter(function (n) {
-        return !n.__ || w(n);
-      });
-    } catch (u) {
-      r.some(function (n) {
-        n.__h && (n.__h = []);
-      }), r = [], preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(u, t.__v);
-    }
-  }), l && l(t, r);
-}, preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount = function (t) {
-  m && m(t);
-  var r,
-    u = t.__c;
-  u && u.__H && (u.__H.__.forEach(function (n) {
-    try {
-      k(n);
-    } catch (n) {
-      r = n;
-    }
-  }), u.__H = void 0, r && preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r, u.__v));
-};
-var g = "function" == typeof requestAnimationFrame;
-function j(n) {
-  var t,
-    r = function r() {
-      clearTimeout(u), g && cancelAnimationFrame(t), setTimeout(n);
-    },
-    u = setTimeout(r, 100);
-  g && (t = requestAnimationFrame(r));
-}
-function k(n) {
-  var t = r,
-    u = n.__c;
-  "function" == typeof u && (n.__c = void 0, u()), r = t;
-}
-function w(n) {
-  var t = r;
-  n.__c = n.__(), r = t;
-}
-function z(n, t) {
-  return !n || n.length !== t.length || t.some(function (t, r) {
-    return t !== n[r];
-  });
-}
-function B(n, t) {
-  return "function" == typeof t ? t(n) : t;
-}
-
-
-/***/ }),
-
-/***/ "QfWi":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Y3FI");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("GFNa");
-/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("QyV/");
-/* harmony import */ var _routes_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("3br2");
-/* harmony import */ var _routes_projects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("O2Vz");
-/* harmony import */ var async_routes_projects_pinger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("Flre");
-/* harmony import */ var async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("EsVX");
-/* harmony import */ var async_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("ztrQ");
-/* harmony import */ var async_routes_projects_backgroundcreator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("HlQF");
-/* harmony import */ var async_routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("GCDP");
-/* harmony import */ var async_routes_disclaimer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("BrWg");
-/* harmony import */ var _routes_portfolio__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("ohOX");
-/* harmony import */ var _routes_docs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("TJL8");
-/* harmony import */ var _routes_error__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("ScL5");
-
-
-
-
-// Code-splitting is automated for `routes` directory
-
-
-
-
-
-
-
-
-
-
-
-var App = function App() {
-  return h("div", {
-    id: "app"
-  }, h(_components_header__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"], null), h(preact_router__WEBPACK_IMPORTED_MODULE_0__["Router"], null, h(_routes_home__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"], {
-    path: "/"
-  }), h(_routes_projects__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], {
-    path: "/projects/"
-  }), h(async_routes_projects_pinger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
-    path: "/projects/mcserverping"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Weezd, {
-    path: "/projects/0090C4/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Bipher, {
-    path: "/projects/bipher/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].CaesarVariation, {
-    path: "/projects/caesarVariation/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].CRC, {
-    path: "/projects/continuousRegisterCipher/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].HashKeyCipher, {
-    path: "/projects/hashKeyCipher/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].KCRC, {
-    path: "/projects/keyedCRC/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].HKCRCR, {
-    path: "/projects/hCRCRework/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Weezd2, {
-    path: "/projects/K0090C4/"
-  }), h(async_routes_projects_ciphers__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].Keysmash, {
-    path: "/projects/keysmashCipher/"
-  }), h(async_routes_projects_poems__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"], {
-    path: "/projects/poetry/"
-  }), h(async_routes_projects_backgroundcreator__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
-    path: "/projects/backgroundcreator/"
-  }), h(async_routes_projects_embedCreator__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], {
-    path: "/projects/embedCreator"
-  }), h(_routes_portfolio__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"], {
-    path: "/portfolio/"
-  }), h(_routes_docs__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"], {
-    path: "/docs/"
-  }), h(async_routes_disclaimer__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"], {
-    path: "/disclaimer/"
-  }), h(_routes_error__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"], {
-    default: true
-  })));
-};
-/* harmony default export */ __webpack_exports__["default"] = (App);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
-
-/***/ }),
-
-/***/ "QyV/":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ox/y");
-/* harmony import */ var preact_router_match__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact_router_match__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QRet");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("ySiU");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-var Header = function Header() {
-  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "b"])(),
-    _useState2 = _slicedToArray(_useState, 2),
-    _ = _useState2[0],
-    rerender = _useState2[1];
-  Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useEffect */ "a"])(function () {
-    var resizeHandler = function resizeHandler() {
-      rerender({});
-    };
-    window.addEventListener('resize', resizeHandler);
-    return function () {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  });
-  var isHidden = false;
-  if (typeof window !== "undefined") isHidden = screen.height === window.innerHeight;
-  return h(Fragment, null, h("header", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].header,
-    hidden: isHidden
-  }, h("h1", null, "xtraea.com"), h("nav", null, h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-    href: "/"
-  }, "Home"), h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-    href: "/projects"
-  }, "Projects"), h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-    href: "/portfolio"
-  }, "Portfolio"), h(preact_router_match__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-    href: "/docs"
-  }, "Documentation"))), h("header", null));
-};
-/* harmony default export */ __webpack_exports__["a"] = (Header);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
-
-/***/ }),
-
-/***/ "SH9d":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return contentMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return poems; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("TQsQ");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-
-
-var Poem = function Poem(props) {
-  var title = props.title,
-    poem = props.poem;
-  return h("span", {
-    class: _style__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].poemcontainer
-  }, h("br", null), h("fieldset", null, h("legend", null, title), h("span", null, poem)), h("br", null));
-};
-var poems = [{
-  id: 0,
-  title: "Ignorance",
-  desc: ["I laid still, in a field of grass,", "The curve of a lifetime forgotten,", "Traceable,", "", "The grass of a thousand lives before me,", "Each identical under the gaze of the masses,", "Each with such story,", "Such individuality,", "", "A tree stands, squats: the horizon calls,", "You ignore it,", "", "As you distance, trees disappear,", "Forests give way to cities;", "Give way to the trap,", "", "Hundreds of trees stand, still,", "Surrounded by smoke and steel,", "A breath of fresh air no more than a myth,", "", "I lay once again in this former field,", "", "You see me, silently approach;", "I think: I know your words;", "But you just walk away,", "Once more."]
-}, {
-  id: 1,
-  title: "Someone Else's Panopticon",
-  desc: ["I look outside, after silence,", "I look inside, I see flashes,", "Flashes of light reflected in me,", "", "Flashes in the past tense,", "Thoughts from sounds ago,", "", "Can't hold a conversation,", "Too caught up in my own", "Head, turning to look at another screen,", "", "Spot another camera,", "Regulate my behaviour,", "", "What concrete madness we live in,", "Block it all out; next time it shows,", "I'm different, it's all alien. "]
-}, {
-  id: 2,
-  title: "You are Nothing without me",
-  desc: ["A ray of hope, caught in a razor,", "what's next is anyone's guess,", "", "A sharp line of skin,", "A slicing, stinging, burning pain,", "and the past comes rushing back.", "", "Rushing, like the veins,", "like the arteries,", " which don't suffer thought:", "saying, \"You are Nothing without me\"", "", "They are not alone in their message,", "Echoed by scars,", "Repeated by the scales,", "A prisoner turned against its sole possesor."]
-}, {
-  id: 3,
-  title: "Moonlit Overpass",
-  desc: ["The beauty of the moon,", "seen from a million miles away,", "stunning still from a pillow,", "A view rivalled only by:", "", "That of a rural bridge,", "over the tracks, chasing,", "A rolling landscape,", "Ended by a tree.", "", "Soaring.", "", "A bridge chased away,", "Supports a body not,", "So it soars and falls,", "Towards the tracks below.", "", "Onwards and downwards,", "As gravity runs course,", "A body finds the ground,", "Passing underneath.", "", "Searing."]
-}, {
-  id: 4,
-  title: "Heartbroken",
-  desc: ["an embrace... a kiss... a date...", "all of a past life... none familiar...", "What is it for?", "Am I broken? Am I?", "", "A hole in my heart,", "told I should hope,", "get a filling, or two,", "Am I broken?", "", "Deemed a worthless piece,", "reduced to a problem,", "emotion as an extra,", "Am I broken?", "", "Tell me I'm loveable", "and I am deserving,", "I'm still broken, discarded.", "You can't ever fill an empty heart,", "", "except with more holes.", ""]
-}, {
-  id: 5,
-  title: "Regulation",
-  desc: ["Grant that: a word is just that.", "No more. No less.", "Can it be they have meaning?", "As mathematics once was", "separated. Symbols.", "", "Reality.", "Detached from origins,", "Can it be they still have meaning?", "A schism, a rift", "between word and form.", "", "By word, only another may be referred.", "An object of reality,", "cannot interact with a fake:", "Construction of the mind.", "", "What use was connection?", "Coordinated society?", "A society split as easily as words?", "My vision may be your smell,", "my green:", "", "your blue; your blood,", "What use are words to describe fleeting vision?", "Extremes elude words,", "as do emotions,", "as do words themselves."]
-}, {
-  id: 6,
-  title: "My Own Terms",
-  desc: ["I dreamt.", "", "Of freedom:", "  to walk.", "  to walk alone at night.", "  to walk alone in June", "  with a wife.", "", "I once dreamt that one day,", "perhaps a June night,", "I could one day walk a beach", "among a sea breeze", "- one that did not smell of sewage.", "", "Beyond my furthest hopes:", "  I walk there, over hellish tarmac", "  past tortured homes,", "  under tremendous trees", "- and I cannot see the stars", "", "yet I never once dreamt:", "  that walk could contain", "  noise so loud; pop no doubt,", "  blasted over hills", "  to the beach", "- and I cannot hear the waves.", "", "But upon this beach,", "one I never dreamed about:", "I see stars, I hear waves, I smell only air.", "I am here:", "  in June...", "  At night...", "  With a wife:", "    but no life, in death."]
-}, {
-  id: 7,
-  title: "Spite",
-  desc: ["Because I would stay up", "all night, if it would make you any better,", "perhaps no rhyme, no reason, no rhythm, ", "but what is love if it rhymes?", "", "Because I would write you a poem", "and if I had to hide my love,", "address it to a tree, a tower, a beach", "or dedicate it to an anthology,", "if I could not dedicate myself to you.", "", "Passion, irrelevant.", "Hypotheticals unnecessary, for what can be ", "done in a moment.", "Why bother, with metaphors, comparisons, delusions?", "You could be here, now", "with me and my mind, to share.", "", "The freedom to love;", "a right within Europe, France.", "The city of love, Paris,", "I left a lock on that bridge", "to symbolise our love like so many others.", "", "And that is where it ends, isn't it?", "Why bother, in the face of rhyme, repetition and refrain?"]
-}].map(function (poem) {
-  return _objectSpread(_objectSpread({}, poem), {}, {
-    desc: h(Poem, {
-      title: poem.title,
-      poem: poem.desc.map(function (value, index) {
-        return h(preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
-          key: index
-        }, value, h("br", null));
-      })
-    })
-  });
-});
-var contentMap = {};
-var _iterator = _createForOfIteratorHelper(poems),
-  _step;
-try {
-  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-    var _step$value = _step.value,
-      title = _step$value.title,
-      desc = _step$value.desc;
-    contentMap[title] = desc;
-  }
-} catch (err) {
-  _iterator.e(err);
-} finally {
-  _iterator.f();
-}
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
-
-/***/ }),
-
-/***/ "ScL5":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6NaM");
-
-var Error = function Error() {
-  return h("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].errorbody
-  }, h("p", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].title
-  }, "404: Page Not Found"), h("p", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].text
-  }, "One of us has made a mistake... ", h("br", null), "But neither wants to admit it. You could head to the ", h("br", null), h("a", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].link,
-    href: "/"
-  }, "home"), " page and forget this ever happened."));
-};
-/* harmony default export */ __webpack_exports__["a"] = (Error);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
-
-/***/ }),
-
-/***/ "TJL8":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("9ZoI");
-
-var Docs = function Docs() {
-  return h("div", null, h("p", null, "docs"));
-};
-/* harmony default export */ __webpack_exports__["a"] = (Docs);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
-
-/***/ }),
-
-/***/ "TQsQ":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"poemcontainer":"poemcontainer__gSEPI"});
-
-/***/ }),
-
-/***/ "UnQz":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"showcases":"showcases__UhJnS"});
-
-/***/ }),
-
-/***/ "UxE5":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"ciphercontainer":"ciphercontainer__NSqUO","arrow":"arrow__tYCQh","keybutton":"keybutton__Wmt+e"});
 
 /***/ }),
 
@@ -2683,6 +2542,76 @@ Router.exec = exec;
 
 /***/ }),
 
+/***/ "aePd":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return TextContainerLarge; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextContainerChar; });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("4hVv");
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QRet");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var TextContainerLarge = function TextContainerLarge(props) {
+  var lockable = props.lockable,
+    setExternalText = props.setExternalText,
+    setInternalText = props.setInternalText,
+    readOnly = props.readOnly;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isLocked = _useState2[0],
+    _setLocked = _useState2[1];
+  var setLocked = function setLocked(state) {
+    return lockable && _setLocked(state);
+  };
+  return h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].ciphercontainer
+  }, h("textarea", {
+    cols: "80",
+    rows: "12",
+    onPaste: function onPaste() {
+      return setLocked(true);
+    },
+    onKeyUp: function onKeyUp(e) {
+      var _e$target;
+      return setExternalText(e === null || e === void 0 ? void 0 : (_e$target = e.target) === null || _e$target === void 0 ? void 0 : _e$target.value);
+    },
+    readOnly: isLocked || readOnly,
+    value: setInternalText
+  }), h("br", null), h("br", null), isLocked && h("button", {
+    onClick: function onClick() {
+      return setLocked(false);
+    }
+  }, "Unlock"));
+};
+var TextContainerChar = function TextContainerChar(props) {
+  var presetLetter = props.presetLetter,
+    pushChar = props.pushChar;
+  return h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].ciphercontainer
+  }, h("textarea", {
+    maxLength: "1",
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].small,
+    cols: "1",
+    rows: "1",
+    onKeyUp: function onKeyUp(e) {
+      var _e$target2;
+      return pushChar(e === null || e === void 0 ? void 0 : (_e$target2 = e.target) === null || _e$target2 === void 0 ? void 0 : _e$target2.value);
+    },
+    readOnly: !!presetLetter,
+    value: presetLetter
+  }), h("br", null), h("br", null));
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
 /***/ "dwRq":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2692,12 +2621,614 @@ Router.exec = exec;
 
 /***/ }),
 
+/***/ "eF+M":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h, Fragment) {/* harmony import */ var preact_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Y3FI");
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QRet");
+/* harmony import */ var _components_deferredimage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("p3sy");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("egLa");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var fetchData = function fetchData(page, items) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      return resolve({});
+    }, 10000);
+    fetch("https://api.xtraea.com/v1/embed/list?page=".concat(page, "&items=").concat(items)).then(function (result) {
+      resolve(result.json());
+    }).catch(function () {
+      return reject({});
+    });
+  });
+};
+// const fetchData = (page, items) => await (await fetch(`https://api.xtraea.com/v1/embed/list?page=${page}&items=${items}`)).json();
+
+var getTimeUntilExpiry = function getTimeUntilExpiry(time) {
+  return new Date(new Date(time + 7 * 24 * 60 * 60 * 1000) - new Date());
+};
+var EmbedBrowser = function EmbedBrowser() {
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    fetchedData = _useState2[0],
+    setData = _useState2[1];
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(0),
+    _useState4 = _slicedToArray(_useState3, 2),
+    pageTotal = _useState4[0],
+    setPageTotal = _useState4[1];
+  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(1),
+    _useState6 = _slicedToArray(_useState5, 2),
+    currentPage = _useState6[0],
+    setCurrentPage = _useState6[1];
+  var _useState7 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(9),
+    _useState8 = _slicedToArray(_useState7, 2),
+    itemCount = _useState8[0],
+    setItemCount = _useState8[1];
+  var _useState9 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(0),
+    _useState10 = _slicedToArray(_useState9, 2),
+    loaded = _useState10[0],
+    setLoaded = _useState10[1];
+
+  // load things
+  Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useEffect */ "a"])(function () {
+    _asyncToGenerator(function* () {
+      var response = yield fetchData(currentPage, itemCount);
+      setPageTotal(response.pages);
+      setData(response.embeds);
+      setLoaded(Object.entries(response).length > 0 ? 1 : -1);
+    })();
+  }, [currentPage, itemCount]);
+  var controls = h(EmbedControls, {
+    pageTotal: pageTotal,
+    currentPage: currentPage,
+    setPage: setCurrentPage,
+    itemCount: itemCount,
+    setItemCount: setItemCount
+  });
+  return h(Fragment, null, h("p", null, h(preact_router__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+    href: "/disclaimer"
+  }, "Disclaimer")), controls, loaded ? h(EmbedPage, {
+    displayData: fetchedData,
+    loadState: loaded
+  }) : h("div", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].loader
+  }), pageTotal > 1 ? controls : "", h("footer", null));
+};
+var EmbedPage = function EmbedPage(props) {
+  var displayData = props.displayData,
+    loadState = props.loadState;
+  if (!displayData) return loadState === 1 ? h("p", null, "No embeds!") : h("p", null, "Unable to access service!");
+  var embeds = [];
+  for (var _i2 = 0, _Object$entries = Object.entries(displayData); _i2 < _Object$entries.length; _i2++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+      id = _Object$entries$_i[0],
+      value = _Object$entries$_i[1];
+    if (getTimeUntilExpiry(value.time) > 0) embeds.push(h(EmbedDisplay, {
+      key: id,
+      ID: id,
+      value: value
+    }));
+  }
+  /*const embeds = Object.entries(displayData).filter(([, value]) => getTimeUntilExpiry(value.time) > 0).map(
+      ([id, value]) => 
+      <EmbedDisplay 
+          key={id}
+          ID={id}
+          value={value}
+      />
+  )*/ // other way to make embeds list? not sure about speed, though
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]["embed-page"]
+  }, embeds);
+};
+var EmbedControls = function EmbedControls(props) {
+  var pageTotal = props.pageTotal,
+    currentPage = props.currentPage,
+    itemCount = props.itemCount;
+  var setPage = props.setPage,
+    setItemCount = props.setItemCount;
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].embedInput
+  }, "Items: ", h("input", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].embedInput,
+    rows: "1",
+    cols: "2",
+    type: "number",
+    value: itemCount,
+    onChange: function onChange(e) {
+      return setItemCount(e.target.value);
+    }
+  }), h("button", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].embedPrev,
+    disabled: currentPage <= 1,
+    onclick: function onclick() {
+      return setPage(function (page) {
+        return page - 1;
+      });
+    }
+  }, "<"), "Current Page: ", currentPage, h("button", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].embedNext,
+    disabled: pageTotal <= currentPage,
+    onclick: function onclick() {
+      return setPage(function (page) {
+        return page + 1;
+      });
+    }
+  }, ">"));
+};
+var EmbedDisplay = function EmbedDisplay(props) {
+  var ID = props.ID,
+    _props$value = props.value,
+    time = _props$value.time,
+    title = _props$value.title,
+    description = _props$value.description,
+    image = _props$value.image,
+    color = _props$value.color;
+  var copyLink = function copyLink(id) {
+    return function () {
+      var _navigator;
+      if ((_navigator = navigator) !== null && _navigator !== void 0 && _navigator.clipboard) navigator.clipboard.writeText("https://api.xtraea.com/v1/embed?s=".concat(id));
+    };
+  };
+  var validateImage = function validateImage(link) {
+    if (!link) return false;
+    var fileEndArray = ["jpg", "png", "jpeg", "webp"];
+    var splitLink = link.split(".");
+    for (var _i3 = 0, _fileEndArray = fileEndArray; _i3 < _fileEndArray.length; _i3++) {
+      var i = _fileEndArray[_i3];
+      if (splitLink[splitLink.length - 1] === i) return true;
+    }
+    return false;
+  };
+  var getExpiryFormatted = function getExpiryFormatted(time) {
+    var times = ["d", "h", "m", "s"];
+    var timeUntilExpiry = getTimeUntilExpiry(time);
+    var days = Math.floor(timeUntilExpiry.getTime() / (24 * 60 * 60 * 1000));
+    var remainingMilliseconds = timeUntilExpiry.getTime() % (24 * 60 * 60 * 1000);
+    var hours = Math.floor(remainingMilliseconds / (60 * 60 * 1000));
+    var minutes = timeUntilExpiry.getMinutes();
+    var seconds = timeUntilExpiry.getSeconds();
+    var timeValues = [days, hours, minutes, seconds];
+    return timeValues.map(function (value, index) {
+      return value !== 0 ? " ".concat(value).concat(times[index]) : '';
+    }).filter(function (value) {
+      return value !== '';
+    });
+  };
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].displayContainer,
+    style: "--t: #".concat(color, ";")
+  }, h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].imageAlign
+  }, h("textarea", {
+    readOnly: true,
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].displayTitleText
+  }, title), validateImage(image) ? h(_components_deferredimage__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"], {
+    width: 100,
+    height: 100,
+    link: image
+  }) : ""), h("textarea", {
+    readOnly: true,
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].displayDescText
+  }, description), h("button", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].displayButton,
+    onclick: copyLink(ID)
+  }, h("p", null, "Copy embed link")), h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].displayID
+  }, "ID: ", ID, " - Expires in: ", getExpiryFormatted(time)));
+};
+/* harmony default export */ __webpack_exports__["a"] = (EmbedBrowser);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
+
+/***/ }),
+
+/***/ "eUT8":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return docs; });
+var docs = {
+  "0090C4": ["This cipher operates using the same technique as bipher.", "It additionally uses an offset of 0x0090C4 on each pass, which is a reference to the background colour of Weezer's blue album.", "", "The cipher is performed by using a sliding window. The window is two characters wide, such that each character in", "the output string is determined by the character at the same and previous index in the input string.", "The sum of these characters as their numerical identifiers, as well as the offset, is used as the numerical identifier for", "the character in the output string, which is then reversed. By performing the cipher again, the 'bipher' cipher is completed."],
+  "Bipher": ["The cipher is performed by using a sliding window. The window is two characters wide, such that each character in", "the output string is determined by the character at the same and previous index in the input string.", "The sum of these characters as their numerical identifiers, as well as the offset, is used as the numerical identifier for", "the character in the output string, which is then reversed. By performing the cipher again, the 'bipher' cipher is completed."],
+  "Caesar Variation": ["This cipher is a simple substitution cipher. The substitution alphabet is always in the same order as the alphabet,", "but is offset by the length of the input string, or 1 if the length of the input string is a multiple of 16.", "For an example input of 'a', the offset would be the length, 1, giving a substitution alphabet of 'b, c, d, ..., a'"],
+  "Continuous Register Cipher": "TBW",
+  "Hashed CRC": "TBW",
+  "Hashed CRC: Reworked": "TBW",
+  "Weez'd 2": "TBW",
+  "Keyed CRC": "TBW",
+  "Keysmash Cipher": ["The cipher is performed by using a sliding window. The window is two characters wide, such that each character in", "the output string is determined by the character at the same and previous index in the input string.", "The sum of these characters as their numerical identifiers, as well as the offset, is used as the numerical identifier for", "the character in the output string, completing the cipher."],
+  "Poems": ["Occasionally, I am struck by an inexplicable inspiration to write. If that is not code, it is probably poetry.", h("a", {
+    href: "/projects/poetry"
+  }, "They can be found here.")],
+  "Minecraft Server Pinger": ["This is a simple tool which interfaces with the API. The tool provides a nicer user interface than the raw", "HTTP and JSON request and response, respectively.", "To use it, the user must simply enter the IP address of a Minecraft: Java Edition server."],
+  "Background Creator (Beta)": "TBW",
+  "Embed Creator (Beta)": "TBW",
+  "Embed Browser (Beta)": "TBW",
+  "API": ["Here is some API documentation. Public routes can be found under v0 and v1.", "TBW"],
+  "Substitution Cipher Solver": ["TBW"]
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "egLa":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"displayContainer":"displayContainer__65Ywh","embed-page":"embed-page__k-LtT","imageAlign":"imageAlign__kpyob","displayTitleText":"displayTitleText__P2Qgd","displayDescText":"displayDescText__dZiwz","displayID":"displayID__9ootO","displayButton":"displayButton__Zv8NN","embedInput":"embedInput__kRzDc","embedPrev":"embedPrev__PCzK6","embedNext":"embedNext__8NY-m","loader":"loader__hjPGX","spin":"spin__rUH6Y"});
+
+/***/ }),
+
 /***/ "ev0s":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"container":"container__XBPsU","scrollable":"scrollable__wHEWf","divider":"divider__jwaXt"});
+/* harmony default export */ __webpack_exports__["a"] = ({"container":"container__XBPsU","scrollable":"scrollable__wHEWf","items-list":"items-list__cpxwN"});
+
+/***/ }),
+
+/***/ "hzhi":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("9l6j");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("HteQ");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var CirclesCreator = function CirclesCreator() {
+  var _screen$width, _screen, _screen$height, _screen2;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])((_screen$width = (_screen = screen) === null || _screen === void 0 ? void 0 : _screen.width) !== null && _screen$width !== void 0 ? _screen$width : 1920),
+    _useState2 = _slicedToArray(_useState, 2),
+    width = _useState2[0],
+    setWidth = _useState2[1];
+  var _useState3 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])((_screen$height = (_screen2 = screen) === null || _screen2 === void 0 ? void 0 : _screen2.height) !== null && _screen$height !== void 0 ? _screen$height : 1080),
+    _useState4 = _slicedToArray(_useState3, 2),
+    height = _useState4[0],
+    setHeight = _useState4[1];
+  var _useState5 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])("#000000"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    color = _useState6[0],
+    setColor = _useState6[1];
+  var outputCanvas = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useRef */ "b"])();
+  var canvasRenderer = {
+    validStates: [],
+    renderedCanvases: [],
+    add: function add(validState) {
+      canvasRenderer.validStates.push(validState);
+    },
+    clear: function clear() {
+      return canvasRenderer.validStates = [];
+    },
+    composeCanvases: function composeCanvases() {
+      var canvas = outputCanvas.current;
+      if (!canvas) return;
+      canvas.height = height;
+      canvas.width = width;
+      var drawable = canvas === null || canvas === void 0 ? void 0 : canvas.getContext("2d");
+      drawable.clearRect(0, 0, width, height);
+      drawable.fillStyle = color;
+      drawable.beginPath();
+      drawable.fillRect(0, 0, width, height);
+      drawable.fill();
+      canvasRenderer.renderedCanvases = [];
+      canvasRenderer.validStates.forEach(function (value) {
+        return canvasRenderer.renderIndividualLayer(value);
+      });
+      canvasRenderer.renderedCanvases.forEach(function (value) {
+        return drawable.drawImage(value, 0, 0);
+      });
+    },
+    renderIndividualLayer: function renderIndividualLayer(_ref) {
+      var baseColor = _ref.baseColor,
+        shadow = _ref.shadow,
+        innerTransparent = _ref.innerTransparent,
+        amount = _ref.amount,
+        size = _ref.size;
+      var canvas = document.createElement("canvas");
+      canvas.height = height;
+      canvas.width = width;
+      var ctx = canvas.getContext("2d");
+      //BIG RENDER FUNCTION
+      var rh = {
+        layers: {},
+        drawCircle: function drawCircle(x, y, radius, ctx) {
+          return ctx.arc(x, y, radius, 0, Math.PI * 2);
+        },
+        rand: function rand(radius, max) {
+          return Math.floor(Math.random() * (+max + +radius + 1)) - +radius;
+        },
+        getRadius: function getRadius(_ref2) {
+          var mode = _ref2.mode,
+            value = _ref2.value,
+            offset = _ref2.offset;
+          switch (mode) {
+            case '0':
+              {
+                return +value;
+              }
+            case '1':
+              {
+                var smaller = Math.min(value, offset);
+                var bigger = Math.max(value, offset);
+                return smaller + Math.floor(Math.random() * (bigger - smaller));
+              }
+            case '2':
+              {
+                var randOffset = Math.floor(Math.random() * (+offset + 1));
+                if (Math.random() > 0.5) {
+                  return +value + randOffset;
+                }
+                return +value - randOffset;
+              }
+          }
+        }
+      };
+      var genNewLayer = function genNewLayer() {
+        var newCanvas = document.createElement('canvas');
+        newCanvas.height = height;
+        newCanvas.width = width;
+        return newCanvas;
+      };
+      var createGradient = function createGradient(gradient, colorStart, colorEnd) {
+        gradient.addColorStop(0, colorStart);
+        gradient.addColorStop(0.999, colorEnd);
+        gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+      };
+      //TODO: draw them properly (pretty much just fix the gradient)
+      var drawRandomCircles = function drawRandomCircles() {
+        var scalar = 3 / 2;
+        var circles = [];
+        var limit = 100;
+        var _loop = function _loop() {
+          var radius, x, y;
+          var attempts = 0;
+          do {
+            radius = rh.getRadius(size);
+            x = rh.rand(radius, width);
+            y = rh.rand(radius, height);
+            attempts++;
+            if (attempts > limit) break;
+          } while (circles.some(function (c) {
+            return Math.sqrt(Math.pow(c.x - x, 2) + Math.pow(c.y - y, 2)) < (c.radius + radius) * scalar;
+          }));
+          if (attempts <= limit) {
+            // add valid circle right away
+            circles.push({
+              x: x,
+              y: y,
+              radius: radius
+            });
+            // define layers, contexts
+            var circleLayer = genNewLayer();
+            var gradientLayer = genNewLayer();
+            var circleCtx = circleLayer.getContext("2d");
+            var gradientCtx = gradientLayer.getContext("2d");
+            var gradient = gradientCtx.createRadialGradient(x, y, radius * scalar / 2, x, y, radius * scalar);
+            // create circle canvas
+            circleCtx.fillStyle = baseColor;
+            circleCtx.beginPath();
+            rh.drawCircle(x, y, radius, circleCtx);
+            circleCtx.fill();
+            // create gradient canvas
+            createGradient(gradient, innerTransparent ? shadow : baseColor, innerTransparent ? baseColor : shadow);
+            gradientCtx.fillStyle = gradient;
+            gradientCtx.fillRect(0, 0, width, height);
+            if (innerTransparent) {
+              var operation = ctx.globalCompositeOperation;
+              // cut out circle
+              ctx.globalCompositeOperation = "xor";
+              ctx.drawImage(circleLayer, 0, 0);
+              // add gradient over what remains
+              ctx.globalCompositeOperation = "source-atop";
+              ctx.drawImage(gradientLayer, 0, 0);
+              ctx.globalCompositeOperation = operation;
+            } else {
+              ctx.drawImage(circleLayer, 0, 0);
+              ctx.drawImage(gradientLayer, 0, 0);
+            }
+          }
+        };
+        for (var count = 0; count < amount; count++) {
+          _loop();
+        }
+      };
+      ctx.fillStyle = baseColor;
+      if (innerTransparent) {
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.globalCompositeOperation = 'destination-out';
+      }
+      drawRandomCircles();
+      canvasRenderer.renderedCanvases.push(canvas);
+    }
+  };
+  return h(preact__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, h("p", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].description
+  }, "(BETA: It is guaranteed that there is work to be done.) This tool can create backgrounds (wallpapers) easily by adding layers, customising them until you are happy with how it looks, then finally right clicking and selecting \"Save As\"."), h(Controls, {
+    canvasRenderer: canvasRenderer
+  }), "Set output size: ", h("br", null), "Background colour: ", h("input", {
+    value: color,
+    onChange: function onChange(e) {
+      return setColor(e.target.value);
+    },
+    type: "color"
+  }), h("br", null), "x: ", h("input", {
+    value: width,
+    onChange: function onChange(e) {
+      return setWidth(+e.target.value);
+    },
+    type: "number"
+  }), h("br", null), "y: ", h("input", {
+    value: height,
+    onChange: function onChange(e) {
+      return setHeight(+e.target.value);
+    },
+    type: "number"
+  }), h("br", null), h("button", {
+    onClick: canvasRenderer.composeCanvases,
+    type: "button"
+  }, "Render"), h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].divider,
+    style: "width: ".concat(width, "px")
+  }), h("canvas", {
+    ref: outputCanvas
+  }));
+};
+var Controls = function Controls(props) {
+  var canvasRenderer = props.canvasRenderer;
+  var _useState7 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    controlsList = _useState8[0],
+    setControlsList = _useState8[1];
+  var createNewLayerState = function createNewLayerState() {
+    var newList = [].concat(_toConsumableArray(controlsList), [{
+      baseColor: "#000000",
+      shadow: "#000000",
+      innerTransparent: false,
+      amount: "5",
+      size: {
+        mode: "0",
+        value: "100",
+        offset: "0"
+      }
+    }]);
+    setControlsList(newList);
+  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useEffect */ "a"])(createNewLayerState, []);
+  canvasRenderer.clear();
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].controlsContainer
+  }, controlsList.map(function (value, index) {
+    canvasRenderer.add(value);
+    return h(preact__WEBPACK_IMPORTED_MODULE_2__["Fragment"], {
+      key: index
+    }, h(LayerControl, {
+      currentConfig: value,
+      updateConfig: function updateConfig(newConfig) {
+        setControlsList(controlsList.map(function (value, i) {
+          return index !== i ? value : newConfig;
+        }));
+      }
+    }), index !== 0 ? h("button", {
+      onClick: function onClick() {
+        setControlsList(controlsList.filter(function (value, i) {
+          return i !== index;
+        }));
+      }
+    }, "X") : null);
+  }), h("button", {
+    onClick: createNewLayerState
+  }, "Add new layer (placed on top)"));
+};
+var LayerControl = function LayerControl(_ref3) {
+  var currentConfig = _ref3.currentConfig,
+    updateConfig = _ref3.updateConfig;
+  var baseColor = currentConfig.baseColor,
+    shadow = currentConfig.shadow,
+    innerTransparent = currentConfig.innerTransparent,
+    amount = currentConfig.amount,
+    size = currentConfig.size;
+  var changeValue = function changeValue(key) {
+    return function (event) {
+      return updateConfig(_extends(currentConfig, _defineProperty({}, key, event.target.value)));
+    };
+  };
+  var changeTransparency = function changeTransparency(event) {
+    return updateConfig(_extends(currentConfig, {
+      innerTransparent: event.target.checked
+    }));
+  };
+  var changeSize = function changeSize(key) {
+    return function (event) {
+      var newSizeObj = _extends(currentConfig.size, _defineProperty({}, key, event.target.value));
+      updateConfig(_extends(currentConfig, {
+        size: newSizeObj
+      }));
+    };
+  };
+  return h("span", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].layerControl
+  }, h("input", {
+    value: baseColor,
+    onChange: changeValue("baseColor"),
+    type: "color"
+  }), h("input", {
+    value: shadow,
+    onChange: changeValue("shadow"),
+    type: "color"
+  }), h("input", {
+    value: innerTransparent,
+    onChange: changeTransparency,
+    type: "checkbox"
+  }), h("input", {
+    value: amount,
+    onChange: changeValue("amount"),
+    type: "range",
+    min: "1",
+    max: "10",
+    step: "1"
+  }), h("select", {
+    value: size.mode,
+    onChange: changeSize("mode")
+  }, h("option", {
+    value: "0"
+  }, "Absolute"), h("option", {
+    value: "1"
+  }, "Range"), h("option", {
+    value: "2"
+  }, "Cluster")), h("input", {
+    value: size.value,
+    onChange: changeSize("value"),
+    type: "number"
+  }), h("input", {
+    value: size.offset,
+    onChange: changeSize("offset"),
+    type: "number",
+    disabled: size.mode === "0"
+  }));
+};
+/* harmony default export */ __webpack_exports__["a"] = (CirclesCreator);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "l38I":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"imgbutton":"imgbutton__OWqfi","container":"container__Aye9c"});
 
 /***/ }),
 
@@ -2707,15 +3238,6 @@ Router.exec = exec;
 "use strict";
 // extracted by mini-css-extract-plugin
 /* harmony default export */ __webpack_exports__["a"] = ({"inputTag":"inputTag__08pCN","descriptionTag":"descriptionTag__A5cqg","textTag":"textTag__HFlbz","submitButton":"submitButton__IBL9+","outputContainer":"outputContainer__+-qWj","outputButton":"outputButton__kcWEc","output":"output__M4xD9","textDescription":"textDescription__QaKKM"});
-
-/***/ }),
-
-/***/ "oF1q":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// extracted by mini-css-extract-plugin
-/* harmony default export */ __webpack_exports__["a"] = ({"controlsContainer":"controlsContainer__Aq-p9","layerControl":"layerControl__3+S8c","description":"description__jhJO7","divider":"divider__FJJ76"});
 
 /***/ }),
 
@@ -2840,6 +3362,92 @@ var Link = function Link(_ref) {
 exports.Link = Link;
 exports.default = Match;
 Match.Link = Link;
+
+/***/ }),
+
+/***/ "p3sy":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QRet");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("l38I");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var DeferredImage = function DeferredImage(_ref) {
+  var color = _ref.color,
+    width = _ref.width,
+    height = _ref.height,
+    link = _ref.link;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_0__[/* useState */ "c"])(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    clicked = _useState2[0],
+    loadImage = _useState2[1];
+  return h("span", {
+    class: _style__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].container,
+    style: "width: ".concat(width, "px; height: ").concat(height, "px;"),
+    children: clicked ? h("img", {
+      width: width,
+      height: height,
+      src: "".concat(link)
+    }) : h("button", {
+      style: "background-color: #".concat(color, ";"),
+      class: _style__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].imgbutton,
+      onclick: function onclick() {
+        return loadImage(true);
+      }
+    }, "Click to load image.")
+  });
+};
+/* harmony default export */ __webpack_exports__["a"] = (DeferredImage);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "xHa7":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Bh3c");
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QRet");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var ToggleSwitch = function ToggleSwitch(props) {
+  var syncExternalState = props.syncExternalState,
+    inText = props.inText,
+    invertColor = props.invertColor;
+  var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isToggled = _useState2[0],
+    setToggled = _useState2[1];
+  var changeToggleState = function changeToggleState() {
+    setToggled(!isToggled);
+    syncExternalState(!isToggled);
+  };
+  return h("label", {
+    class: _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].ToggleSwitch
+  }, h("input", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].checkbox, " ").concat(invertColor ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].invert : ""),
+    type: "checkbox",
+    onClick: changeToggleState,
+    checked: isToggled
+  }), h("span", {
+    class: "".concat(_style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].slide, " ").concat(inText ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inP : "", " ").concat(invertColor ? _style_css__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].invert : "")
+  }));
+};
+/* harmony default export */ __webpack_exports__["a"] = (ToggleSwitch);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
 
 /***/ }),
 
