@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import style from './style.css';
 import { Fragment } from 'preact';
 
-const BackgroundCreator = () => {
+const CirclesCreator = () => {
     const [width, setWidth] = useState(screen?.width ?? 1920);
     const [height, setHeight] = useState(screen?.height ?? 1080);
     const [color, setColor] = useState("#000000");
@@ -46,8 +46,8 @@ const BackgroundCreator = () => {
                             return +value;
                         }
                         case '1': {
-                            let smaller = Math.min(value, offset);
-                            let bigger = Math.max(value, offset);
+                            const smaller = Math.min(value, offset);
+                            const bigger = Math.max(value, offset);
                             return smaller + Math.floor(Math.random() * (bigger - smaller));
                         }
                         case '2': {
@@ -134,9 +134,9 @@ const BackgroundCreator = () => {
     return (
         <>
             <p class={style.description}>(BETA: It is guaranteed that there is work to be done.) This tool can create backgrounds (wallpapers) easily by adding layers, customising them until you are happy with how it looks, then finally right clicking and selecting "Save As".</p>
-            <Controls canvasRenderer={canvasRenderer} /> {/*renderCanvas={this.renderCanvas} canvasRef={this.canvas} passthroughRef={this.background}*/}
+            <Controls canvasRenderer={canvasRenderer} />
             Set output size: <br />
-            {/*TODO: reorder / restructure*/}
+            {/*TODO: reorder / restructure / restyle */}
             Background colour: <input value={color} onChange={e => setColor(e.target.value)} type="color" /><br />
             x: <input value={width} onChange={e => setWidth(+e.target.value)} type="number" /><br />
             y: <input value={height} onChange={e => setHeight(+e.target.value)} type="number" /><br />
@@ -211,4 +211,4 @@ const LayerControl = ({currentConfig, updateConfig}) => {
     )
 }
 
-export default BackgroundCreator;
+export default CirclesCreator;

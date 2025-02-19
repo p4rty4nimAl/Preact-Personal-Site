@@ -88,10 +88,10 @@ export const showcases = [
         keywords: "minecraft server pinger mc"
     },
     {
-        link: "/projects/backgroundcreator",
-        name: "Background Creator (Beta)",
-        desc: "A powerful tool which allows for creation of backgrounds (wallpapers) using only circles and layers.",
-        keywords: "background creator circles layers wallpaper (beta)"
+        link: "/projects/wallpapers/circles",
+        name: "Circles (Beta)",
+        desc: "A powerful tool which allows for creation of wallpapers using only circles and layers.",
+        keywords: "background creator circles layers wallpapers (beta)"
     },
     {
         link: "/projects/embedCreator",
