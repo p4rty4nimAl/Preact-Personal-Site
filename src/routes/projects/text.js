@@ -79,7 +79,7 @@ export const showcases = [
         link: "/projects/poetry",
         name: "Poems",
         desc: "A collection of poems written by me.",
-        keywords: "ignorance someone else's panopticon poems poetry"
+        keywords: "poems poetry"
     },
     {
         link: "/projects/mcserverping",
@@ -88,10 +88,10 @@ export const showcases = [
         keywords: "minecraft server pinger mc"
     },
     {
-        link: "/projects/backgroundcreator",
-        name: "Background Creator (Beta)",
-        desc: "A powerful tool which allows for creation of backgrounds (wallpapers) using only circles and layers.",
-        keywords: "background creator circles layers wallpaper (beta)"
+        link: "/projects/wallpapers/circles",
+        name: "Circles (Beta)",
+        desc: "A powerful tool which allows for creation of wallpapers using only circles and layers.",
+        keywords: "background creator circles layers wallpapers (beta)"
     },
     {
         link: "/projects/embedCreator",
@@ -110,6 +110,12 @@ export const showcases = [
         name: "API",
         desc: "The API for this site, which can be used by individuals.",
         keywords: "api backend program"
+    },
+    {
+        link: "/projects/subSolver",
+        name: "Substitution Cipher Solver",
+        desc: "Tool to aid solving a ciphertext enciphered with a substitution cipher",
+        keywords: "substitution cipher solver subsolver"
     }
 ];
 

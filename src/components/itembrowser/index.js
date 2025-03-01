@@ -8,7 +8,11 @@ const ItemBrowser = (props) => {
     const [selectedButton, setSelectedButton] = useState();
     const formatForURL = url => url?.replace(/[():' ]/g, "");
     const changeMenu = title => {
-        setDoc(items[title]);
+        let doc = items[title];
+        if (Array.isArray(doc)) {
+            doc = doc.map((item, i) => [item, <br key={i} />]).flat();
+        }
+        setDoc(doc);
         setSelectedButton(title);
         window.location.href = `${window.location.href.split("#")[0]}#${formatForURL(title)}`;
     }
