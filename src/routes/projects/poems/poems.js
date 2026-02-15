@@ -18,7 +18,7 @@ const Poem = (props) => {
 const poems = [
     {
         id: 0,
-        title: "Ignorance",
+        title: "Ignorance - 23/05/22",
         desc: [
             "I laid still, in a field of grass,",
             "The curve of a lifetime forgotten,",
@@ -50,7 +50,7 @@ const poems = [
     },
     {
         id: 1,
-        title: "Someone Else's Panopticon",
+        title: "Someone Else's Panopticon - 23/05/22",
         desc: [
             "I look outside, after silence,",
             "I look inside, I see flashes,",
@@ -73,7 +73,7 @@ const poems = [
     },
     {
         id: 2,
-        title: "You are Nothing without me",
+        title: "You are Nothing without me - 08/11/22",
         desc: [
             "A ray of hope, caught in a razor,",
             "what's next is anyone's guess,",
@@ -95,7 +95,7 @@ const poems = [
     },
     {
         id: 3,
-        title: "Moonlit Overpass",
+        title: "Moonlit Overpass - 08/11/22",
         desc: [
             "The beauty of the moon,",
             "seen from a million miles away,",
@@ -124,7 +124,7 @@ const poems = [
     },
     {
         id: 4,
-        title: "Heartbroken",
+        title: "Heartbroken - 27/05/23",
         desc: [
             "an embrace... a kiss... a date...",
             "all of a past life... none familiar...",
@@ -152,7 +152,7 @@ const poems = [
     },
     {
         id: 5,
-        title: "Regulation",
+        title: "Regulation - 27/05/23",
         desc: [
             "Grant that: a word is just that.",
             "No more. No less.",
@@ -187,7 +187,7 @@ const poems = [
     },
     {
         id: 6,
-        title: "My Own Terms",
+        title: "My Own Terms - 27/05/23",
         desc: [
             "I dreamt.",
             "",
@@ -228,7 +228,7 @@ const poems = [
     },
     {
         id: 7,
-        title: "Spite",
+        title: "Spite - 27/05/23",
         desc: [
             "Because I would stay up",
             "all night, if it would make you any better,",
@@ -260,7 +260,7 @@ const poems = [
     },
     {
         id: 8,
-        title: "Babylon",
+        title: "Babylon - 17/12/23",
         desc: [
             "am I losing it? or is",
             "this simply the result of",
@@ -284,7 +284,7 @@ const poems = [
     },
     {
         id: 9,
-        title: "Replicate",
+        title: "Self-Centered - 09/02/25",
         desc: [
             "It's selfish, yet hellish.",
             "Why must I feel pain?",
@@ -322,7 +322,7 @@ const poems = [
     },
     {
         id: 10,
-        title: "Endless Waiting",
+        title: "Waiting - 09/02/25",
         desc: [
             "The mirror:",
             "A harsh reminder.",
@@ -354,7 +354,7 @@ const poems = [
     },
     {
         id: 11,
-        title: "Positive Disposition",
+        title: "Disposition - 09/02/25",
         desc: [
             "I can say 'I love you',",
             "who couldn't? The difference,",
@@ -386,7 +386,7 @@ const poems = [
     },
     {
         id: 12,
-        title: "Connection",
+        title: "Connection - 09/02/25",
         desc: [
             "Something inside is broken.",
             "Fundamentally shattered, perhaps.",
@@ -424,7 +424,7 @@ const poems = [
     },
     {
         id: 13,
-        title: "Energy",
+        title: "Intensity of Nothing - 09/02/25",
         desc: [
             "How can one convey,",
             "intensity of emotion:",
@@ -463,7 +463,7 @@ const poems = [
     },
     {
         id: 14,
-        title: "Pointless",
+        title: "Little - 09/02/25",
         desc: [
             "Can a poem,",
             "any poem, any at all.",
@@ -533,7 +533,7 @@ const poems = [
     },
     {
         id: 15,
-        title: "Bubbles",
+        title: "Bubbles - 09/02/25",
         desc: [
             "A tool to free us,",
             "suddenly a toll, tax, becomes surplus.",
@@ -572,7 +572,7 @@ const poems = [
     },
     {
         id: 16,
-        title: "Reserve",
+        title: "Reserve - 09/02/25",
         desc: [
             "I feel nothing. Yet I breathe.",
             "I breathe and breathe. My lungs are empty.",
@@ -612,7 +612,7 @@ const poems = [
     },
     {
         id: 17,
-        title: "Control",
+        title: "Control - 09/02/25",
         desc: [
             "Can a poet",
             "really",
@@ -634,7 +634,7 @@ const poems = [
     },
     {
         id: 18,
-        title: "Emotionless Rage",
+        title: "Emotionless Rage - 09/02/25",
         desc: [
             "Rage. Why is it rage that",
             "is the first to return?",
@@ -780,8 +780,8 @@ const poems = [
 ].map((poem) => ({
     ...poem, 
     desc: <Poem 
-        title={poem.title}
         css={poem.css}
+        title={poem.title.split(" - ")[0]}
         poem={poem.desc.map((value, index) => <Fragment key={index}>{value}<br /></Fragment>)}
     />
 }
