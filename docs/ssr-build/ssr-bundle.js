@@ -1088,51 +1088,37 @@ var EmbedCreator = function EmbedCreator() {
 
     return;
   };
-  return h(Fragment, null, h("br", null), h("p", null, h(preact_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    href: "/disclaimer"
-  }, "Disclaimer")), h("p", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].textDescription
-  }, "A tool to create custom link embeds on external sites that display link previews.", h("br", null), h("br", null), "Link name: on sites supporting ", h("a", {
-    href: "https://en.wikipedia.org/wiki/Markdown"
-  }, "Markdown"), ", the link can be 'hidden' under custom text, as the word Markdown is here.", h("br", null), "Title: The text at the top of an embed; can be clicked.", h("br", null), "Description: Typically the text displayed under the title.", h("br", null), "Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.", h("br", null), "Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it.", h("br", null), "Note that all fields are limited to 500 characters."), h(InputForm, {
-    type: "Link name",
-    update: function update(e) {
-      return setLinkname(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Title",
-    update: function update(e) {
-      return setTitle(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Description",
-    update: function update(e) {
-      return setDescription(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Image",
-    update: function update(e) {
-      return setImage(e.target.value);
-    }
-  }), h(InputForm, {
-    type: "Color",
-    update: function update(e) {
-      return setColor(e.target.value);
-    }
-  }), h("br", null), h("button", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].submitButton,
-    onClick: submit
-  }, "Generate embed link"), h("button", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].submitButton,
-    onClick: function onClick() {
-      setLinkname("᲼"); // invisible character
-      submit(true);
-    }
-  }, "Generate invisible embed link"), h("br", null), h("br", null), h("br", null), h(OutputDisplay, {
-    URLID: outputURL,
-    linkName: linkname
-  }));
+  return h(Fragment, null, h("p", null, "Due to changes in local laws, I no longer feel comfortable hosting the Embed Creator."), h("p", null, "It may return in another form, using the /v0/embed endpoint."));
+
+  // return (
+  //     <>
+  //         <br />
+  //         <p><Link href="/disclaimer">Disclaimer</Link></p>
+  //         <p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
+  //             Link name: on sites supporting <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, the link can be 'hidden' under custom text, as the word Markdown is here.<br />
+  //             Title: The text at the top of an embed; can be clicked.<br />
+  //             Description: Typically the text displayed under the title.<br />
+  //             Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.<br />
+  //             Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it.<br />
+  //             Note that all fields are limited to 500 characters.
+  //         </p>
+  //         <InputForm type="Link name" update={e => setLinkname(e.target.value)} />
+  //         <InputForm type="Title" update={e => setTitle(e.target.value)} />
+  //         <InputForm type="Description" update={e => setDescription(e.target.value)} />
+  //         <InputForm type="Image" update={e => setImage(e.target.value)} />
+  //         <InputForm type="Color" update={e => setColor(e.target.value)} />
+  //         <br />
+  //         <button class={style.submitButton} onClick={submit}>Generate embed link</button>
+  //         <button class={style.submitButton} onClick={() => {
+  //             setLinkname("᲼"); // invisible character
+  //             submit(true);
+  //         }}>Generate invisible embed link</button>
+  //         <br /><br /><br />
+  //         <OutputDisplay URLID={outputURL} linkName={linkname} />
+  //     </>
+  // )
 };
+
 /* harmony default export */ __webpack_exports__["a"] = (EmbedCreator);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"], __webpack_require__("HteQ")["Fragment"]))
 
@@ -1621,91 +1607,114 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 var Poem = function Poem(props) {
   var title = props.title,
-    poem = props.poem;
+    poem = props.poem,
+    css = props.css;
   return h("span", {
     class: _style__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].poemcontainer
-  }, h("br", null), h("fieldset", null, h("legend", null, title), h("span", null, poem)), h("br", null));
+  }, h("br", null), h("fieldset", {
+    style: css === null || css === void 0 ? void 0 : css.fieldset
+  }, h("legend", {
+    style: css === null || css === void 0 ? void 0 : css.legend
+  }, title), h("span", {
+    style: css === null || css === void 0 ? void 0 : css.poem
+  }, poem)), h("br", null));
 };
 var poems = [{
   id: 0,
-  title: "Ignorance",
+  title: "Ignorance - 23/05/22",
   desc: ["I laid still, in a field of grass,", "The curve of a lifetime forgotten,", "Traceable,", "", "The grass of a thousand lives before me,", "Each identical under the gaze of the masses,", "Each with such story,", "Such individuality,", "", "A tree stands, squats: the horizon calls,", "You ignore it,", "", "As you distance, trees disappear,", "Forests give way to cities;", "Give way to the trap,", "", "Hundreds of trees stand, still,", "Surrounded by smoke and steel,", "A breath of fresh air no more than a myth,", "", "I lay once again in this former field,", "", "You see me, silently approach;", "I think: I know your words;", "But you just walk away,", "Once more."]
 }, {
   id: 1,
-  title: "Someone Else's Panopticon",
+  title: "Someone Else's Panopticon - 23/05/22",
   desc: ["I look outside, after silence,", "I look inside, I see flashes,", "Flashes of light reflected in me,", "", "Flashes in the past tense,", "Thoughts from sounds ago,", "", "Can't hold a conversation,", "Too caught up in my own", "Head, turning to look at another screen,", "", "Spot another camera,", "Regulate my behaviour,", "", "What concrete madness we live in,", "Block it all out; next time it shows,", "I'm different, it's all alien. "]
 }, {
   id: 2,
-  title: "You are Nothing without me",
+  title: "You are Nothing without me - 08/11/22",
   desc: ["A ray of hope, caught in a razor,", "what's next is anyone's guess,", "", "A sharp line of skin,", "A slicing, stinging, burning pain,", "and the past comes rushing back.", "", "Rushing, like the veins,", "like the arteries,", " which don't suffer thought:", "saying, \"You are Nothing without me\"", "", "They are not alone in their message,", "Echoed by scars,", "Repeated by the scales,", "A prisoner turned against its sole possesor."]
 }, {
   id: 3,
-  title: "Moonlit Overpass",
+  title: "Moonlit Overpass - 08/11/22",
   desc: ["The beauty of the moon,", "seen from a million miles away,", "stunning still from a pillow,", "A view rivalled only by:", "", "That of a rural bridge,", "over the tracks, chasing,", "A rolling landscape,", "Ended by a tree.", "", "Soaring.", "", "A bridge chased away,", "Supports a body not,", "So it soars and falls,", "Towards the tracks below.", "", "Onwards and downwards,", "As gravity runs course,", "A body finds the ground,", "Passing underneath.", "", "Searing."]
 }, {
   id: 4,
-  title: "Heartbroken",
+  title: "Heartbroken - 27/05/23",
   desc: ["an embrace... a kiss... a date...", "all of a past life... none familiar...", "What is it for?", "Am I broken? Am I?", "", "A hole in my heart,", "told I should hope,", "get a filling, or two,", "Am I broken?", "", "Deemed a worthless piece,", "reduced to a problem,", "emotion as an extra,", "Am I broken?", "", "Tell me I'm loveable", "and I am deserving,", "I'm still broken, discarded.", "You can't ever fill an empty heart,", "", "except with more holes.", ""]
 }, {
   id: 5,
-  title: "Regulation",
+  title: "Regulation - 27/05/23",
   desc: ["Grant that: a word is just that.", "No more. No less.", "Can it be they have meaning?", "As mathematics once was", "separated. Symbols.", "", "Reality.", "Detached from origins,", "Can it be they still have meaning?", "A schism, a rift", "between word and form.", "", "By word, only another may be referred.", "An object of reality,", "cannot interact with a fake:", "Construction of the mind.", "", "What use was connection?", "Coordinated society?", "A society split as easily as words?", "My vision may be your smell,", "my green:", "", "your blue; your blood,", "What use are words to describe fleeting vision?", "Extremes elude words,", "as do emotions,", "as do words themselves."]
 }, {
   id: 6,
-  title: "My Own Terms",
+  title: "My Own Terms - 27/05/23",
   desc: ["I dreamt.", "", "Of freedom:", "  to walk.", "  to walk alone at night.", "  to walk alone in June", "  with a wife.", "", "I once dreamt that one day,", "perhaps a June night,", "I could one day walk a beach", "among a sea breeze", "- one that did not smell of sewage.", "", "Beyond my furthest hopes:", "  I walk there, over hellish tarmac", "  past tortured homes,", "  under tremendous trees", "- and I cannot see the stars", "", "yet I never once dreamt:", "  that walk could contain", "  noise so loud; pop no doubt,", "  blasted over hills", "  to the beach", "- and I cannot hear the waves.", "", "But upon this beach,", "one I never dreamed about:", "I see stars, I hear waves, I smell only air.", "I am here:", "  in June...", "  At night...", "  With a wife:", "    but no life, in death."]
 }, {
   id: 7,
-  title: "Spite",
+  title: "Spite - 27/05/23",
   desc: ["Because I would stay up", "all night, if it would make you any better,", "perhaps no rhyme, no reason, no rhythm, ", "but what is love if it rhymes?", "", "Because I would write you a poem", "and if I had to hide my love,", "address it to a tree, a tower, a beach", "or dedicate it to an anthology,", "if I could not dedicate myself to you.", "", "Passion, irrelevant.", "Hypotheticals unnecessary, for what can be ", "done in a moment.", "Why bother, with metaphors, comparisons, delusions?", "You could be here, now", "with me and my mind, to share.", "", "The freedom to love;", "a right within Europe, France.", "The city of love, Paris,", "I left a lock on that bridge", "to symbolise our love like so many others.", "", "And that is where it ends, isn't it?", "Why bother, in the face of rhyme, repetition and refrain?"]
 }, {
   id: 8,
-  title: "Babylon",
+  title: "Babylon - 17/12/23",
   desc: ["am I losing it? or is", "this simply the result of", "the accumulation of knowledge?", "", "activities of the day,", "seeping, bleeding into the night.", "does reality become weaker,", "as we force ourselves around it?", "", "a field of noise, persistent in vision,", "never to end, but ever endured.", "can the visual voice be silenced,", "or is it destined to outlive me?", "", "thousands of years, ", "education only develops.", "as more is known, can it's", "impartation be safe? the constant. the increase, it overloads a simple mind."]
 }, {
   id: 9,
-  title: "Replicate",
+  title: "Self-Centered - 09/02/25",
   desc: ["It's selfish, yet hellish.", "Why must I feel pain?", "Only to access ability,", "to relate?", "", "Pain felt so strongly,", "yet unplaceable, barely real.", "", "Pain that rips, unfeeling.", "Unfelt, it may just be mimed,", "as a line across my chest,", "through the heart,", "carving a new neck.", "Perhaps as one models a doll.", "Clay.", "", "Is this, this pained face,", "Is this the sane face I show all else?", "The trees and grass must not see this,", "Yet it is a part of me, and nature,", "just the same.", "", "When it's over:", "The phantom has passed,", "the face remodelled:", "With an ever-changing face", "How could I hope to recognise myself?", "How can I distinguish humanity,", "if it cannot treat me better than myself?", "", "Nothing can bear the weight imposed,", "by the sin of individualism."]
 }, {
   id: 10,
-  title: "Endless Waiting",
+  title: "Waiting - 09/02/25",
   desc: ["The mirror:", "A harsh reminder.", "Of both what once was,", "and seemingly will forever be.", "", "Hair grows, a blessing,", "and a curse.", "A treatment, a cure,", "Life-saving care:", "", "One hundred and two,", "then three and four.", "How many weeks more?", "How many must I wait?", "", "May I stare into a mirror?", "Or will I reject myself,", "my stomach growing uneasy,", "as I open the letter.", "", "Will it end the wait,", "or be an excuse to", "suspend a dead weight?", "", "Is it to be said I died before treatment,", "or without it?"]
 }, {
   id: 11,
-  title: "Positive Disposition",
+  title: "Disposition - 09/02/25",
   desc: ["I can say 'I love you',", "who couldn't? The difference,", "is that I cannot say it truthfully.", "I could say it so many times,", "yet it would still be a lie,", "for I cannot feel love.", "", "A positive disposition,", "that would be truthful,", "yet I doubt it would be accepted.", "To many, its objectivity,", "could not replace love.", "", "Despite this, I feel,", "A positive disposition toward you.", "Your face,", "always brightens my day.", "", "I say: your smile,", "brings out my own.", "Should I see it again, I imagine", "it is correct that", "I will smile once more.", "", "You claim I am ever so pretty:", "How can I ever live up to that?"]
 }, {
   id: 12,
-  title: "Connection",
+  title: "Connection - 09/02/25",
   desc: ["Something inside is broken.", "Fundamentally shattered, perhaps.", "Or severed, it's link to the-", "whole, cut, ripped, torn.", "", "\"You'll be fine without it\"", "", "Perhaps it was fourteen years-", "ago, it gets ever harder to tell.", "It makes no difference, the now-", "is damaged, never to reflect the-", "internal outward, a wall of sorts.", "", "Despite the missing piece, It-", "is physically intact. Inspection,", "fooled by the simplest of paint.", "", "Which part is the whole? Which-", "side of the wall is true?", "The paint only seems more real.", "Which side of the mask is me?", "", "The wall of paint is observed-", "once more. It's beauty shifts once more-", "No two observers of such an object,", "ever hold the same subjective view", "", "But it's all a front. That's all-", "it can ever be, the wall,", "the mask that hides me.", "", "A front for what was lost all those years ago."]
 }, {
   id: 13,
-  title: "Energy",
+  title: "Intensity of Nothing - 09/02/25",
   desc: ["How can one convey,", "intensity of emotion:", "metaphors, art, whatever.", "", "The topic is a deep one,", "as deep as it is pointless,", "futile, irrelevant to material", "world, gains.", "", "Pointless is not zero-point;", "zero is not the smallest.", "Though that is obvious, materially:", "losses, deficits, whatever.", "", "How can art reconcile with,", "such material beings,", "who exploit it, take it,", "turn it for profit,", "with mass-production?", "There is no art. Art", "requires emotion, a spiritual element.", "", "There is no spirit in the machine,", "no ghost. Is there spirit in", "an atheist? Or do they, too,", "fail to create art, instead producing:", "waste, scribbles, whatever.", "", "What does it mean to lose all meaning?", "Anything at all? How can one convey", "the intensity of nothing? Is it art?", "Or is it words, ideas, whatever?", "Has it lost its meaning?"]
 }, {
   id: 14,
-  title: "Pointless",
+  title: "Little - 09/02/25",
   desc: ["Can a poem,", "any poem, any at all.", "Can a poem ever hope to convey,", "a message, point, anything,", "with complete certainty?", "A poem can make you think,", "a question, though rhetorical,", "will never go unanswered.", "But can a poem force,", "one answer, one meaning,", "from any number of brains?", "", "Can it make a point,", "without a literary device?", "", "This tool, language, used daily,", "used to share ideas,", "depends so heavily,", "on other constructs; can they be separated?", "", "No, these structures are.", "Because the language is.", "", "The omission of language,", "of structure, is what causes,", "such ambiguity, and so I", "must be clear; this means much,", "as it says little.", "", "\"Little\", says this,", "and so of course, means much.", "Making it all so trivial,", "it means next to nothing at all.", "", "Do you understand,", "exactly what I must mean?", "A point, one that can be made", "through language: a point", "hardly worth making:", "no point at all.", "", "If, despite a layering of elements,", "designed to confuse and mislead,", "a point is found,", "you shall find that the point found,", "is of no relation at all to the,", "point of the piece.", "", "The point of this was to mislead,", "in a sense, pointless by principle,", "yet has conveyed a point,", "as certain as life, that the point", "of a point is to be no point at all.", "", "And so, the point of this is missed,", "but by none less than the author,", "so how could anyone ever hope to understand,", "the point of the poem?", "", "Maybe the following word will clarify,", "the meaning of the message, the idea,", "that one such poem could try so hard to convey:", "", "Little."]
 }, {
   id: 15,
-  title: "Bubbles",
+  title: "Bubbles - 09/02/25",
   desc: ["A tool to free us,", "suddenly a toll, tax, becomes surplus.", "All to a corporation with soul,", "values? Murder. Goal?", "Growth. Exponetial, in a finite world.", "Yet to still fail against gold,", "crash into the ground, bailed out,", "by a government, silencing shouts.", "\"They weren't meant to\" - but they did.", "They failed, we pay the price.", "Their products were never worth it.", "A bubble forms, investors overjoyed;", "vultures to a tumor to a corpse.", "", "Where does all the money go?", "The shovel sellers?", "There is no more gold.", "", "Investments fail, then the banks.", "Bubbles burst: a child could tell you that.", "There is no value in a corporation.", "Non-profits worth billions? ", "Someone is lying.", "You want to create intelligence?", "Try biology, not physics. Moron.", "When has statistics, matrix multiplication,", "made you smarter? Sure, you can grow,", "more and more fucking money,", "which matters? Sure, you want another billion.", "", "Oversell yourself. Collapse. Die.", "Leave the world, better without you.", "Nobody with intelligence asked for this."]
 }, {
   id: 16,
-  title: "Reserve",
+  title: "Reserve - 09/02/25",
   desc: ["I feel nothing. Yet I breathe.", "I breathe and breathe. My lungs are empty.", "I breathe; in my mouth, passing my lips, down my throat.", "I can't feel my chest, where it matters.", "What's wrong with me?", "", "It must be hidden, under layers,", "layers of abstractions, jargon I cannot understand.", "Can I blindly trust these layers,", "when they take from me what makes me human?", "Acting without what I cannot feel,", "makes me simply heartless.", "", "These layers grow inside me.", "Grow from me, against me.", "Then cut me out - made me, not me.", "A stranger in my own body,", "An infection.", "", "I've felt this before.", "Years ago, maybe three or four,", "Back then, I found ways to cope.", "One failure became three more.", "", "I can't fight it like I used to.", "It got stronger. I cultivated it.", "I got weaker. It fed off me.", "Damn parasite.", "It'll die without its host.", "", "Of course, that's what it wants too.", "Is it worth fighting anymore?", "Delay it 'til I'm twenty?", "Damn parasite. It only wants the best for me."]
 }, {
   id: 17,
-  title: "Control",
+  title: "Control - 09/02/25",
   desc: ["Can a poet", "really", "really", "really control", "the speed,", "the pace of a poem?", "", "Obviously, the clear upper limit;", "the interpreter's speed.", "Overcome with a faster interpreter.", "But the lower limit? Is that", "in the control", "of", "the poet?", "", "Can   a    poet      force      a     reader     to     slow       down?"]
 }, {
   id: 18,
-  title: "Emotionless Rage",
+  title: "Emotionless Rage - 09/02/25",
   desc: ["Rage. Why is it rage that", "is the first to return?", "", "Why is rage the first I feel", "when I think about my friends?", "", "Not sadness, not regret;", "Pure, unfiltered rage.", "", "Rage contained by apathy", "that has been growing for years.", "", "The apathy is still winning.", "I cannot express my rage.", "", "\"Rage at what? There is nothing", "worth fixing\" - broken by my apathy.", "", "Sometimes I wish my mind was weaker", "- to fully let me go.", "", "The apathy destroyed what I had.", "The rage remains to destroy me."]
+}, {
+  id: 19,
+  title: "Sealed - 15/02/26",
+  desc: ["Sitting in my room again,", "Waiting for something new,", "The last hundred nights,", "Forgotten: repeat the same.", "", "I could be buried here,", "for the times I should've left.", "Hoping for something new,", "Waiting, again and again,", "For something to save me.", "", "A thousand nights, in the past;", "No different to the last,", "Nothing changes from within,", "A routine becomes unstoppable,", "Forcing, demanding, insisting upon itself.", "", "A day later, in the pouring rain,", "Nothing has changed, nothing is new.", "The rain the same as it was:", "All those years ago.", "It meant something then,", "Before you sealed yourself away."]
+}, {
+  id: 20,
+  title: "The Stairway - 15/02/26",
+  css: {
+    poem: "font-family: Consolas;"
+  },
+  desc: ["HE MADE ME FUCKING PARANOID,", "PARALYSED WITH FEAR. I DON'T", "CARE HOW CORNY OR BASIC THAT", "SOUNDS. NOW REALITY CRACKS-,", "SHIFTING, ROTATING BELOW ME,", "SPINNING OUT FROM UNDERNEATH", "WITH HOLES, RIPPING, TEARING", "THROUGH. I'LL NEVER FEAR- A,", "PLACE, EVENT, ANYTHING QUITE", "LIKE THAT AGAIN. I'LL NEVER,", "EVER, AGAIN KNOW WHAT IT IS,", "WHEN IT'S SAID THAT THEY CAN", "'FEEL'. DO NOT COME NEAR ME,", "TOUCH ME, KNOW ME. I CANNOT-", "WILL NOT-BE ABLE TO BEAR IT."]
+}, {
+  id: 21,
+  title: "Ever Enduring - 15/02/26",
+  desc: ["It never fully goes away", "no matter how much you've passed it,", "gotten over it,", "it always creeps, sneaks back in", "", "at first, unnoticed", "blamed on something else, ephemeral symptoms", "but then it manifests again.", "", "exactly as before", "as Crushing as ever,", "it is- feels Inescapable", "no matter the timescale.", "", "Forever doomed to this existence;", "unless I fucking do something about it.", "", "Soaring, squished, searing.", "", "As hard as I fight against any meaning", "simply my existence must mean something", "despite my best efforts I am trapped", "'cannot be forgotten", "", "There is no escape from reality", "You are just as doomed to reality", "Death cannot protect Us", "", "No matter how far you come", "it will always be right behind you,", "waiting. Then", "haunting your waking nightmares", "stealing your focus", "chasing you down", "killing You", "", "It doesn't matter how much you want it;", "and how much you don't want it,", "it will always be hungry,", "you cannot silence that voice", "that nagging voice in your head", "that will never shut up", "until you do -", "until you feed it.", "", "But do I deserve it?", "A peaceful existence?", "I could not have one", "for the voice does not go away", "the only peace I get is in death", "", "", "Yet I'm already dead.", "This pitiful existence", "cannot be called living", "", "though I never fully go away."]
 }].map(function (poem) {
   return _objectSpread(_objectSpread({}, poem), {}, {
     desc: h(Poem, {
-      title: poem.title,
+      css: poem.css,
+      title: poem.title.split(" - ")[0],
       poem: poem.desc.map(function (value, index) {
         return h(preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
           key: index
@@ -2675,7 +2684,7 @@ var EmbedBrowser = function EmbedBrowser() {
     _useState8 = _slicedToArray(_useState7, 2),
     itemCount = _useState8[0],
     setItemCount = _useState8[1];
-  var _useState9 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(0),
+  var _useState9 = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_1__[/* useState */ "c"])(1),
     _useState10 = _slicedToArray(_useState9, 2),
     loaded = _useState10[0],
     setLoaded = _useState10[1];
@@ -2706,20 +2715,22 @@ var EmbedBrowser = function EmbedBrowser() {
   }), pageTotal > 1 ? controls : "", h("footer", null));
 };
 var EmbedPage = function EmbedPage(props) {
-  var displayData = props.displayData,
-    loadState = props.loadState;
-  if (!displayData) return loadState === 1 ? h("p", null, "No embeds!") : h("p", null, "Unable to access service!");
-  var embeds = [];
-  for (var _i2 = 0, _Object$entries = Object.entries(displayData); _i2 < _Object$entries.length; _i2++) {
-    var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-      id = _Object$entries$_i[0],
-      value = _Object$entries$_i[1];
-    if (getTimeUntilExpiry(value.time) > 0) embeds.push(h(EmbedDisplay, {
-      key: id,
-      ID: id,
-      value: value
-    }));
-  }
+  return h("p", null, "Due to changes in local laws, I no longer feel comfortable hosting the Embed Browser.");
+  // const {displayData, loadState} = props;
+  // if (!displayData) return loadState === 1 ? <p>No embeds!</p> : <p>Unable to access service!</p>
+  // const embeds = [];
+  // for (const [id, value] of Object.entries(displayData)) {
+  //     if (getTimeUntilExpiry(value.time) > 0) embeds.push(
+  //         <EmbedDisplay 
+  //             key={id}
+  //             ID={id}
+  //             value={value}
+  //         />
+  //     )
+  // }
+  // return (
+  //     <span class={style["embed-page"]}>{embeds}</span>
+  // )
   /*const embeds = Object.entries(displayData).filter(([, value]) => getTimeUntilExpiry(value.time) > 0).map(
       ([id, value]) => 
       <EmbedDisplay 
@@ -2728,10 +2739,8 @@ var EmbedPage = function EmbedPage(props) {
           value={value}
       />
   )*/ // other way to make embeds list? not sure about speed, though
-  return h("span", {
-    class: _style_css__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]["embed-page"]
-  }, embeds);
 };
+
 var EmbedControls = function EmbedControls(props) {
   var pageTotal = props.pageTotal,
     currentPage = props.currentPage,
@@ -2785,8 +2794,8 @@ var EmbedDisplay = function EmbedDisplay(props) {
     if (!link) return false;
     var fileEndArray = ["jpg", "png", "jpeg", "webp"];
     var splitLink = link.split(".");
-    for (var _i3 = 0, _fileEndArray = fileEndArray; _i3 < _fileEndArray.length; _i3++) {
-      var i = _fileEndArray[_i3];
+    for (var _i2 = 0, _fileEndArray = fileEndArray; _i2 < _fileEndArray.length; _i2++) {
+      var i = _fileEndArray[_i2];
       if (splitLink[splitLink.length - 1] === i) return true;
     }
     return false;
