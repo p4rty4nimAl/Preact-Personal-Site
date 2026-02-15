@@ -63,31 +63,39 @@ const EmbedCreator = () => {
     }
     return (
         <>
-            <br />
-            <p><Link href="/disclaimer">Disclaimer</Link></p>
-            <p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
-                Link name: on sites supporting <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, the link can be 'hidden' under custom text, as the word Markdown is here.<br />
-                Title: The text at the top of an embed; can be clicked.<br />
-                Description: Typically the text displayed under the title.<br />
-                Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.<br />
-                Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it.<br />
-                Note that all fields are limited to 500 characters.
-            </p>
-            <InputForm type="Link name" update={e => setLinkname(e.target.value)} />
-            <InputForm type="Title" update={e => setTitle(e.target.value)} />
-            <InputForm type="Description" update={e => setDescription(e.target.value)} />
-            <InputForm type="Image" update={e => setImage(e.target.value)} />
-            <InputForm type="Color" update={e => setColor(e.target.value)} />
-            <br />
-            <button class={style.submitButton} onClick={submit}>Generate embed link</button>
-            <button class={style.submitButton} onClick={() => {
-                setLinkname("᲼"); // invisible character
-                submit(true);
-            }}>Generate invisible embed link</button>
-            <br /><br /><br />
-            <OutputDisplay URLID={outputURL} linkName={linkname} />
+            <p>Due to changes in local laws, I no longer feel comfortable hosting the Embed Creator.</p>
+            <p>It may return in another form, using the /v0/embed endpoint.</p>
         </>
-    )
+    );
+    
+
+    // return (
+    //     <>
+    //         <br />
+    //         <p><Link href="/disclaimer">Disclaimer</Link></p>
+    //         <p class={style.textDescription}>A tool to create custom link embeds on external sites that display link previews.<br /><br />
+    //             Link name: on sites supporting <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, the link can be 'hidden' under custom text, as the word Markdown is here.<br />
+    //             Title: The text at the top of an embed; can be clicked.<br />
+    //             Description: Typically the text displayed under the title.<br />
+    //             Image: Link to an image to embed into the external site. In some cases the link may need cleaning, such as if there is a '?' or a '#'. To clean the link, simply remove the '?'/'#' and anything that follows it.<br />
+    //             Color: If the external site supports an accent color, this will set it. Enter as a hex code, without a '#' before it.<br />
+    //             Note that all fields are limited to 500 characters.
+    //         </p>
+    //         <InputForm type="Link name" update={e => setLinkname(e.target.value)} />
+    //         <InputForm type="Title" update={e => setTitle(e.target.value)} />
+    //         <InputForm type="Description" update={e => setDescription(e.target.value)} />
+    //         <InputForm type="Image" update={e => setImage(e.target.value)} />
+    //         <InputForm type="Color" update={e => setColor(e.target.value)} />
+    //         <br />
+    //         <button class={style.submitButton} onClick={submit}>Generate embed link</button>
+    //         <button class={style.submitButton} onClick={() => {
+    //             setLinkname("᲼"); // invisible character
+    //             submit(true);
+    //         }}>Generate invisible embed link</button>
+    //         <br /><br /><br />
+    //         <OutputDisplay URLID={outputURL} linkName={linkname} />
+    //     </>
+    // )
 }
 
 export default EmbedCreator;

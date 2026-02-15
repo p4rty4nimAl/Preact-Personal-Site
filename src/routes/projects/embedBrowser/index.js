@@ -20,7 +20,7 @@ const EmbedBrowser = () => {
     const [pageTotal, setPageTotal] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemCount, setItemCount] = useState(9);
-    const [loaded, setLoaded] = useState(0);
+    const [loaded, setLoaded] = useState(1);
 
     // load things
     useEffect(() => {
@@ -48,18 +48,22 @@ const EmbedBrowser = () => {
     )
 }
 const EmbedPage = (props) => {
-    const {displayData, loadState} = props;
-    if (!displayData) return loadState === 1 ? <p>No embeds!</p> : <p>Unable to access service!</p>
-    const embeds = [];
-    for (const [id, value] of Object.entries(displayData)) {
-        if (getTimeUntilExpiry(value.time) > 0) embeds.push(
-            <EmbedDisplay 
-                key={id}
-                ID={id}
-                value={value}
-            />
-        )
-    }
+    return <p>Due to changes in local laws, I no longer feel comfortable hosting the Embed Browser.</p>
+    // const {displayData, loadState} = props;
+    // if (!displayData) return loadState === 1 ? <p>No embeds!</p> : <p>Unable to access service!</p>
+    // const embeds = [];
+    // for (const [id, value] of Object.entries(displayData)) {
+    //     if (getTimeUntilExpiry(value.time) > 0) embeds.push(
+    //         <EmbedDisplay 
+    //             key={id}
+    //             ID={id}
+    //             value={value}
+    //         />
+    //     )
+    // }
+    // return (
+    //     <span class={style["embed-page"]}>{embeds}</span>
+    // )
     /*const embeds = Object.entries(displayData).filter(([, value]) => getTimeUntilExpiry(value.time) > 0).map(
         ([id, value]) => 
         <EmbedDisplay 
@@ -68,9 +72,6 @@ const EmbedPage = (props) => {
             value={value}
         />
     )*/ // other way to make embeds list? not sure about speed, though
-    return (
-        <span class={style["embed-page"]}>{embeds}</span>
-    )
 }
 const EmbedControls = (props) => {
     const {pageTotal, currentPage, itemCount} = props;
