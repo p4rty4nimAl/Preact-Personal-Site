@@ -2,13 +2,13 @@ import { Fragment } from 'preact';
 import style from './style';
 
 const Poem = (props) => {
-    const {title, poem} = props;
+    const {title, poem, css} = props;
     return (
         <span class={style.poemcontainer}>
             <br />
-            <fieldset>
-                <legend>{title}</legend>
-                <span>{poem}</span>
+            <fieldset style={css?.fieldset}>
+                <legend style={css?.legend}>{title}</legend>
+                <span style={css?.poem}>{poem}</span>
             </fieldset>
             <br />
         </span>
@@ -665,6 +665,7 @@ const poems = [
     ...poem, 
     desc: <Poem 
         title={poem.title}
+        css={poem.css}
         poem={poem.desc.map((value, index) => <Fragment key={index}>{value}<br /></Fragment>)}
     />
 }
