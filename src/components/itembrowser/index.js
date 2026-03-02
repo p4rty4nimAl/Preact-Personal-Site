@@ -6,7 +6,7 @@ const ItemBrowser = (props) => {
     const {titles, items} = props;
     const [displayedDoc, setDoc] = useState();
     const [selectedButton, setSelectedButton] = useState();
-    const formatForURL = url => url?.replace(/[():' ]/g, "");
+    const formatForURL = url => url?.replace(/[():' ]/g, "")?.split("-")?.[0];
     const changeMenu = title => {
         let doc = items[title];
         if (Array.isArray(doc)) {
