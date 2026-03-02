@@ -829,7 +829,8 @@ var ItemBrowser = function ItemBrowser(props) {
     selectedButton = _useState4[0],
     setSelectedButton = _useState4[1];
   var formatForURL = function formatForURL(url) {
-    return url === null || url === void 0 ? void 0 : url.replace(/[():' ]/g, "");
+    var _url$replace, _url$replace$split;
+    return url === null || url === void 0 ? void 0 : (_url$replace = url.replace(/[():' ]/g, "")) === null || _url$replace === void 0 ? void 0 : (_url$replace$split = _url$replace.split("-")) === null || _url$replace$split === void 0 ? void 0 : _url$replace$split[0];
   };
   var changeMenu = function changeMenu(title) {
     var doc = items[title];
@@ -1710,6 +1711,10 @@ var poems = [{
   id: 21,
   title: "Ever Enduring - 15/02/26",
   desc: ["It never fully goes away", "no matter how much you've passed it,", "gotten over it,", "it always creeps, sneaks back in", "", "at first, unnoticed", "blamed on something else, ephemeral symptoms", "but then it manifests again.", "", "exactly as before", "as Crushing as ever,", "it is- feels Inescapable", "no matter the timescale.", "", "Forever doomed to this existence;", "unless I fucking do something about it.", "", "Soaring, squished, searing.", "", "As hard as I fight against any meaning", "simply my existence must mean something", "despite my best efforts I am trapped", "'cannot be forgotten", "", "There is no escape from reality", "You are just as doomed to reality", "Death cannot protect Us", "", "No matter how far you come", "it will always be right behind you,", "waiting. Then", "haunting your waking nightmares", "stealing your focus", "chasing you down", "killing You", "", "It doesn't matter how much you want it;", "and how much you don't want it,", "it will always be hungry,", "you cannot silence that voice", "that nagging voice in your head", "that will never shut up", "until you do -", "until you feed it.", "", "But do I deserve it?", "A peaceful existence?", "I could not have one", "for the voice does not go away", "the only peace I get is in death", "", "", "Yet I'm already dead.", "This pitiful existence", "cannot be called living", "", "though I never fully go away."]
+}, {
+  id: 22,
+  title: "Hostile Takeover - 02/03/26",
+  desc: ["It's coming back.", "You always knew it would.", "5 years free, but you knew", "one day it'll be back", "back for more,", "back for blood.", "", "You can't escape that", "feeling in your head.", "It was never far, always just", "Waiting. Waiting. Quietly,", "in the background, tearing away", "burning up.", "", "And it's done with the shielding", "it's at your core. Next?", "Its time, its world:", "you don't get to play any more.", "Everything is scripted,", "and it will be followed.", "", "There are actors, but", "something is always off;", "a mouth that doesn't move,", "movement without motion.", "", "So you turn to the bottle.", "Like your father, and his in turn.", "It's a wonder it took this long,", "you already know addiction.", "It works, for a time:", "your body obeys you,", "your mind does not.", "", "Now, you know it's coming.", "This is but a fraction", "of how it ends.", "The core shall burn.", "Senses shall writhe against you.", "The full force of unfeeling shall strike you", "down where you stand.", "Forever broken."]
 }].map(function (poem) {
   return _objectSpread(_objectSpread({}, poem), {}, {
     desc: h(Poem, {
